@@ -24,6 +24,7 @@ public class PantallaInsumoPrueba implements ActionListener{
         return single;
     }
 
+    @SuppressWarnings("Duplicates")
     public void agregarPantalla(JPanel p) {
         panel = new JPanel();
         JButton menu1 = new JButton(MENU);
@@ -34,6 +35,7 @@ public class PantallaInsumoPrueba implements ActionListener{
         panel.add(new JButton(BUSCAR));
         panel.add(new JButton(EDITAR));
         panel.add(new JButton(BORRAR));
+
 
         p.add(panel, "Insumos");
     }

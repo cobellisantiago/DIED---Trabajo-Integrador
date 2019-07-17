@@ -1,7 +1,10 @@
 package GUI;
 
+import jdk.nashorn.internal.ir.annotations.Ignore;
+
 import java.awt.*;
 import java.awt.event.*;
+import java.util.List;
 import javax.swing.*;
 
 public class PantallaMenuPrueba implements ActionListener{
@@ -24,19 +27,68 @@ public class PantallaMenuPrueba implements ActionListener{
         return single;
     }
 
+
+    @SuppressWarnings("Duplicates")
     public void agregarPantalla(JPanel p) {
         panel = new JPanel();
-        JButton insumos = new JButton(INSUMOS);
-        insumos.addActionListener(this);
 
-        panel.add(insumos);
-        panel.add(new JButton(PLANTAS));
-        panel.add(new JButton(STOCK));
-        panel.add(new JButton(CAMINOS));
-        panel.add(new JButton(CAMIONES));
-        panel.add(new JButton(INFORMACION));
+        ImageIcon insumoIcon = new ImageIcon(new ImageIcon("src/GUI/Icons/flour.png").getImage()
+                .getScaledInstance(40, 40, Image.SCALE_DEFAULT));
+        ImageIcon plantaIcon = new ImageIcon(new ImageIcon("src/GUI/Icons/factory.png").getImage()
+                .getScaledInstance(40, 40, Image.SCALE_DEFAULT));
+        ImageIcon stockIcon = new ImageIcon(new ImageIcon("src/GUI/Icons/stock.png").getImage()
+                .getScaledInstance(40, 40, Image.SCALE_DEFAULT));
+        ImageIcon caminosIcon = new ImageIcon(new ImageIcon("src/GUI/Icons/route.png").getImage()
+                .getScaledInstance(40, 40, Image.SCALE_DEFAULT));
+        ImageIcon camionesIcon = new ImageIcon(new ImageIcon("src/GUI/Icons/truck.png").getImage()
+                .getScaledInstance(40, 40, Image.SCALE_DEFAULT));
+        ImageIcon informacionIcon = new ImageIcon(new ImageIcon("src/GUI/Icons/information.png").getImage()
+                .getScaledInstance(40, 40, Image.SCALE_DEFAULT));
+
+        JButton insumosButton = new JButton(INSUMOS,insumoIcon);
+        insumosButton.addActionListener(this);
+
+        JButton plantasButton = new JButton(PLANTAS,plantaIcon);
+        JButton stockButton = new JButton(STOCK,stockIcon);
+        JButton caminosButton = new JButton(CAMINOS,caminosIcon);
+        JButton camionesButton = new JButton(CAMIONES,camionesIcon);
+        JButton informacionButton = new JButton(INFORMACION,informacionIcon);
+
+        insumosButton.setVerticalTextPosition(JButton.TOP);
+        insumosButton.setHorizontalTextPosition(JButton.CENTER);
+        plantasButton.setVerticalTextPosition(JButton.TOP);
+        plantasButton.setHorizontalTextPosition(JButton.CENTER);
+        stockButton.setVerticalTextPosition(JButton.TOP);
+        stockButton.setHorizontalTextPosition(JButton.CENTER);
+        caminosButton.setVerticalTextPosition(JButton.TOP);
+        caminosButton.setHorizontalTextPosition(JButton.CENTER);
+        camionesButton.setVerticalTextPosition(JButton.TOP);
+        camionesButton.setHorizontalTextPosition(JButton.CENTER);
+        informacionButton.setVerticalTextPosition(JButton.TOP);
+        informacionButton.setHorizontalTextPosition(JButton.CENTER);
+
+        Dimension dimensionBotonMenuPrincipal = new Dimension(150,120);
+
+        insumosButton.setPreferredSize(dimensionBotonMenuPrincipal);
+        plantasButton.setPreferredSize(dimensionBotonMenuPrincipal);
+        stockButton.setPreferredSize(dimensionBotonMenuPrincipal);
+        caminosButton.setPreferredSize(dimensionBotonMenuPrincipal);
+        camionesButton.setPreferredSize(dimensionBotonMenuPrincipal);
+        informacionButton.setPreferredSize(dimensionBotonMenuPrincipal);
+
+        panel.add(insumosButton);
+        panel.add(plantasButton);
+        panel.add(stockButton);
+        panel.add(caminosButton);
+        panel.add(camionesButton);
+        panel.add(informacionButton);
+
+        panel.setBackground(new Color(255,255,255));
+
+
 
         p.add(panel, "Menu");
+
     }
 
     public void actionPerformed(ActionEvent e){
