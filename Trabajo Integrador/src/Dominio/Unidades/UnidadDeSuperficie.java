@@ -8,9 +8,10 @@ public class UnidadDeSuperficie extends UnidadDeMedida{
 
     public double factor(){
         switch(this.unidad){
-            case M2: return 1;
-            case CM2: return 0.0001;
+            case M2: 	return 1;
+            case CM2: 	return 0.0001;
+            default:	return 0;
         }
-        return 0;
+
     }
 }

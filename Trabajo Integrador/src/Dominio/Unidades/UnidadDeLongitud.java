@@ -8,9 +8,10 @@ public class UnidadDeLongitud extends UnidadDeMedida{
 
     public double factor(){
         switch(this.unidad){
-            case M: return 1;
-            case CM: return 0.01;
+            case M:		return 1;
+            case CM:	return 0.01;
+            default:	return 0;
         }
-        return 0;
+
     }
 }

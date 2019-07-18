@@ -8,9 +8,10 @@ public class UnidadDeMasa extends UnidadDeMedida{
 
     public double factor(){
         switch(this.unidad){
-            case KILO: return 1;
-            case GRAMO: return 0.001;
+            case KILO: 	return 1;
+            case GRAMO:	return 0.001;
+            default:	return 0;
         }
-        return 0;
+
     }
 }
