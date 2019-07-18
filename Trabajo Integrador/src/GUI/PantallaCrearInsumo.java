@@ -4,7 +4,11 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-public class PantallaCrearInsumo{
+import Dominio.Unidades.Unidad;
+import Dominio.Unidades.UnidadDeMasa;
+import Gestores.GestorInsumos;
+
+public class PantallaCrearInsumo implements ActionListener{
     private static PantallaCrearInsumo single;
     JDialog dialog;
     JTextField descrip;
@@ -17,7 +21,7 @@ public class PantallaCrearInsumo{
     final static String COSTO = "Costo por unidad";
     final static String REFRIGE = "Necesita refrigeracion?";
     final static String PESO = "Peso";
-    final static String UNIDAD = "Unidad";
+    //final static String UNIDAD = "Unidad";
 
     private PantallaCrearInsumo(){}
 
@@ -35,8 +39,7 @@ public class PantallaCrearInsumo{
     }
 
     private void crearDialog() {
-        dialog.dispose();
-        JPanel panel = new JPanel(new GridLayout(6, 2));
+        JPanel panel = new JPanel(new GridLayout(5, 2));
 
         this.dialog.setSize(400, 200);
 
@@ -48,10 +51,13 @@ public class PantallaCrearInsumo{
         panel.add(refrige);
         panel.add(new JLabel(PESO));
         panel.add(peso);
-        panel.add(new JLabel(UNIDAD));
-        panel.add(unidad);
+        //panel.add(new JLabel(UNIDAD));
+        //panel.add(unidad);
 
-        panel.add(new JButton(CREAR));
+        JButton crear = new JButton(CREAR);
+        crear.addActionListener(this);
+        
+        panel.add(crear);
 
         this.dialog.add(panel);
 
@@ -61,10 +67,10 @@ public class PantallaCrearInsumo{
     }
 
     public void actionPerformed(ActionEvent e){
-        if(((JButton) e.getSource()).getText() == CREAR) {
-
-
-
-        }
+    	if(!descrip.getText().isEmpty() && !costo.getText().isEmpty() && !peso.getText().isEmpty()) {
+    		GestorInsumos.getGestor().crear(descrip.getText(), Double.valueOf(costo.getText()), Double.valueOf(peso.getText()), refrige.isSelected());
+    		dialog.dispose();
+    	}
+    	else	descrip.setText(DESCRIP);
     }
 }

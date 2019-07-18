@@ -2,28 +2,28 @@ package Dominio;
 
 import Dominio.Unidades.UnidadDeMedida;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Insumo implements Comparable<Insumo> {
 
-    private static List<Insumo> instances;
+    private static List<Insumo> instances = new ArrayList<Insumo>();
     protected int id;
     protected String descripcion;
     protected Double costo;
     //protected Double stock;
     protected Double peso; //en Kg
     protected Boolean esRefrigerado;
-    protected UnidadDeMedida unidadMedida;
+    //protected UnidadDeMedida unidadMedida;
+    
 
 
-    public Insumo(String descrip, Double costoActual, Double pesoEnKg, Boolean refrigeracion, UnidadDeMedida unidad){
-
+    public Insumo(String descrip, Double costoActual, Double pesoEnKg, Boolean refrigeracion){
         this.id = instances.size() + 1;
         this.descripcion = descrip;
         this.costo = costoActual;
         this.peso = pesoEnKg;
         this.esRefrigerado = refrigeracion;
-        this.unidadMedida = unidad;
 
         instances.add(this);
     }

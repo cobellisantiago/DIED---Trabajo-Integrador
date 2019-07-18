@@ -13,8 +13,8 @@ public class GestorInsumos{
         if(gestor == null)	gestor = new GestorInsumos();
         return gestor;
     }
-    public void crear(String descrip, Double costoActual, Double pesoEnKg, Boolean refrigeracion, UnidadDeMedida unidad) {
-        new Insumo(descrip, costoActual, pesoEnKg, refrigeracion, unidad);
+    public void crear(String descrip, Double costoActual, Double pesoEnKg, Boolean refrigeracion) {
+        new Insumo(descrip, costoActual, pesoEnKg, refrigeracion);
     }
     public void buscar() {
         List<Insumo> insumos = Insumo.getInstances();
