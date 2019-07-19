@@ -20,6 +20,13 @@ public class GestorInsumos{
         List<Insumo> insumos = Insumo.getInstances();
 
     }
+    public String[][] listarInsumos(){ //Utilizado para mostrar los insumos en la tabla de insumos
+        String[][] listaInsumos;
+
+
+
+        return listaInsumos;
+    }
     public void editar() {
 
     }

@@ -27,11 +27,26 @@ public class PantallaInsumo implements ActionListener{
 
     @SuppressWarnings("Duplicates")
     public void agregarPantalla(JPanel p) {
-        panel = new JPanel(new BorderLayout(10,30));
+        panel = new JPanel(new BorderLayout(10,10));
 
-        JButton menu = new JButton(MENU);
+
+        ImageIcon backIcon = new ImageIcon(new ImageIcon("src/GUI/Icons/back-arrow.png").getImage()
+                .getScaledInstance(45, 40, Image.SCALE_DEFAULT));
+
+        JButton menu = new JButton(backIcon);
+        //menu.setBorderPainted(false);
+        menu.setBorder(null);
+//button.setFocusable(false);
+        menu.setMargin(new Insets(0, 0, 0, 0));
+        menu.setContentAreaFilled(false);
+        menu.setName("Menu");
+        menu.setCursor(new Cursor(Cursor.HAND_CURSOR));
         menu.addActionListener(this);
+        menu.setVerticalTextPosition(JButton.TOP);
+        menu.setHorizontalTextPosition(JButton.CENTER);
+
         JButton crear = new JButton(CREAR);
+        crear.setName("Crear");
         crear.addActionListener(this);
 
         JPanel panelBotones = new JPanel();
@@ -53,31 +68,54 @@ public class PantallaInsumo implements ActionListener{
         c.fill=GridBagConstraints.BOTH;
         c.gridx=0;
         c.gridy=1;
+
         JPanel panel2 = new JPanel(new MigLayout("debug, fillx","[][grow][]"));
-        panel2.add(new JTable(6,6), "span 2 3, grow , wrap");
-        //panel2.add(new JButton("Test"),"grow");
+
+        //TODO
+        // Obetner la lista de insumos en el sistema, junto con su id, nombre y la cantidad total de stock (suma de stock en las plantas)
+
+        String data[][]={ {"101","Amit","670000"},
+                {"102","Jai","780000"},
+                {"101","Sachin","700000"},{"101","Amit","670000"},
+                {"102","Jai","780000"},
+                {"101","Sachin","700000"},{"101","Amit","670000"},
+                {"102","Jai","780000"},
+                {"101","Sachin","700000"},{"101","Amit","670000"},
+                {"102","Jai","780000"},
+                {"101","Sachin","700000"}};
+        String column[]={"Id","Nombre","Stock"};
+
+        JTable tablaInsumos = new JTable(data,column);
+        tablaInsumos.setRowHeight(50);
+        tablaInsumos.setGridColor(Color.black);
+        tablaInsumos.setFont(new Font("Roboto",Font.PLAIN,15 ));
+        tablaInsumos.getTableHeader().setFont(new Font("Roboto", Font.BOLD, 20));
+        JScrollPane sp=new JScrollPane(tablaInsumos);
+        sp.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+        panel2.add(sp, "span 2 3, grow , wrap");
         panel2.setBorder(BorderFactory.createTitledBorder("Panel de TABLE"));
         panel.add(panel2);
         JPanel panel3 = new JPanel(new MigLayout());
 
-        panel3.add(new JLabel("First Name:"));
+        /*panel3.add(new JLabel("First Name:"));
         panel3.add(new JTextField(30));
         panel3.add(new JLabel("Last Name:"),       "gap unrelated");
         panel3.add(new JTextField(30),   "wrap");
         panel3.add(new JLabel("Address"));
-        panel3.add(new JTextField(),    "span, grow");
-        panel.add(panel3);
+        panel3.add(new JTextField(),    "span, grow");*/
+
+        panel.add(panel2);
         panel.setBorder(BorderFactory.createTitledBorder("Panel de INSUMOS"));
 
         p.add(panel, "Insumos");
     }
 
     public void actionPerformed(ActionEvent e){
-        String button = ((JButton) e.getSource()).getText();
+        String button = ((JButton) e.getSource()).getName();//Tenes que setearle el nombre al boton con setName() es para no depender del texto
         if(button == MENU) {
             JPanel p = (JPanel)panel.getParent();
             CardLayout pane = (CardLayout)(p.getLayout());
-            pane.show(p, button);
+            pane.show(p, "Menu");
         }
         else if(button == CREAR) {
             PantallaCrearInsumo.crearPantalla();
