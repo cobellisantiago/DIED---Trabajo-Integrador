@@ -14,7 +14,7 @@ public class Insumo implements Comparable<Insumo> {
     //protected Double stock;
     protected Double peso; //en Kg
     protected Boolean esRefrigerado;
-    //protected UnidadDeMedida unidadMedida;
+    protected UnidadDeMedida unidadMedida;
     
 
 

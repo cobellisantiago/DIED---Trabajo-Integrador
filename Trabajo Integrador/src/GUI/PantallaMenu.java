@@ -79,18 +79,18 @@ public class PantallaMenu implements ActionListener{
         Color colorBoton = new Color(3,155,229);
         LineBorder bordeBoton = new LineBorder(Color.black,2);
 
-        insumosButton.setBackground(colorBoton);
-        insumosButton.setBorder(bordeBoton);
+        /*insumosButton.setBackground(colorBoton);
+        //insumosButton.setBorder(bordeBoton);
         plantasButton.setBackground(colorBoton);
-        plantasButton.setBorder(bordeBoton);
+        //plantasButton.setBorder(bordeBoton);
         stockButton.setBackground(colorBoton);
-        stockButton.setBorder(bordeBoton);
+        //stockButton.setBorder(bordeBoton);
         caminosButton.setBackground(colorBoton);
-        caminosButton.setBorder(bordeBoton);
+        //caminosButton.setBorder(bordeBoton);
         camionesButton.setBackground(colorBoton);
-        camionesButton.setBorder(bordeBoton);
+        //camionesButton.setBorder(bordeBoton);
         informacionButton.setBackground(colorBoton);
-        informacionButton.setBorder(bordeBoton);
+        //informacionButton.setBorder(bordeBoton);*/
 
         Font fuenteBotones = new Font("Roboto",Font.BOLD,20);
 
@@ -120,11 +120,11 @@ public class PantallaMenu implements ActionListener{
         panel.setBorder(BorderFactory.createTitledBorder("Panel de Botones"));
         panel.setPreferredSize(new Dimension(540,350));
 
-        JPanel infoPanel = new JPanel();
+        /*JPanel infoPanel = new JPanel();
         //infoPanel.setPreferredSize(new Dimension(1080,720));
         infoPanel.setBackground(new Color(0,109,179));
         infoPanel.setBorder(BorderFactory.createTitledBorder("Panel de Informacion"));
-        panel.add(infoPanel,BorderLayout.SOUTH);
+        panel.add(infoPanel,BorderLayout.SOUTH);*/
 
         p.add(panel, "Menu");
 

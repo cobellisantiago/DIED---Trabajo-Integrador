@@ -10,7 +10,7 @@ public class InsumoLiquido extends Insumo{
 
     public InsumoLiquido(String descrip, Double costoActual, Double peso, Boolean refrigeracion, UnidadDeMedida unidad, Double densidad){
 
-        super(descrip, costoActual, peso, refrigeracion, unidad);
+        super(descrip, costoActual, peso, refrigeracion);//, unidad);
 
         this.densidad = densidad;
 
