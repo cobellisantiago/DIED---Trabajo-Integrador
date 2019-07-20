@@ -2,7 +2,9 @@ package Gestores;
 
 import Dominio.Insumo;
 import Dominio.Unidades.UnidadDeMedida;
+import jdk.nashorn.internal.ir.annotations.Ignore;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class GestorInsumos{
@@ -15,15 +17,29 @@ public class GestorInsumos{
     }
     public void crear(String descrip, Double costoActual, Double pesoEnKg, Boolean refrigeracion) {
         new Insumo(descrip, costoActual, pesoEnKg, refrigeracion);
+        System.out.println("INSUMO CREADO CORRECTAMENTE");
     }
     public void buscar() {
         List<Insumo> insumos = Insumo.getInstances();
 
     }
-    public String[][] listarInsumos(){ //Utilizado para mostrar los insumos en la tabla de insumos
-        String[][] listaInsumos;
-
-
+    @Ignore
+    public Object[][] listarInsumos(){ //Utilizado para mostrar los insumos en la tabla de insumos
+        ArrayList<Insumo> insumos = new ArrayList<Insumo>();
+        insumos = Insumo.getInstances();
+        int cantInsumos = insumos.size();
+        Object[][] listaInsumos = new Object[cantInsumos][3];
+        int col;
+        int fila =0;
+        for(Insumo i : insumos){
+            col=0;
+            listaInsumos[fila][col]= i.getId();
+            col=1;
+            listaInsumos[fila][col]= i.getDescripcion();
+            col=2;
+            listaInsumos[fila][col]= 0.0;
+            fila++;
+        }
 
         return listaInsumos;
     }

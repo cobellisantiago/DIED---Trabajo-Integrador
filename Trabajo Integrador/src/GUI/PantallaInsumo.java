@@ -1,14 +1,19 @@
 package GUI;
 
+import Gestores.GestorInsumos;
 import net.miginfocom.swing.MigLayout;
 
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+import javax.swing.table.AbstractTableModel;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableCellRenderer;
 
 public class PantallaInsumo implements ActionListener{
     private static PantallaInsumo single;
     JPanel panel;
+    JTable tabla;
     final static String MENU = "Menu";
     final static String CREAR = "Crear";
     final static String BUSCAR = "Buscar";
@@ -34,9 +39,9 @@ public class PantallaInsumo implements ActionListener{
                 .getScaledInstance(45, 40, Image.SCALE_DEFAULT));
 
         JButton menu = new JButton(backIcon);
-        //menu.setBorderPainted(false);
+        menu.setBorderPainted(false);
         menu.setBorder(null);
-//button.setFocusable(false);
+        menu.setFocusable(false);
         menu.setMargin(new Insets(0, 0, 0, 0));
         menu.setContentAreaFilled(false);
         menu.setName("Menu");
@@ -70,32 +75,9 @@ public class PantallaInsumo implements ActionListener{
         c.gridy=1;
 
         JPanel panel2 = new JPanel(new MigLayout("debug, fillx","[][grow][]"));
-
+        crearTablaInsumos();
         //TODO
         // Obetner la lista de insumos en el sistema, junto con su id, nombre y la cantidad total de stock (suma de stock en las plantas)
-
-        String data[][]={ {"101","Amit","670000"},
-                {"102","Jai","780000"},
-                {"101","Sachin","700000"},{"101","Amit","670000"},
-                {"102","Jai","780000"},
-                {"101","Sachin","700000"},{"101","Amit","670000"},
-                {"102","Jai","780000"},
-                {"101","Sachin","700000"},{"101","Amit","670000"},
-                {"102","Jai","780000"},
-                {"101","Sachin","700000"}};
-        String column[]={"Id","Nombre","Stock"};
-
-        JTable tablaInsumos = new JTable(data,column);
-        tablaInsumos.setRowHeight(50);
-        tablaInsumos.setGridColor(Color.black);
-        tablaInsumos.setFont(new Font("Roboto",Font.PLAIN,15 ));
-        tablaInsumos.getTableHeader().setFont(new Font("Roboto", Font.BOLD, 20));
-        JScrollPane sp=new JScrollPane(tablaInsumos);
-        sp.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
-        panel2.add(sp, "span 2 3, grow , wrap");
-        panel2.setBorder(BorderFactory.createTitledBorder("Panel de TABLE"));
-        panel.add(panel2);
-        JPanel panel3 = new JPanel(new MigLayout());
 
         /*panel3.add(new JLabel("First Name:"));
         panel3.add(new JTextField(30));
@@ -104,7 +86,7 @@ public class PantallaInsumo implements ActionListener{
         panel3.add(new JLabel("Address"));
         panel3.add(new JTextField(),    "span, grow");*/
 
-        panel.add(panel2);
+        panel.add(crearTablaInsumos());
         panel.setBorder(BorderFactory.createTitledBorder("Panel de INSUMOS"));
 
         p.add(panel, "Insumos");
@@ -119,6 +101,59 @@ public class PantallaInsumo implements ActionListener{
         }
         else if(button == CREAR) {
             PantallaCrearInsumo.crearPantalla();
+
+            panel.remove(1);
+            panel.add(this.crearTablaInsumos());
+            ((AbstractTableModel) tabla.getModel()).fireTableDataChanged();
+
+            System.out.println("tabla actualizada");
         }
     }
+
+    public JPanel crearTablaInsumos(){
+
+        JPanel panel = new JPanel(new MigLayout("debug, fillx","[][grow][]"));
+
+        Object[][] data = GestorInsumos.getGestor().listarInsumos();
+        String columns[]={"Id","Nombre","Stock"};
+
+        final Class[] columnClass = new Class[] {
+                Integer.class, String.class, Double.class
+        };
+        //create table model with data
+        DefaultTableModel model = new DefaultTableModel(data, columns) {
+            @Override
+            public boolean isCellEditable(int row, int column)
+            {
+                return false;
+            }
+            @Override
+            public Class<?> getColumnClass(int columnIndex)
+            {
+                return columnClass[columnIndex];
+            }
+
+
+        };
+
+
+        JTable tablaInsumos = new JTable(model);
+        tablaInsumos.setRowHeight(35);
+        tablaInsumos.setGridColor(Color.gray);
+        
+        tablaInsumos.setShowGrid(true);
+        tablaInsumos.setFont(new Font("Roboto",Font.PLAIN,15 ));
+        tablaInsumos.getTableHeader().setFont(new Font("Roboto", Font.BOLD, 20));
+        ((JLabel)tablaInsumos.getTableHeader().getDefaultRenderer()).setHorizontalAlignment(JLabel.CENTER);
+        tablaInsumos.setAutoCreateRowSorter(true);
+        JScrollPane sp=new JScrollPane(tablaInsumos);
+        sp.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+        panel.add(sp, "span 2 3, grow , wrap");
+        panel.setBorder(BorderFactory.createTitledBorder("Panel de TABLE"));
+        tabla=tablaInsumos;
+
+        return panel;
+    }
+
+
 }

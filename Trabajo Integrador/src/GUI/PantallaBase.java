@@ -1,15 +1,21 @@
 package GUI;
 
+import Dominio.Insumo;
+
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
 public class PantallaBase implements ActionListener{
-    JPanel panel;
+    private static JPanel panel;
     PantallaMenu pantallaMenu;
     PantallaInsumo pantallaInsumos;
     PantallaPlantas pantallaPlantas;
     PantallaStock pantallaStock;
+
+    public static JPanel getPanel() {
+        return panel;
+    }
 
     public void agregarComponentePane(Container pane) {
         panel = new JPanel(new CardLayout());
@@ -34,6 +40,7 @@ public class PantallaBase implements ActionListener{
         demo.agregarComponentePane(frame.getContentPane());
 
         frame.pack();
+        frame.setLocationRelativeTo(null);
         frame.setVisible(true);
     }
 
@@ -48,6 +55,22 @@ public class PantallaBase implements ActionListener{
         PantallaBase.crearYmostrarUI();
     }*/
     public static void main(String[] args) {
+
+        //for(int i=1;i<16;i++){
+
+        Insumo insumo1 = new Insumo("A",10.0,2.5,false);
+        Insumo insumo2 = new Insumo("B",20.0,2.5,false);
+        Insumo insumo3 = new Insumo("C",30.0,2.5,true);
+        Insumo insumo4 = new Insumo("D",40.0,2.5,false);
+        Insumo insumo5 = new Insumo("F",50.0,2.5,true);
+        Insumo insumo6 = new Insumo("G",60.0,2.5,false);
+        Insumo insumo7 = new Insumo("H",70.0,2.5,true);
+        Insumo insumo8 = new Insumo("I",80.0,2.5,false);
+        Insumo insumo9 = new Insumo("j",90.0,2.5,false);
+
+
+
+
         /* Use an appropriate Look and Feel */
         try {
             //UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");

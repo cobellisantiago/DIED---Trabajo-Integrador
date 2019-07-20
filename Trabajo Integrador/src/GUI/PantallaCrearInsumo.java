@@ -62,6 +62,7 @@ public class PantallaCrearInsumo implements ActionListener{
         this.dialog.add(panel);
 
         this.dialog.setModal(true);
+        this.dialog.setLocationRelativeTo(null);
         this.dialog.setVisible(true);
 
     }

@@ -7,8 +7,8 @@ import java.util.List;
 
 public class Insumo implements Comparable<Insumo> {
 
-    private static List<Insumo> instances = new ArrayList<Insumo>();
-    protected int id;
+    private static ArrayList<Insumo> instances = new ArrayList<Insumo>();
+    protected Integer id;
     protected String descripcion;
     protected Double costo;
     //protected Double stock;
@@ -32,7 +32,7 @@ public class Insumo implements Comparable<Insumo> {
         instances.add(this);
     };
 
-    public static List<Insumo> getInstances(){
+    public static ArrayList<Insumo> getInstances(){
         return instances;
     }
 
@@ -47,7 +47,7 @@ public class Insumo implements Comparable<Insumo> {
       return 0;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 

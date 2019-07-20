@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="01220678-af7e-4e24-84f4-307a82954db0" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Dominio/Insumo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dominio/Insumo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/PantallaBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/PantallaBase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/PantallaCrearInsumo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/PantallaCrearInsumo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GUI/PantallaInsumo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/PantallaInsumo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Gestores/GestorInsumos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Gestores/GestorInsumos.java" afterDir="false" />
     </list>
@@ -21,20 +23,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/GUI/PantallaMenu.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-815">
-              <caret line="57" column="64" lean-forward="true" selection-start-line="56" selection-start-column="8" selection-end-line="57" selection-end-column="64" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/GUI/PantallaInsumo.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="857">
-              <caret line="113" column="143" selection-start-line="113" selection-start-column="143" selection-end-line="113" selection-end-column="143" />
+            <state relative-caret-position="-928">
+              <caret line="57" column="64" selection-start-line="56" selection-start-column="8" selection-end-line="57" selection-end-column="64" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -43,10 +33,39 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/GUI/PantallaInsumo.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="426">
+              <caret line="140" column="39" lean-forward="true" selection-start-line="140" selection-start-column="39" selection-end-line="140" selection-end-column="39" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#5349#5350#0" expanded="true" />
+                <element signature="e#5393#5394#0" expanded="true" />
+                <element signature="e#5489#5490#0" expanded="true" />
+                <element signature="e#5552#5553#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Gestores/GestorInsumos.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="25" selection-start-line="25" selection-end-line="25" />
+            <state relative-caret-position="143">
+              <caret line="19" column="58" lean-forward="true" selection-start-line="19" selection-start-column="8" selection-end-line="19" selection-end-column="58" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#839#847#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Dominio/Insumo.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="731">
+              <caret line="47" column="5" selection-start-line="47" selection-start-column="5" selection-end-line="47" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -57,8 +76,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/GUI/PantallaCrearInsumo.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1071">
-              <caret line="69" column="1" selection-start-line="69" selection-start-column="1" selection-end-line="69" selection-end-column="1" />
+            <state relative-caret-position="119">
+              <caret line="64" column="44" lean-forward="true" selection-start-line="64" selection-start-column="44" selection-end-line="64" selection-end-column="44" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -69,8 +88,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/GUI/PantallaBase.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="239">
-              <caret line="30" column="54" lean-forward="true" selection-start-line="30" selection-start-column="54" selection-end-line="30" selection-end-column="54" />
+            <state relative-caret-position="122">
+              <caret line="9" column="19" selection-start-line="9" selection-start-column="19" selection-end-line="9" selection-end-column="19" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#2542#2543#0" expanded="true" />
@@ -125,17 +144,17 @@
         <option value="$PROJECT_DIR$/src/GUI/PantallaCamiones.java" />
         <option value="$PROJECT_DIR$/src/GUI/PantallaInformacion.java" />
         <option value="$PROJECT_DIR$/src/GUI/PantallaInsumos.java" />
-        <option value="$PROJECT_DIR$/src/GUI/PantallaCrearInsumo.java" />
         <option value="$PROJECT_DIR$/src/GUI/PantallaPlantas.java" />
         <option value="$PROJECT_DIR$/src/GUI/PantallaInsumoPrueba.java" />
         <option value="$PROJECT_DIR$/src/GUI/PantallaStock.java" />
-        <option value="$PROJECT_DIR$/src/Dominio/Insumo.java" />
         <option value="$PROJECT_DIR$/src/Dominio/InsumoLiquido.java" />
         <option value="$PROJECT_DIR$/src/GUI/CardLayoutDemo.java" />
         <option value="$PROJECT_DIR$/src/GUI/PantallaMenu.java" />
+        <option value="$PROJECT_DIR$/src/Dominio/Insumo.java" />
+        <option value="$PROJECT_DIR$/src/GUI/PantallaCrearInsumo.java" />
+        <option value="$PROJECT_DIR$/src/Gestores/GestorInsumos.java" />
         <option value="$PROJECT_DIR$/src/GUI/PantallaBase.java" />
         <option value="$PROJECT_DIR$/src/GUI/PantallaInsumo.java" />
-        <option value="$PROJECT_DIR$/src/Gestores/GestorInsumos.java" />
       </list>
     </option>
   </component>
@@ -150,6 +169,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -166,7 +187,7 @@
               <item name="Trabajo Integrador" type="b2602c69:ProjectViewProjectNode" />
               <item name="Trabajo Integrador" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Estructuras" type="462c0819:PsiDirectoryNode" />
+              <item name="Dominio" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Trabajo Integrador" type="b2602c69:ProjectViewProjectNode" />
@@ -178,8 +199,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -273,11 +292,12 @@
       <workItem from="1563413826231" duration="8750000" />
       <workItem from="1563545491917" duration="4542000" />
       <workItem from="1563561876269" duration="4515000" />
+      <workItem from="1563645265678" duration="8760000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="44576000" />
+    <option name="totallyTimeSpent" value="53336000" />
   </component>
   <component name="TodoView" selected-index="1">
     <todo-panel id="selected-file">
@@ -290,8 +310,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1854083" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18741633" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -299,8 +320,8 @@
       <window_info id="Capture Tool" order="5" />
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32902297" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32614943" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3275862" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32614943" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3994253" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -669,18 +690,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Dominio/Insumo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="16" column="4" selection-start-line="16" selection-start-column="4" selection-end-line="16" selection-end-column="4" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1963#1964#0" expanded="true" />
-            <element signature="e#1998#1999#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Dominio/InsumoLiquido.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
@@ -692,17 +701,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="296">
           <caret line="34" column="5" selection-start-line="34" selection-start-column="5" selection-end-line="34" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_211/src.zip!/java/awt/Container.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="143">
-          <caret line="1129" column="48" selection-start-line="1129" selection-start-column="48" selection-end-line="1129" selection-end-column="48" />
-          <folding>
-            <element signature="e#37652#37653#0" expanded="true" />
-            <element signature="e#37698#37699#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -720,42 +718,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/GUI/PantallaMenu.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-815">
-          <caret line="57" column="64" lean-forward="true" selection-start-line="56" selection-start-column="8" selection-end-line="57" selection-end-column="64" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/GUI/PantallaBase.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="239">
-          <caret line="30" column="54" lean-forward="true" selection-start-line="30" selection-start-column="54" selection-end-line="30" selection-end-column="54" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2542#2543#0" expanded="true" />
-            <element signature="e#2604#2605#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/GUI/PantallaCrearInsumo.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1071">
-          <caret line="69" column="1" selection-start-line="69" selection-start-column="1" selection-end-line="69" selection-end-column="1" />
+        <state relative-caret-position="119">
+          <caret line="64" column="44" lean-forward="true" selection-start-line="64" selection-start-column="44" selection-end-line="64" selection-end-column="44" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/GUI/PantallaInsumo.java">
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_211/src.zip!/java/awt/Container.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="857">
-          <caret line="113" column="143" selection-start-line="113" selection-start-column="143" selection-end-line="113" selection-end-column="143" />
+        <state relative-caret-position="143">
+          <caret line="1204" column="22" selection-start-line="1204" selection-start-column="22" selection-end-line="1204" selection-end-column="22" />
+          <folding>
+            <element signature="e#37652#37653#0" expanded="true" />
+            <element signature="e#37698#37699#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GUI/PantallaMenu.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-928">
+          <caret line="57" column="64" selection-start-line="56" selection-start-column="8" selection-end-line="57" selection-end-column="64" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -764,10 +751,47 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Gestores/GestorInsumos.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="25" selection-start-line="25" selection-end-line="25" />
+        <state relative-caret-position="143">
+          <caret line="19" column="58" lean-forward="true" selection-start-line="19" selection-start-column="8" selection-end-line="19" selection-end-column="58" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#839#847#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Dominio/Insumo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="731">
+          <caret line="47" column="5" selection-start-line="47" selection-start-column="5" selection-end-line="47" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GUI/PantallaBase.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="122">
+          <caret line="9" column="19" selection-start-line="9" selection-start-column="19" selection-end-line="9" selection-end-column="19" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2542#2543#0" expanded="true" />
+            <element signature="e#2604#2605#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GUI/PantallaInsumo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="426">
+          <caret line="140" column="39" lean-forward="true" selection-start-line="140" selection-start-column="39" selection-end-line="140" selection-end-column="39" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#5349#5350#0" expanded="true" />
+            <element signature="e#5393#5394#0" expanded="true" />
+            <element signature="e#5489#5490#0" expanded="true" />
+            <element signature="e#5552#5553#0" expanded="true" />
           </folding>
         </state>
       </provider>
