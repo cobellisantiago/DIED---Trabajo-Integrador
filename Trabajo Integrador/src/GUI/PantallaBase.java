@@ -28,6 +28,8 @@ public class PantallaBase implements ActionListener{
         PantallaCamiones.crearPantalla(panel);
         PantallaInformacion.crearPantalla(panel);
 
+        PantallaInsumo.crearPantallaBuscar(panel);
+
         pane.add(panel, BorderLayout.CENTER);
     }
     private static void crearYmostrarUI() {
