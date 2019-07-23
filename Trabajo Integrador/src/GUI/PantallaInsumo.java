@@ -266,6 +266,50 @@ public class PantallaInsumo implements ActionListener{
 
         JButton editar = new JButton("Editar");
         JButton eliminar = new JButton("Eliminar");
+        eliminar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JPanel panelDialog = new JPanel(new MigLayout("debug,fill, insets 0","[][]"));
+                JDialog dialog = new JDialog();
+
+                dialog.setSize(400, 200);
+                JLabel preguntaLabel= new JLabel("¿Seguro que desea eliminar el insumo X?");
+                preguntaLabel.setFont(new Font("Roboto",Font.BOLD,15));
+                panelDialog.add(preguntaLabel,"center,span, wrap");
+
+
+
+                JButton aceptar = new JButton("Aceptar");
+
+                aceptar.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+
+                    }
+                });
+
+                JButton cancelar = new JButton("Cancelar");
+                cancelar.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        JPanel p = (JPanel)panel.getParent();
+                        CardLayout pane = (CardLayout)(p.getLayout());
+                        pane.show(p, "BuscarInsumo");
+                        dialog.setVisible(false);
+                    }
+                });
+
+                panelDialog.add(cancelar,"center, gapleft 25");//"tag cancelar, sizegroup bttn");
+                panelDialog.add(aceptar,"left");//"tag aceptar, sizegroup bttn");
+
+                dialog.add(panelDialog);
+
+                dialog.setModal(true);
+                dialog.setLocationRelativeTo(null);
+                dialog.setVisible(true);
+            }
+        });
+
         editar.setEnabled(false);
         eliminar.setEnabled(false);
 
