@@ -20,6 +20,7 @@ public class PantallaBase implements ActionListener{
     public void agregarComponentePane(Container pane) {
         panel = new JPanel(new CardLayout());
 
+
         PantallaMenu.crearPantalla(panel);
         PantallaInsumo.crearPantalla(panel);
         PantallaPlantas.crearPantalla(panel);
@@ -29,6 +30,7 @@ public class PantallaBase implements ActionListener{
         PantallaInformacion.crearPantalla(panel);
 
         PantallaInsumo.crearPantallaBuscar(panel);
+        PantallaInsumo.crearPantallaCrear(panel);
 
         pane.add(panel, BorderLayout.CENTER);
     }
@@ -37,6 +39,7 @@ public class PantallaBase implements ActionListener{
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.setPreferredSize(new Dimension(1080,720));
         frame.setMinimumSize(new Dimension(600, 400));
+
 
         PantallaBase demo = new PantallaBase();
         demo.agregarComponentePane(frame.getContentPane());

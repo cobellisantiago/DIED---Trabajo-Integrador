@@ -5,8 +5,14 @@ import net.miginfocom.swing.MigLayout;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import javax.swing.*;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.table.AbstractTableModel;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
 
@@ -34,14 +40,22 @@ public class PantallaInsumo implements ActionListener{
         single.agregarPantallaBuscar(p);
 
     }
+    public static void crearPantallaCrear(JPanel p){
+
+        PantallaCrearInsumo.crearPantalla(p);
+
+    }
 
     @SuppressWarnings("Duplicates")
     public void agregarPantalla(JPanel p) {
         panel = new JPanel(new BorderLayout(10,10));
 
+        JLabel tituloLabel = new JLabel("Insumos");
+        tituloLabel.setFont(new Font("Roboto",Font.BOLD,32));
 
-        ImageIcon backIcon = new ImageIcon(new ImageIcon("src/GUI/Icons/back-arrow.png").getImage()
-                .getScaledInstance(45, 40, Image.SCALE_DEFAULT));
+
+        ImageIcon backIcon = new ImageIcon(new ImageIcon("src/GUI/Icons/left-arrow.png").getImage()
+                .getScaledInstance(35, 35, Image.SCALE_DEFAULT));
 
         JButton menu = new JButton(backIcon);
         menu.setBorderPainted(false);
@@ -63,14 +77,14 @@ public class PantallaInsumo implements ActionListener{
         buscarButton.setName(BUSCAR);
         buscarButton.addActionListener(this);
 
-        JPanel panelBotones = new JPanel();
-        panelBotones.add(menu);
-        panelBotones.add(crear);
-        panelBotones.add(buscarButton);
-        panelBotones.add(new JButton(EDITAR));
-        panelBotones.add(new JButton(BORRAR));
+        JPanel panelBotones = new JPanel(new MigLayout("fill","[][grow]"));
+        panelBotones.add(tituloLabel,"span, center");
+        panelBotones.add(menu, "left");
+        panelBotones.add(crear,"tag crear,span,split 2,center,gaptop 10,gapbottom 10, sizegroup bttn");
+        panelBotones.add(buscarButton,"tag buscar, sizegroup bttn");
 
-        panelBotones.setBorder(BorderFactory.createTitledBorder("Panel de Botones"));
+        //panelBotones.setBorder(BorderFactory.createTitledBorder("Panel de Botones"));
+        panelBotones.setBackground(new Color(207,216,220));
         panel.add(panelBotones,BorderLayout.NORTH);
 
         JPanel panel2 = new JPanel(new MigLayout("fillx","[][grow][]"));
@@ -85,8 +99,9 @@ public class PantallaInsumo implements ActionListener{
         panel3.add(new JLabel("Address"));
         panel3.add(new JTextField(),    "span, grow");*/
 
-        panel.add(crearTablaInsumos(GestorInsumos.getGestor().listarInsumos()));
-        panel.setBorder(BorderFactory.createTitledBorder("Panel de INSUMOS"));
+        panel.add(crearTablaInsumos(GestorInsumos.getGestor().listarInsumos()),BorderLayout.CENTER);
+        //panel.setBorder(BorderFactory.createTitledBorder("Panel de INSUMOS"));
+        panel.setBackground(new Color(207,216,220));
 
         p.add(panel, "Insumos");
     }
@@ -99,7 +114,9 @@ public class PantallaInsumo implements ActionListener{
             pane.show(p, "Menu");
         }
         else if(button == CREAR) {
-            PantallaCrearInsumo.crearPantalla();
+            JPanel p = (JPanel)panel.getParent();
+            CardLayout pane = (CardLayout)(p.getLayout());
+            pane.show(p, "CrearInsumo");
 
            panel.remove(1);
            panel.add(this.crearTablaInsumos(GestorInsumos.getGestor().listarInsumos()));
@@ -122,27 +139,10 @@ public class PantallaInsumo implements ActionListener{
         }
     }
 
-    public void focusGained(FocusEvent e) {
-            JTextField source = (JTextField)e.getComponent();
-            source.setText("");
-            source.setForeground(Color.black);
-            //source.removeFocusListener(this);
-    }
-
-    public void focusLost(FocusEvent e) {
-            JTextField source = (JTextField)e.getComponent();
-            if(source.getText().isEmpty()) {
-                System.out.println("El texto esta vacio");
-                source.setText("Minimo");
-                source.setForeground(Color.gray);
-                //source.removeFocusListener(this);
-            }
-    }
-
     public JPanel crearTablaInsumos(Object[][] data){
 
-        JPanel panel = new JPanel(new MigLayout("debug, fillx","[][grow][]"));
-
+        JPanel panel = new JPanel(new MigLayout(" fillx","[][grow][]"));
+        panel.setBackground(new Color(207,216,220));
         //Object[][] data = GestorInsumos.getGestor().listarInsumos();
         String columns[]={"Id","Nombre","Stock"};
 
@@ -169,11 +169,17 @@ public class PantallaInsumo implements ActionListener{
         JTable tablaInsumos = new JTable(model);
         tablaInsumos.setRowHeight(35);
         tablaInsumos.setGridColor(Color.gray);
+        tablaInsumos.setSelectionBackground(new Color(38,198,218));
+
 
         tablaInsumos.setShowGrid(true);
         tablaInsumos.setFont(new Font("Roboto",Font.PLAIN,15 ));
         tablaInsumos.getTableHeader().setFont(new Font("Roboto", Font.BOLD, 20));
         ((JLabel)tablaInsumos.getTableHeader().getDefaultRenderer()).setHorizontalAlignment(JLabel.CENTER);
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment( JLabel.CENTER );
+        tablaInsumos.setDefaultRenderer(Object.class, centerRenderer);
+
         tablaInsumos.setAutoCreateRowSorter(true);
         JScrollPane sp=new JScrollPane(tablaInsumos);
         sp.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
@@ -181,14 +187,53 @@ public class PantallaInsumo implements ActionListener{
         //panel.setBorder(BorderFactory.createTitledBorder("Panel de TABLE"));
         tabla=tablaInsumos;
 
+        /*tablaInsumos.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+
+            public void valueChanged(ListSelectionEvent event) {
+                if (tablaInsumos.getSelectedRow() > -1) {
+                    // print first column value from selected row
+                    System.out.println(tablaInsumos.getValueAt(tablaInsumos.getSelectedRow(), 0).toString());
+                }
+            }
+        });*/
+
+        tablaInsumos.addMouseListener(new MouseAdapter() {
+            public void mousePressed(MouseEvent mouseEvent) {
+                JTable table =(JTable) mouseEvent.getSource();
+                Point point = mouseEvent.getPoint();
+                int row = table.rowAtPoint(point);
+                if (mouseEvent.getClickCount() == 2 && table.getSelectedRow() != -1) {
+
+                    for (Component component : panel.getParent().getComponents()) {
+                        if(component.getName() == "panel datos buscar insumo" ){
+                            for (Component component1 : ((JPanel) component).getComponents()) {
+                                if(component1 instanceof JButton && ((JButton)component1).getText() == "Eliminar"){
+                                    component1.setEnabled(true);
+
+                                }
+                                if(component1 instanceof JButton && ((JButton)component1).getText( ) == "Editar"){
+                                    System.out.println("Boton editar");
+                                    component1.setEnabled(true);
+
+                                }
+                            }
+
+                        }
+                    }
+                    System.out.println(tablaInsumos.getValueAt(tablaInsumos.getSelectedRow(), 0).toString());
+                }
+            }
+        });
+
         return panel;
     }
 
     public void agregarPantallaBuscar(JPanel p){
 
-        JPanel panelBuscar = new JPanel(new MigLayout("fill, insets 0"));
+        JPanel panelBuscar = new JPanel(new MigLayout(" fill, insets 0"));
 
         JPanel panel1 = new JPanel(new MigLayout(""));
+        panel1.setName("panel datos buscar insumo");
 
         JLabel titulo = new JLabel("Buscar Insumo");
 
@@ -219,7 +264,16 @@ public class PantallaInsumo implements ActionListener{
         panel1.add(new JLabel("-"),"left, align label");
         panel1.add(new JTextField("Maximo",10),"left");
 
-        panel1.add(buscarButton,"span, right");
+        JButton editar = new JButton("Editar");
+        JButton eliminar = new JButton("Eliminar");
+        editar.setEnabled(false);
+        eliminar.setEnabled(false);
+
+        panel1.add(editar,"tag editar,span, right,split 3, sizegroup bttn");
+        panel1.add(eliminar,"tag elimninar, sizegroup bttn");
+        panel1.add(buscarButton,"tag buscar, sizegroup bttn");
+
+
 
         panelBuscar.add(panel1,"wrap");
         panelBuscar.add(this.crearTablaInsumos(GestorInsumos.getGestor().listarInsumos()), "span, grow");

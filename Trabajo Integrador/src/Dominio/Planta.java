@@ -1,12 +1,14 @@
 package Dominio;
 
+import Estructuras.Vertice;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
-public class Planta{
+public class Planta extends Vertice {
 
     private List<Stock> listaStocks;
     private Integer id;

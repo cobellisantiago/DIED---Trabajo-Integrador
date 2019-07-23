@@ -116,10 +116,10 @@ public class PantallaMenu implements ActionListener{
         panel.add(informacionButton);
 
         //panel.setBackground(new Color(3,155,229));
-        panel.setBackground(new Color(255,255,255));
+        //panel.setBackground(new Color(255,255,255));
         panel.setBorder(BorderFactory.createTitledBorder("Panel de Botones"));
         panel.setPreferredSize(new Dimension(540,350));
-
+        panel.setBackground(new Color(207,216,220));
         /*JPanel infoPanel = new JPanel();
         //infoPanel.setPreferredSize(new Dimension(1080,720));
         infoPanel.setBackground(new Color(0,109,179));

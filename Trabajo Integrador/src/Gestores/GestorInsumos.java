@@ -11,10 +11,12 @@ public class GestorInsumos{
     private static GestorInsumos gestor;
 
     private GestorInsumos(){}
+
     public static GestorInsumos getGestor() {
         if(gestor == null)	gestor = new GestorInsumos();
         return gestor;
     }
+
     public void crear(String descrip, Double costoActual, Double pesoEnKg, Boolean refrigeracion) {
         new Insumo(descrip, costoActual, pesoEnKg, refrigeracion);
 
@@ -61,6 +63,8 @@ public class GestorInsumos{
 
         return listaInsumos;
     }
+
+
     public void editar() {
 
     }

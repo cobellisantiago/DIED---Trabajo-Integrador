@@ -2,11 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="01220678-af7e-4e24-84f4-307a82954db0" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Trabajo Integrador/GUI/PantallaBase.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Trabajo Integrador/GUI/PantallaBase.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Trabajo Integrador/GUI/PantallaInsumo.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Trabajo Integrador/GUI/PantallaInsumo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Diagrama de Clases.mdj" beforeDir="false" afterPath="$PROJECT_DIR$/Diagrama de Clases.mdj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Dominio/Planta.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dominio/Planta.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Dominio/Ruta.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dominio/Ruta.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GUI/PantallaBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/PantallaBase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/PantallaCrearInsumo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/PantallaCrearInsumo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GUI/PantallaInsumo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/PantallaInsumo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/PantallaMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/PantallaMenu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Gestores/GestorInsumos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Gestores/GestorInsumos.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -24,35 +26,26 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/GUI/PantallaMenu.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="211">
-              <caret line="115" column="37" selection-start-line="115" selection-start-column="37" selection-end-line="115" selection-end-column="37" />
+            <state relative-caret-position="193">
+              <caret line="121" column="52" selection-start-line="121" selection-start-column="52" selection-end-line="121" selection-end-column="52" />
               <folding>
                 <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Gestores/GestorInsumos.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="30" column="50" lean-forward="true" selection-start-line="30" selection-start-column="50" selection-end-line="30" selection-end-column="50" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="method#crear#0;class#GestorInsumos#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/GUI/PantallaCrearInsumo.java">
+        <entry file="file://$PROJECT_DIR$/src/Gestores/GestorInsumos.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="833">
-              <caret line="70" column="8" lean-forward="true" selection-start-line="70" selection-start-column="8" selection-end-line="73" selection-end-column="9" />
+            <state relative-caret-position="221">
+              <caret line="13" selection-start-line="13" selection-end-line="13" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="method#getGestor#0;class#GestorInsumos#0" />
+                <element signature="method#crear#0;class#GestorInsumos#0" />
+                <element signature="method#buscar#0;class#GestorInsumos#0" />
+                <element signature="method#listarInsumos#0;class#GestorInsumos#0" />
               </folding>
             </state>
           </provider>
@@ -61,20 +54,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Dominio/Insumo.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="295">
+            <state relative-caret-position="731">
               <caret line="47" column="5" selection-start-line="47" selection-start-column="5" selection-end-line="47" selection-end-column="5" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/GUI/PantallaBase.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-10">
-              <caret line="24" column="45" selection-start-line="24" selection-start-column="45" selection-end-line="24" selection-end-column="45" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -85,19 +66,29 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/GUI/PantallaInsumo.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="307">
-              <caret line="239" column="133" selection-start-line="239" selection-start-column="133" selection-end-line="239" selection-end-column="133" />
+            <state relative-caret-position="365">
+              <caret line="80" column="43" selection-start-line="80" selection-start-column="43" selection-end-line="80" selection-end-column="43" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#crearPantalla#0;class#PantallaInsumo#0" />
                 <element signature="method#crearPantallaBuscar#0;class#PantallaInsumo#0" />
-                <element signature="method#focusGained#0;class#PantallaInsumo#0" />
-                <element signature="method#focusLost#0;class#PantallaInsumo#0" />
+                <element signature="method#crearPantallaBuscar#1;class#PantallaInsumo#0" />
+                <element signature="method#actionPerformed#0;class#PantallaInsumo#0" />
                 <element signature="method#crearTablaInsumos#0;class#PantallaInsumo#0" />
-                <element signature="e#5334#5335#0" expanded="true" />
-                <element signature="e#5378#5379#0" expanded="true" />
-                <element signature="e#5474#5475#0" expanded="true" />
-                <element signature="e#5537#5538#0" expanded="true" />
+                <element signature="e#7884#9070#0" expanded="true" />
+                <element signature="e#9069#9070#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/GUI/PantallaCrearInsumo.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="398">
+              <caret line="116" column="33" lean-forward="true" selection-start-line="116" selection-start-column="33" selection-end-line="116" selection-end-column="33" />
+              <folding>
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -115,6 +106,8 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>debug</find>
+      <find>border</find>
+      <find>panel de b</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -138,7 +131,6 @@
         <option value="$PROJECT_DIR$/src/Dominio/UnidadDeVolumen.java" />
         <option value="$PROJECT_DIR$/src/Dominio/Stock.java" />
         <option value="$PROJECT_DIR$/src/Estructuras/GrafoPlanta.java" />
-        <option value="$PROJECT_DIR$/src/Dominio/Planta.java" />
         <option value="$PROJECT_DIR$/src/GUI/ServiceAlocator.java" />
         <option value="$PROJECT_DIR$/src/GUI/gui.form" />
         <option value="$PROJECT_DIR$/src/GUI/ServiceLocator.java" />
@@ -158,12 +150,14 @@
         <option value="$PROJECT_DIR$/src/GUI/PantallaStock.java" />
         <option value="$PROJECT_DIR$/src/Dominio/InsumoLiquido.java" />
         <option value="$PROJECT_DIR$/src/GUI/CardLayoutDemo.java" />
-        <option value="$PROJECT_DIR$/src/GUI/PantallaMenu.java" />
         <option value="$PROJECT_DIR$/src/Dominio/Insumo.java" />
-        <option value="$PROJECT_DIR$/src/GUI/PantallaCrearInsumo.java" />
-        <option value="$PROJECT_DIR$/src/GUI/PantallaBase.java" />
-        <option value="$PROJECT_DIR$/src/GUI/PantallaInsumo.java" />
+        <option value="$PROJECT_DIR$/src/Dominio/Planta.java" />
+        <option value="$PROJECT_DIR$/src/Dominio/Ruta.java" />
         <option value="$PROJECT_DIR$/src/Gestores/GestorInsumos.java" />
+        <option value="$PROJECT_DIR$/src/GUI/PantallaBase.java" />
+        <option value="$PROJECT_DIR$/src/GUI/PantallaMenu.java" />
+        <option value="$PROJECT_DIR$/src/GUI/PantallaInsumo.java" />
+        <option value="$PROJECT_DIR$/src/GUI/PantallaCrearInsumo.java" />
       </list>
     </option>
   </component>
@@ -178,6 +172,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -194,14 +189,13 @@
               <item name="Trabajo Integrador" type="b2602c69:ProjectViewProjectNode" />
               <item name="Trabajo Integrador" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Dominio" type="462c0819:PsiDirectoryNode" />
+              <item name="GUI" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
       <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -221,6 +215,7 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -297,11 +292,12 @@
       <workItem from="1563561876269" duration="4515000" />
       <workItem from="1563645265678" duration="9035000" />
       <workItem from="1563798439047" duration="19227000" />
+      <workItem from="1563887105805" duration="15402000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="72838000" />
+    <option name="totallyTimeSpent" value="88240000" />
   </component>
   <component name="TodoView" selected-index="1">
     <todo-panel id="selected-file">
@@ -314,8 +310,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18942437" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1914324" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -350,24 +347,10 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Dominio/Ruta.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="17" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Dominio/Transporte.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
           <caret line="2" column="23" selection-start-line="2" selection-start-column="23" selection-end-line="2" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Dominio/Camion.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="19" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
         </state>
       </provider>
     </entry>
@@ -412,31 +395,6 @@
             <element signature="e#1261#1262#0" expanded="true" />
             <element signature="e#1307#1308#0" expanded="true" />
             <element signature="e#1335#1336#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Estructuras/Arista.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="30" lean-forward="true" selection-start-line="3" selection-start-column="30" selection-end-line="3" selection-end-column="30" />
-          <folding>
-            <element signature="e#152#153#0" expanded="true" />
-            <element signature="e#177#178#0" expanded="true" />
-            <element signature="e#454#455#0" expanded="true" />
-            <element signature="e#483#484#0" expanded="true" />
-            <element signature="e#531#532#0" expanded="true" />
-            <element signature="e#567#568#0" expanded="true" />
-            <element signature="e#601#602#0" expanded="true" />
-            <element signature="e#627#628#0" expanded="true" />
-            <element signature="e#669#670#0" expanded="true" />
-            <element signature="e#699#700#0" expanded="true" />
-            <element signature="e#731#732#0" expanded="true" />
-            <element signature="e#759#760#0" expanded="true" />
-            <element signature="e#801#802#0" expanded="true" />
-            <element signature="e#835#836#0" expanded="true" />
-            <element signature="e#882#883#0" expanded="true" />
-            <element signature="e#965#966#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -620,16 +578,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Dominio/Planta.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="624">
-          <caret line="71" lean-forward="true" selection-start-line="71" selection-end-line="71" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/GUI/PantallaPlantas.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="425">
@@ -721,16 +669,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/GUI/PantallaMenu.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="211">
-          <caret line="115" column="37" selection-start-line="115" selection-start-column="37" selection-end-line="115" selection-end-column="37" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/GUI/PantallaCaminos.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="109">
@@ -742,20 +680,86 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Dominio/Camion.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="19" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Estructuras/Arista.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="30" lean-forward="true" selection-start-line="3" selection-start-column="30" selection-end-line="3" selection-end-column="30" />
+          <folding>
+            <element signature="e#152#153#0" expanded="true" />
+            <element signature="e#177#178#0" expanded="true" />
+            <element signature="e#454#455#0" expanded="true" />
+            <element signature="e#483#484#0" expanded="true" />
+            <element signature="e#531#532#0" expanded="true" />
+            <element signature="e#567#568#0" expanded="true" />
+            <element signature="e#601#602#0" expanded="true" />
+            <element signature="e#627#628#0" expanded="true" />
+            <element signature="e#669#670#0" expanded="true" />
+            <element signature="e#699#700#0" expanded="true" />
+            <element signature="e#731#732#0" expanded="true" />
+            <element signature="e#759#760#0" expanded="true" />
+            <element signature="e#801#802#0" expanded="true" />
+            <element signature="e#835#836#0" expanded="true" />
+            <element signature="e#882#883#0" expanded="true" />
+            <element signature="e#965#966#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Dominio/Ruta.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="35" selection-start-line="16" selection-start-column="35" selection-end-line="16" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Dominio/Planta.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="10" column="35" selection-start-line="10" selection-start-column="35" selection-end-line="10" selection-end-column="35" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#costoTotal#0;class#Planta#0" />
+            <element signature="method#stockEntre#0;class#Planta#0" />
+            <element signature="method#necesitaInsumo#0;class#Planta#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Gestores/GestorInsumos.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" selection-start-line="13" selection-end-line="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#getGestor#0;class#GestorInsumos#0" />
+            <element signature="method#crear#0;class#GestorInsumos#0" />
+            <element signature="method#buscar#0;class#GestorInsumos#0" />
+            <element signature="method#listarInsumos#0;class#GestorInsumos#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/GUI/PantallaBase.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-10">
-          <caret line="24" column="45" selection-start-line="24" selection-start-column="45" selection-end-line="24" selection-end-column="45" />
+        <state relative-caret-position="205">
+          <caret line="41" column="7" selection-start-line="41" selection-start-column="7" selection-end-line="41" selection-end-column="7" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/GUI/PantallaCrearInsumo.java">
+    <entry file="file://$PROJECT_DIR$/src/GUI/PantallaMenu.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="833">
-          <caret line="70" column="8" lean-forward="true" selection-start-line="70" selection-start-column="8" selection-end-line="73" selection-end-column="9" />
+        <state relative-caret-position="193">
+          <caret line="121" column="52" selection-start-line="121" selection-start-column="52" selection-end-line="121" selection-end-column="52" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -764,7 +768,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Dominio/Insumo.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="295">
+        <state relative-caret-position="731">
           <caret line="47" column="5" selection-start-line="47" selection-start-column="5" selection-end-line="47" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -774,30 +778,27 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/GUI/PantallaInsumo.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="307">
-          <caret line="239" column="133" selection-start-line="239" selection-start-column="133" selection-end-line="239" selection-end-column="133" />
+        <state relative-caret-position="365">
+          <caret line="80" column="43" selection-start-line="80" selection-start-column="43" selection-end-line="80" selection-end-column="43" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#crearPantalla#0;class#PantallaInsumo#0" />
             <element signature="method#crearPantallaBuscar#0;class#PantallaInsumo#0" />
-            <element signature="method#focusGained#0;class#PantallaInsumo#0" />
-            <element signature="method#focusLost#0;class#PantallaInsumo#0" />
+            <element signature="method#crearPantallaBuscar#1;class#PantallaInsumo#0" />
+            <element signature="method#actionPerformed#0;class#PantallaInsumo#0" />
             <element signature="method#crearTablaInsumos#0;class#PantallaInsumo#0" />
-            <element signature="e#5334#5335#0" expanded="true" />
-            <element signature="e#5378#5379#0" expanded="true" />
-            <element signature="e#5474#5475#0" expanded="true" />
-            <element signature="e#5537#5538#0" expanded="true" />
+            <element signature="e#7884#9070#0" expanded="true" />
+            <element signature="e#9069#9070#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Gestores/GestorInsumos.java">
+    <entry file="file://$PROJECT_DIR$/src/GUI/PantallaCrearInsumo.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="30" column="50" lean-forward="true" selection-start-line="30" selection-start-column="50" selection-end-line="30" selection-end-column="50" />
+        <state relative-caret-position="398">
+          <caret line="116" column="33" lean-forward="true" selection-start-line="116" selection-start-column="33" selection-end-line="116" selection-end-column="33" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#crear#0;class#GestorInsumos#0" />
           </folding>
         </state>
       </provider>
