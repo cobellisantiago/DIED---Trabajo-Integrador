@@ -3,7 +3,9 @@ package Estructuras;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ArbolBinarioBusqueda<E extends Comparable<E>> extends Arbol<E> {
+import Dominio.Insumo;
+
+public class ArbolBinarioBusqueda<E extends Comparable<E>> extends Arbol<E>{
 
     protected Arbol<E> izquierdo;
     protected Arbol<E> derecho;
@@ -71,16 +73,30 @@ public class ArbolBinarioBusqueda<E extends Comparable<E>> extends Arbol<E> {
         return this.derecho;
     }
 
-
     @Override
     public void agregar(E a) {
-        if(this.valor.compareTo(a)<1) {
+    	
+    }
+
+    @Override
+    public void agregarCosto(E a) {
+    	
+    	if(Insumo.comparadorCosto.compare((Insumo)this.valor, (Insumo)a) > 0) {
+    		if (this.derecho.esVacio()) this.derecho = new ArbolBinarioBusqueda<E>(a);
+            else this.derecho.agregarCosto(a);
+    	}
+        /*if(this.valor.compareTo(a)<1) {
             if (this.derecho.esVacio()) this.derecho = new ArbolBinarioBusqueda<E>(a);
             else this.derecho.agregar(a);
-        }else {
+        }*/
+    	else {
+    		if (this.izquierdo.esVacio()) this.izquierdo= new ArbolBinarioBusqueda<E>(a);
+            else this.izquierdo.agregarCosto(a);
+    	}
+    	/*else {
             if (this.izquierdo.esVacio()) this.izquierdo= new ArbolBinarioBusqueda<E>(a);
             else this.izquierdo.agregar(a);
-        }
+        }*/
     }
 
     @Override
@@ -155,26 +171,43 @@ public class ArbolBinarioBusqueda<E extends Comparable<E>> extends Arbol<E> {
 
         return (Math.pow(2,this.profundidad()) == this.cuentaNodosDeNivel(profundidad));
     }
-
+    
     @Override
     public List<E> rango(E inicio, E fin){
-        List<E> lista = new ArrayList<>();
-        if(this.valor.compareTo(fin) == 1) {
+    	return new ArrayList<E>();
+    }
+    
+    @Override
+    public List<E> rangoCosto(E inicio, E fin){
+        List<E> lista = new ArrayList<E>();
+        
+        if(Insumo.comparadorCosto.compare((Insumo)this.valor, (Insumo)fin) > 0) {
+        	lista.addAll(this.izquierdo().rangoCosto(inicio, fin));
+            return lista;
+        }
+        /*if(this.valor.compareTo(fin) > 0) {
             lista.addAll(this.izquierdo().rango(inicio, fin));
             return lista;
-        }
-
-        if(this.valor.compareTo(inicio) == -1){
-            lista.addAll(this.derecho().rango(inicio, fin));
+        }*/
+        if(Insumo.comparadorCosto.compare((Insumo)this.valor, (Insumo)inicio) < 0) {
+        	lista.addAll(this.derecho().rangoCosto(inicio, fin));
             return lista;
         }
+        /*if(this.valor.compareTo(inicio) < 0){
+            lista.addAll(this.derecho().rango(inicio, fin));
+            return lista;
+        }*/
 
-        if((this.valor.compareTo(inicio) > -1) && (this.valor.compareTo(fin) < 1))  lista.add(this.valor);
+        lista.add(this.valor);
 
-        lista.addAll(this.izquierdo().rango(inicio, fin));
-        lista.addAll(this.derecho().rango(inicio, fin));
+        lista.addAll(this.izquierdo().rangoCosto(inicio, fin));
+        lista.addAll(this.derecho().rangoCosto(inicio, fin));
 
         return lista;
     }
-
+    
+    @Override
+    public List<E> rangoStock(E inicio, E fin){
+    	return new ArrayList<E>();
+    }
 }

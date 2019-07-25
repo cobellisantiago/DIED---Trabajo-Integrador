@@ -54,7 +54,7 @@ public class PantallaInsumo implements ActionListener{
         tituloLabel.setFont(new Font("Roboto",Font.BOLD,32));
 
 
-        ImageIcon backIcon = new ImageIcon(new ImageIcon("src/GUI/Icons/left-arrow.png").getImage()
+        ImageIcon backIcon = new ImageIcon(new ImageIcon("Trabajo Integrador/src/GUI/Icons/left-arrow.png").getImage()
                 .getScaledInstance(35, 35, Image.SCALE_DEFAULT));
 
         JButton menu = new JButton(backIcon);
@@ -117,11 +117,6 @@ public class PantallaInsumo implements ActionListener{
             JPanel p = (JPanel)panel.getParent();
             CardLayout pane = (CardLayout)(p.getLayout());
             pane.show(p, "CrearInsumo");
-
-           panel.remove(1);
-           panel.add(this.crearTablaInsumos(GestorInsumos.getGestor().listarInsumos()));
-           //((AbstractTableModel) tabla.getModel()).fireTableDataChanged();
-            panel.revalidate();
         }else if(button == "BuscarInsumo"){
             JPanel p = (JPanel)panel.getParent();
             CardLayout pane = (CardLayout)(p.getLayout());
@@ -237,32 +232,44 @@ public class PantallaInsumo implements ActionListener{
 
         JLabel titulo = new JLabel("Buscar Insumo");
 
-
-        JTextField minimoTextField = new JTextField("Mínimo",10);
-        minimoTextField.setForeground(Color.gray);
+        JRadioButton nombreRadioButton = new JRadioButton("Nombre: ");
+        JTextField nombreTextField = new JTextField(30);
+        JRadioButton costoRadioButton = new JRadioButton("Costo: ");
+        JTextField costoMinimoTextField = new JTextField("Minimo", 10);
+        costoMinimoTextField.setForeground(Color.gray);
+        JTextField costoMaximoTextField = new JTextField("Maximo", 10);
+        costoMaximoTextField.setForeground(Color.gray);
+        JRadioButton stockRadioButton = new JRadioButton("Stock: ");
+        JTextField stockMinimoTextField = new JTextField("Minimo", 10);
+        stockMinimoTextField.setForeground(Color.gray);
+        JTextField stockMaximoTextField = new JTextField("Maximo", 10);
+        stockMaximoTextField.setForeground(Color.gray);
+        
+        ButtonGroup buttonGroup = new ButtonGroup();
+        buttonGroup.add(nombreRadioButton);
+        buttonGroup.add(costoRadioButton);
+        buttonGroup.add(stockRadioButton);
         //minimoTextField.addFocusListener();
 
         JButton buscarButton = new JButton("Buscar");
         buscarButton.setName("Buscar");
 
-        JTextField nombreTextField = new JTextField(30);
 
         titulo.setFont(new Font("Roboto",Font.PLAIN,20));
         titulo.setForeground(Color.BLUE);
         titulo.setHorizontalAlignment(JLabel.CENTER);
         panelBuscar.add(titulo,"span, growx, gapbottom 15, gaptop 5");
 
-        panel1.add(new JLabel("Nombre: "),"right, align label");
+        panel1.add(nombreRadioButton,"right, align label");
         panel1.add(nombreTextField);
-        panel1.add(new JLabel("Costo: "), "right, align label");
-
-        panel1.add(minimoTextField,"left,split 3");
+        panel1.add(costoRadioButton, "right, align label");
+        panel1.add(costoMinimoTextField,"left,split 3");
         panel1.add(new JLabel("-"),"left, align label");
-        panel1.add(new JTextField("Maximo",10),"left, wrap");
-        panel1.add(new JLabel("Stock: "),"newline, right, align label");
-        panel1.add(new JTextField("Minimo",10),"left, split 3");
+        panel1.add(costoMaximoTextField,"left, wrap");
+        panel1.add(stockRadioButton,"newline, right, align label");
+        panel1.add(stockMinimoTextField,"left, split 3");
         panel1.add(new JLabel("-"),"left, align label");
-        panel1.add(new JTextField("Maximo",10),"left");
+        panel1.add(stockMaximoTextField,"left");
 
         JButton editar = new JButton("Editar");
         JButton eliminar = new JButton("Eliminar");
@@ -332,13 +339,36 @@ public class PantallaInsumo implements ActionListener{
         buscarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(!nombreTextField.getText().isEmpty()){
+                if(nombreRadioButton.isSelected()){
                     System.out.println(nombreTextField.getText());
                     panelBuscar.remove(2);
-                    panelBuscar.add(single.crearTablaInsumos(GestorInsumos.getGestor().buscar(nombreTextField.getText())),"span, grow",2);
+                    panelBuscar.add(single.crearTablaInsumos(GestorInsumos.getGestor().buscarNombre(nombreTextField.getText())),"span, grow",2);
                     panelBuscar.revalidate();
                 }
-
+                else if(costoRadioButton.isSelected()) {
+                	Double minimo;
+                	Double maximo;
+                	try {
+                		minimo = Double.valueOf(costoMinimoTextField.getText());
+                	}	catch(NumberFormatException a){
+                		minimo = Double.NEGATIVE_INFINITY;
+                	}
+                	try {
+                		maximo = Double.valueOf(costoMaximoTextField.getText());
+                	}	catch(NumberFormatException a){
+                		maximo = Double.POSITIVE_INFINITY;
+                	}
+                	panelBuscar.remove(2);
+                    panelBuscar.add(single.crearTablaInsumos(GestorInsumos.getGestor().buscarCosto(minimo, maximo)),"span, grow",2);
+                    panelBuscar.revalidate();
+                }
+                else if(stockRadioButton.isSelected()) {
+                	panelBuscar.remove(2);
+                	Double minimo = stockMinimoTextField.getText() == "Minimo" ? Double.NEGATIVE_INFINITY : Double.valueOf(stockMinimoTextField.getText());
+                	Double maximo = stockMaximoTextField.getText() == "Maximo" ? Double.POSITIVE_INFINITY : Double.valueOf(stockMaximoTextField.getText());
+                	panelBuscar.add(single.crearTablaInsumos(GestorInsumos.getGestor().buscarStock(minimo, maximo)),"span, grow",2);
+                	panelBuscar.revalidate();
+                }
             }
         });
 

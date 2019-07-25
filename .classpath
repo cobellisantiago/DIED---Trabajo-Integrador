@@ -2,5 +2,6 @@
 <classpath>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="src" path="Trabajo Integrador/src"/>
+	<classpathentry kind="lib" path="Trabajo Integrador/lib/miglayout-3.7.4.jar"/>
 	<classpathentry kind="output" path="Trabajo Integrador/out/production/Trabajo Integrador"/>
 </classpath>

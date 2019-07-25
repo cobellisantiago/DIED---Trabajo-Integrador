@@ -2,6 +2,8 @@ package Estructuras;
 
 import java.util.List;
 
+import Dominio.Insumo;
+
 public abstract class Arbol<E extends Comparable<E>> {
 
 
@@ -26,6 +28,8 @@ public abstract class Arbol<E extends Comparable<E>> {
     public abstract boolean equals(Arbol<E> unArbol);
 
     public abstract void agregar(E a);
+    
+    public abstract void agregarCosto(E a);
 
     public abstract int profundidad();
 
@@ -36,4 +40,8 @@ public abstract class Arbol<E extends Comparable<E>> {
     public abstract boolean esLleno();
 
     public  abstract List<E> rango(E inicio,E fin);
+
+    public  abstract List<E> rangoCosto(E inicio,E fin);
+    
+    public  abstract List<E> rangoStock(E inicio,E fin);
 }

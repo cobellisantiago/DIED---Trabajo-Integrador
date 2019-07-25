@@ -12,7 +12,6 @@ import net.miginfocom.swing.MigLayout;
 public class PantallaCrearInsumo implements ActionListener{
     private static PantallaCrearInsumo single;
     JPanel panelGeneral;
-    JDialog dialog;
     JTextField descrip;
     JTextField costo;
     JCheckBox refrige;
@@ -31,7 +30,7 @@ public class PantallaCrearInsumo implements ActionListener{
         if(single == null) {
             single = new PantallaCrearInsumo();
         }
-        single.dialog = new JDialog();
+        single.panelGeneral = new JPanel(new MigLayout(" fill, insets 0"));
         single.descrip = new JTextField(20);
         single.costo = new JTextField(20);
         single.refrige = new JCheckBox();
@@ -41,7 +40,6 @@ public class PantallaCrearInsumo implements ActionListener{
     }
 
     private void agregarPantalla(JPanel p) {
-        panelGeneral = new JPanel(new MigLayout(" fill, insets 0"));
 
         JPanel panelDatos = new JPanel (new MigLayout(""));
         panelDatos.setBackground(Color.white);
@@ -114,12 +112,21 @@ public class PantallaCrearInsumo implements ActionListener{
         if(button == "Crear") {
             if (!descrip.getText().isEmpty() && !costo.getText().isEmpty() && !peso.getText().isEmpty()) {
                 GestorInsumos.getGestor().crear(descrip.getText(), Double.valueOf(costo.getText()), Double.valueOf(peso.getText()), refrige.isSelected());
-                dialog.dispose();
-            } else descrip.setText(DESCRIP);
+                JPanel p = (JPanel)panelGeneral.getParent();
+                CardLayout pane = (CardLayout)(p.getLayout());
+                
+                JPanel panel = (JPanel)p.getComponent(1);
+                panel.remove(1);
+                panel.add(PantallaInsumo.crearPantalla(panel).crearTablaInsumos(GestorInsumos.getGestor().listarInsumos()));
+                panel.revalidate();
+                
+                pane.show(p, "Insumos");
+            }
         }else if(button == "Cancelar"){
             JPanel p = (JPanel)panelGeneral.getParent();
             CardLayout pane = (CardLayout)(p.getLayout());
             pane.show(p, "Insumos");
         }
+        
     }
 }

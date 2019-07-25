@@ -1,8 +1,10 @@
 package Dominio;
 
 import Dominio.Unidades.UnidadDeMedida;
+import Gestores.GestorInsumos;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class Insumo implements Comparable<Insumo> {
@@ -11,13 +13,17 @@ public class Insumo implements Comparable<Insumo> {
     protected Integer id;
     protected String descripcion;
     protected Double costo;
-    //protected Double stock;
+    protected Double stockTotal;
     protected Double peso; //en Kg
     protected Boolean esRefrigerado;
     protected UnidadDeMedida unidadMedida;
     
 
-
+    public Insumo(Double c, Double sT) {
+    	this.costo = c;
+    	this.stockTotal = sT;
+    }
+    
     public Insumo(String descrip, Double costoActual, Double pesoEnKg, Boolean refrigeracion){
         this.id = instances.size() + 1;
         this.descripcion = descrip;
@@ -37,13 +43,9 @@ public class Insumo implements Comparable<Insumo> {
     }
 
     public int compareTo(Insumo obj){
-        // TODO Revisar esto!!!
 
-        //return (int) (this.stock - obj.stock);
-
-      /*if(this.stock > obj.stock)    return 1;
-      if(this.stock < obj.stock)    return -1;
-      return 0;*/
+      if(this.costo > obj.costo)    return 1;
+      if(this.costo < obj.costo)    return -1;
       return 0;
     }
 
@@ -95,5 +97,25 @@ public class Insumo implements Comparable<Insumo> {
     public void setUnidadMedida(UnidadDeMedida unidadMedida) {
         this.unidadMedida = unidadMedida;
     }
-
+    
+    public static Comparator<Insumo> comparadorNombre = new Comparator<Insumo>(){
+    	public int compare(Insumo i1, Insumo i2) {
+    		return i1.descripcion.compareTo(i2.descripcion);
+    	}
+    };
+    
+    public static Comparator<Insumo> comparadorCosto = new Comparator<Insumo>(){
+    	public int compare(Insumo i1, Insumo i2) {
+    		return i1.costo.compareTo(i2.costo);
+    	}
+    };
+    
+    public static Comparator<Insumo> comparadorStock = new Comparator<Insumo>(){
+    	public int compare(Insumo i1, Insumo i2) {
+    		Double stockI1 = GestorInsumos.getGestor().getStockTotal(i1);
+    		Double stockI2 = GestorInsumos.getGestor().getStockTotal(i2);
+    		return i1.compareTo(i2);
+    	}
+    };
+    
 }
