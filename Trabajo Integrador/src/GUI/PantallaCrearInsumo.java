@@ -12,6 +12,7 @@ import net.miginfocom.swing.MigLayout;
 public class PantallaCrearInsumo implements ActionListener{
     private static PantallaCrearInsumo single;
     JPanel panelGeneral;
+    JDialog dialog;
     JTextField descrip;
     JTextField costo;
     JCheckBox refrige;
@@ -30,7 +31,7 @@ public class PantallaCrearInsumo implements ActionListener{
         if(single == null) {
             single = new PantallaCrearInsumo();
         }
-        single.panelGeneral = new JPanel(new MigLayout(" fill, insets 0"));
+        single.dialog = new JDialog();
         single.descrip = new JTextField(20);
         single.costo = new JTextField(20);
         single.refrige = new JCheckBox();
@@ -40,6 +41,7 @@ public class PantallaCrearInsumo implements ActionListener{
     }
 
     private void agregarPantalla(JPanel p) {
+        panelGeneral = new JPanel(new MigLayout(" fill, insets 0"));
 
         JPanel panelDatos = new JPanel (new MigLayout(""));
         panelDatos.setBackground(Color.white);
@@ -77,33 +79,49 @@ public class PantallaCrearInsumo implements ActionListener{
 
         panelGeneral.add(panelDatos,"span, center, wrap");
         panelGeneral.setBackground(new Color(207,216,220));
-        /*JPanel panel = new JPanel(new GridLayout(5, 2));
 
+        p.add(panelGeneral,"CrearInsumo");
+
+    }
+
+    public void popUpCorrecto(){
+        JPanel panel = new JPanel(new MigLayout("fill, insets 0"));
         this.dialog.setSize(400, 200);
 
-        panel.add(new JLabel(DESCRIP));
-        panel.add(descrip);
-        panel.add(new JLabel(COSTO));
-        panel.add(costo);
-        panel.add(new JLabel(REFRIGE));
-        panel.add(refrige);
-        panel.add(new JLabel(PESO));
-        panel.add(peso);
-        //panel.add(new JLabel(UNIDAD));
-        //panel.add(unidad);
+        JLabel preguntaLabel= new JLabel("Insumo creado correctamente");
+        preguntaLabel.setFont(new Font("Roboto",Font.BOLD,15));
+        panel.add(preguntaLabel,"center,span, wrap");
 
-        JButton crear = new JButton(CREAR);
-        crear.addActionListener(this);
-        
-        panel.add(crear);
+
+        JButton aceptar = new JButton("Crear otro insumo");
+
+        aceptar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dialog.dispose();
+            }
+        });
+
+        JButton cancelar = new JButton("Volver a Insumos");
+        cancelar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JPanel p = (JPanel)panelGeneral.getParent();
+                CardLayout pane = (CardLayout)(p.getLayout());
+                pane.show(p, "Insumos");
+                //dialog.setVisible(false);
+               dialog.dispose();
+            }
+        });
+
+        panel.add(cancelar,"left, gapleft 25");
+        panel.add(aceptar,"right, gapright 25");
 
         this.dialog.add(panel);
 
         this.dialog.setModal(true);
         this.dialog.setLocationRelativeTo(null);
-        this.dialog.setVisible(true);*/
-
-        p.add(panelGeneral,"CrearInsumo");
+        this.dialog.setVisible(true);
 
     }
 
@@ -112,21 +130,13 @@ public class PantallaCrearInsumo implements ActionListener{
         if(button == "Crear") {
             if (!descrip.getText().isEmpty() && !costo.getText().isEmpty() && !peso.getText().isEmpty()) {
                 GestorInsumos.getGestor().crear(descrip.getText(), Double.valueOf(costo.getText()), Double.valueOf(peso.getText()), refrige.isSelected());
-                JPanel p = (JPanel)panelGeneral.getParent();
-                CardLayout pane = (CardLayout)(p.getLayout());
-                
-                JPanel panel = (JPanel)p.getComponent(1);
-                panel.remove(1);
-                panel.add(PantallaInsumo.crearPantalla(panel).crearTablaInsumos(GestorInsumos.getGestor().listarInsumos()));
-                panel.revalidate();
-                
-                pane.show(p, "Insumos");
-            }
+                popUpCorrecto();
+                PantallaInsumo.getSingle().actualizarTablaInsumos();
+            } else descrip.setText(DESCRIP);
         }else if(button == "Cancelar"){
             JPanel p = (JPanel)panelGeneral.getParent();
             CardLayout pane = (CardLayout)(p.getLayout());
             pane.show(p, "Insumos");
         }
-        
     }
 }
