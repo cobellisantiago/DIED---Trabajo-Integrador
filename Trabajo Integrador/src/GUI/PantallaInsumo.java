@@ -31,8 +31,8 @@ public class PantallaInsumo implements ActionListener{
     public static PantallaInsumo crearPantalla(JPanel p){
         if(single == null) {
             single = new PantallaInsumo();
-            single.agregarPantalla(p);
         }
+        single.agregarPantalla(p);
         return single;
     }
     public static void crearPantallaBuscar(JPanel p){
@@ -46,6 +46,8 @@ public class PantallaInsumo implements ActionListener{
 
     }
 
+    public static PantallaInsumo getSingle() {	return single;}
+    
     @SuppressWarnings("Duplicates")
     public void agregarPantalla(JPanel p) {
         panel = new JPanel(new BorderLayout(10,10));
@@ -372,5 +374,20 @@ public class PantallaInsumo implements ActionListener{
             }
         });
 
+    }
+
+    public void actualizarTablaInsumos(){
+
+        panel.remove(1);
+        panel.add(this.crearTablaInsumos(GestorInsumos.getGestor().listarInsumos()));
+        panel.revalidate();
+
+    }
+
+    public void actualizarTablaInsumosBuscar(JPanel panelTabla){
+
+        panelTabla.remove(2);
+        panelTabla.add(this.crearTablaInsumos(GestorInsumos.getGestor().listarInsumos()),"span, grow",2);
+        panelTabla.revalidate();
     }
 }
