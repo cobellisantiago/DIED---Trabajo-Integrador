@@ -35,7 +35,9 @@ public class Insumo implements Comparable<Insumo> {
         instances.add(this);
     }
 
-    public Insumo(){
+    @SuppressWarnings("unused")
+	private Insumo(){
+    	this.id = instances.size() + 1;
         instances.add(this);
     };
 
