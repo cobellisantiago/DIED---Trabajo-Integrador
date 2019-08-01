@@ -1,4 +1,4 @@
-package GUI;
+package GUI.Grafo;
 
 import java.awt.*;
 import java.awt.geom.Line2D;
@@ -13,6 +13,7 @@ public class AristaView {
     private Paint color;
 
     public AristaView() {
+
     }
 
     /**

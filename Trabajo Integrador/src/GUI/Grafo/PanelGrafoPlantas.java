@@ -1,4 +1,4 @@
-package GUI;
+package GUI.Grafo;
 
 import javax.swing.*;
 import java.awt.*;
@@ -126,7 +126,7 @@ public class PanelGrafoPlantas extends JPanel{
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
                 RenderingHints.VALUE_ANTIALIAS_ON);
         dibujarVertices(g2d);
-        //  dibujarAristas(g2d);
+        dibujarAristas(g2d);
     }
 
     public Dimension getPreferredSize() {

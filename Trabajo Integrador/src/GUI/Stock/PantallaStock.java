@@ -1,5 +1,5 @@
 
-package GUI;
+package GUI.Stock;
 
 import Gestores.GestorStock;
 import net.miginfocom.swing.MigLayout;

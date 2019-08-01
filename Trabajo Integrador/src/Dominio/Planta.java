@@ -86,4 +86,8 @@ public class Planta extends Vertice {
         this.nombre = nombre;
     }
 
+    @Override
+    public String toString() {
+        return nombre.toString();
+    }
 }

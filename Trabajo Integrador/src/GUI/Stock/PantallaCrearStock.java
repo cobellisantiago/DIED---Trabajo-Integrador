@@ -1,8 +1,9 @@
-package GUI;
+package GUI.Stock;
 
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+
 import Gestores.GestorStock;
 import net.miginfocom.swing.MigLayout;
 

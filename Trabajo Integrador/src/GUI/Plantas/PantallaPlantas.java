@@ -1,5 +1,5 @@
 
-package GUI;
+package GUI.Plantas;
 
 import Gestores.GestorPlantas;
 import net.miginfocom.swing.MigLayout;
@@ -75,11 +75,16 @@ public class PantallaPlantas implements ActionListener{
         buscarButton.setName(BUSCAR);
         buscarButton.addActionListener(this);
 
+        JButton mapaButton = new JButton("Mapa");
+        mapaButton.setName("MapaPlanta");
+        mapaButton.addActionListener(this);
+
         JPanel panelBotones = new JPanel(new MigLayout("fill","[][grow]"));
         panelBotones.add(tituloLabel,"span, center");
         panelBotones.add(menu, "left");
-        panelBotones.add(crear,"tag crear,span,split 2,center,gaptop 10,gapbottom 10, sizegroup bttn");
+        panelBotones.add(crear,"tag crear,span,split 3,center,gaptop 10,gapbottom 10, sizegroup bttn");
         panelBotones.add(buscarButton,"tag buscar, sizegroup bttn");
+        panelBotones.add(mapaButton,"tag mapa, sizegroup bttn");
 
         //panelBotones.setBorder(BorderFactory.createTitledBorder("Panel de Botones"));
         panelBotones.setBackground(new Color(207,216,220));
@@ -105,7 +110,11 @@ public class PantallaPlantas implements ActionListener{
             CardLayout pane = (CardLayout)(p.getLayout());
             pane.show(p, "CrearPlanta");
             //Operaciones de crear, buscar, editar y borrar.
-        }else{
+
+        }else if(button == "MapaPlanta") {
+            JPanel p = (JPanel)panel.getParent();
+            CardLayout pane = (CardLayout)(p.getLayout());
+            pane.show(p, "MapaPlanta");
 
         }
     }

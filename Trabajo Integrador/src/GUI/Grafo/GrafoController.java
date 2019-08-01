@@ -1,4 +1,4 @@
-package GUI;
+package GUI.Grafo;
 
 import Dominio.Planta;
 
@@ -42,9 +42,8 @@ public class GrafoController {
                 panel.agregar(v);
             }
             try {
-                SwingUtilities.invokeAndWait(() -> {
-                    panel.repaint();
-                });
+                SwingUtilities.invokeAndWait(() -> panel.repaint());
+
             } catch (InvocationTargetException | InterruptedException e) {
                 e.printStackTrace();
             }
@@ -54,4 +53,39 @@ public class GrafoController {
 
         hilo.start();
     }
+
+   /* public void inicalizarAristas() {
+        Runnable r = () -> {
+            List<Ruta> lista = Ruta.getInstances();
+            int y = 100;
+            int x = 0;
+            int i = 0;
+            Color c = null;
+            for(Ruta p : lista){
+                i++;
+                x +=30;
+                if( i % 2 == 0 ) {
+                    y = 100;
+                    c = Color.BLUE;
+                } else {
+                    y = 200;
+                    c = Color.RED;
+                }
+
+                AristaView v = new AristaView();
+
+                panel.agregar(v);
+            }
+            try {
+                SwingUtilities.invokeAndWait(() -> panel.repaint());
+
+            } catch (InvocationTargetException | InterruptedException e) {
+                e.printStackTrace();
+            }
+        };
+
+        Thread hilo = new Thread(r);
+
+        hilo.start();
+    }*/
 }

@@ -1,6 +1,15 @@
 package GUI;
 
 import Dominio.Insumo;
+import Dominio.Planta;
+import GUI.Caminos.PantallaCaminos;
+import GUI.Caminos.PantallaCrearCamino;
+import GUI.Insumos.PantallaInsumo;
+import GUI.Plantas.PantallaCrearPlanta;
+import GUI.Plantas.PantallaMapaPlanta;
+import GUI.Plantas.PantallaPlantas;
+import GUI.Stock.PantallaCrearStock;
+import GUI.Stock.PantallaStock;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -32,8 +41,11 @@ public class PantallaBase implements ActionListener{
         PantallaInsumo.crearPantallaCrear(panel);
 
         PantallaCrearPlanta.crearPantalla(panel);
+        PantallaMapaPlanta.crearPantalla(panel);
         
         PantallaCrearStock.crearPantalla(panel);
+
+        PantallaCrearCamino.crearPantalla(panel);
         
 
         pane.add(panel, BorderLayout.CENTER);
@@ -77,7 +89,14 @@ public class PantallaBase implements ActionListener{
         Insumo insumo8 = new Insumo("I",80.0,2.5,false);
         Insumo insumo9 = new Insumo("j",90.0,2.5,false);
 
-
+        Planta planta1 = new Planta("P1");
+        Planta planta2 = new Planta("P2");
+        Planta planta3 = new Planta("P3");
+        Planta planta4 = new Planta("P4");
+        Planta planta5 = new Planta("P5");
+        Planta planta6 = new Planta("P6");
+        Planta planta7 = new Planta("P7");
+        Planta planta8 = new Planta("P8");
 
 
         /* Use an appropriate Look and Feel */

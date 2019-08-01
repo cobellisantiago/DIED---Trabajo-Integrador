@@ -1,42 +1,29 @@
-package GUI;
+package GUI.Plantas;
 
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-import Dominio.Unidades.Unidad;
-import Dominio.Unidades.UnidadDeMasa;
-import Gestores.GestorInsumos;
+import Gestores.GestorPlantas;
 import net.miginfocom.swing.MigLayout;
 
-public class PantallaCrearInsumo implements ActionListener{
-    private static PantallaCrearInsumo single;
+public class PantallaCrearPlanta implements ActionListener{
+    private static PantallaCrearPlanta single;
     JPanel panelGeneral;
     JDialog dialog;
-    JTextField descrip;
-    JTextField costo;
-    JCheckBox refrige;
-    JTextField peso;
-    JTextField unidad;
-    final static String CREAR = "Crear Insumo";
-    final static String DESCRIP = "Descripcion";
-    final static String COSTO = "Costo por unidad";
-    final static String REFRIGE = "Necesita refrigeracion?";
-    final static String PESO = "Peso";
+    JTextField nombre;
+    final static String CREAR = "Crear Planta";
+    final static String NOMBRE = "Nombre";
     //final static String UNIDAD = "Unidad";
 
-    private PantallaCrearInsumo(){}
+    private PantallaCrearPlanta(){}
 
     public static void crearPantalla(JPanel p){
         if(single == null) {
-            single = new PantallaCrearInsumo();
+            single = new PantallaCrearPlanta();
         }
         single.dialog = new JDialog();
-        single.descrip = new JTextField(20);
-        single.costo = new JTextField(20);
-        single.refrige = new JCheckBox();
-        single.peso = new JTextField(20);
-        single.unidad = new JTextField(20);
+        single.nombre = new JTextField(20);
         single.agregarPantalla(p);
     }
 
@@ -45,25 +32,16 @@ public class PantallaCrearInsumo implements ActionListener{
 
         JPanel panelDatos = new JPanel (new MigLayout(""));
         panelDatos.setBackground(Color.white);
-        JLabel tituloLabel = new JLabel("Crear Insumo");
-        JLabel descripcionLabel = new JLabel("Descripcion: ");
-        JLabel costoLabel = new JLabel("Costo por Unidad: ");
-        JLabel refrigeracionLabel = new JLabel("Necesita refrigeracion? ");
-        JLabel pesoLabel = new JLabel("Peso: ");
+        JLabel tituloLabel = new JLabel("Crear Planta");
+        JLabel nombreLabel = new JLabel("Nombre: ");
 
         tituloLabel.setFont(new Font("Roboto",Font.PLAIN,20));
         tituloLabel.setForeground(Color.BLUE);
         tituloLabel.setHorizontalAlignment(JLabel.CENTER);
         panelDatos.add(tituloLabel,"span, growx, gapbottom 15, gaptop 5");
 
-        panelDatos.add(descripcionLabel,"align label");
-        panelDatos.add(descrip, "wrap");
-        panelDatos.add(costoLabel,"align label");
-        panelDatos.add(costo,"wrap");
-        panelDatos.add(refrigeracionLabel,"align label");
-        panelDatos.add(refrige, "wrap");
-        panelDatos.add(pesoLabel,"align label");
-        panelDatos.add(peso,"wrap");
+        panelDatos.add(nombreLabel,"align label");
+        panelDatos.add(nombre, "wrap");
         //panel.add(new JLabel(UNIDAD));
         //panel.add(unidad);
 
@@ -80,7 +58,7 @@ public class PantallaCrearInsumo implements ActionListener{
         panelGeneral.add(panelDatos,"span, center, wrap");
         panelGeneral.setBackground(new Color(207,216,220));
 
-        p.add(panelGeneral,"CrearInsumo");
+        p.add(panelGeneral,"CrearPlanta");
 
     }
 
@@ -88,12 +66,12 @@ public class PantallaCrearInsumo implements ActionListener{
         JPanel panel = new JPanel(new MigLayout("fill, insets 0"));
         this.dialog.setSize(400, 200);
 
-        JLabel preguntaLabel= new JLabel("Insumo creado correctamente");
+        JLabel preguntaLabel= new JLabel("Planta creada correctamente");
         preguntaLabel.setFont(new Font("Roboto",Font.BOLD,15));
         panel.add(preguntaLabel,"center,span, wrap");
 
 
-        JButton aceptar = new JButton("Crear otro insumo");
+        JButton aceptar = new JButton("Crear otra planta");
 
         aceptar.addActionListener(new ActionListener() {
             @Override
@@ -102,13 +80,13 @@ public class PantallaCrearInsumo implements ActionListener{
             }
         });
 
-        JButton cancelar = new JButton("Volver a Insumos");
+        JButton cancelar = new JButton("Volver a Plantas");
         cancelar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 JPanel p = (JPanel)panelGeneral.getParent();
                 CardLayout pane = (CardLayout)(p.getLayout());
-                pane.show(p, "Insumos");
+                pane.show(p, "Plantas");
                 //dialog.setVisible(false);
                dialog.dispose();
             }
@@ -128,16 +106,15 @@ public class PantallaCrearInsumo implements ActionListener{
     public void actionPerformed(ActionEvent e){
         String button = ((JButton) e.getSource()).getText();
         if(button == "Crear") {
-            if (!descrip.getText().isEmpty() && !costo.getText().isEmpty() && !peso.getText().isEmpty()) {
-                GestorInsumos.getGestor().crear(descrip.getText(), Double.valueOf(costo.getText()), Double.valueOf(peso.getText()), refrige.isSelected());
+            if (!nombre.getText().isEmpty()) {
+                GestorPlantas.getGestor().crear(nombre.getText());
                 popUpCorrecto();
-                PantallaInsumo.getSingle().actualizarTablaInsumos();
-                //PantallaInsumo.getSingle().actualizarTablaInsumosBuscar(PantallaInsumo.getSingle().panel);
-            } else descrip.setText(DESCRIP);
+                PantallaPlantas.getSingle().actualizarTablaPlantas();
+            }
         }else if(button == "Cancelar"){
             JPanel p = (JPanel)panelGeneral.getParent();
             CardLayout pane = (CardLayout)(p.getLayout());
-            pane.show(p, "Insumos");
+            pane.show(p, "Plantas");
         }
     }
 }
