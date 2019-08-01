@@ -30,39 +30,17 @@ public class GestorInsumos{
     }
     
     public Object[][] buscarNombre(String nombre) {
-        List<Insumo> insumos = Insumo.getInstances();
-        int cantInsumos = insumos.size();
-        Object[][] listaInsumos = new Object[cantInsumos][3];
-        int fila=0;
-        int col;
-        for (Insumo i: insumos) {
-            col=0;
-            if(i.getDescripcion().equals(nombre)){
-                listaInsumos[fila][col]= i.getId();
-                col=1;
-                listaInsumos[fila][col]= i.getDescripcion();
-                col=2;
-                listaInsumos[fila][col]= 0.0;
-                fila++;
-            }
-        }
-
-        return listaInsumos;
-
-    }
-    
-    public Object[][] buscarCosto(Double minimo, Double maximo) {
     	List<Insumo> insumos = Insumo.getInstances();
         int cantInsumos = insumos.size();
         
     	ArbolBinarioBusqueda<Insumo> insumosArbol = new ArbolBinarioBusqueda<Insumo>(insumos.get(0));
-    	for(int i = 1 ; i < cantInsumos ; i++)	insumosArbol.agregarCosto(insumos.get(i));
+    	for(int i = 1 ; i < cantInsumos ; i++)	insumosArbol.agregar(insumos.get(i), Insumo.comparadorNombre);
     	
-    	insumos = insumosArbol.rangoCosto(new Insumo(minimo, new Double(0)), new Insumo(maximo, new Double(0)));
+    	insumos = insumosArbol.rango(new Insumo(new Double(0), new Double(0), nombre), new Insumo(new Double(0), new Double(0), nombre), Insumo.comparadorNombre);
     	
         Object[][] listaInsumos = new Object[cantInsumos][3];
-    	
-    	int fila = 0;
+        
+        int fila = 0;
     	for(Insumo i : insumos) {
             listaInsumos[fila][0]= i.getId();
             listaInsumos[fila][1]= i.getDescripcion();
@@ -70,7 +48,27 @@ public class GestorInsumos{
             fila++;
     	}
     	
-
+        return listaInsumos;
+    }
+    
+    public Object[][] buscarCosto(Double minimo, Double maximo) {
+    	List<Insumo> insumos = Insumo.getInstances();
+        int cantInsumos = insumos.size();
+        
+    	ArbolBinarioBusqueda<Insumo> insumosArbol = new ArbolBinarioBusqueda<Insumo>(insumos.get(0));
+    	for(int i = 1 ; i < cantInsumos ; i++)	insumosArbol.agregar(insumos.get(i), Insumo.comparadorCosto);
+    	
+    	insumos = insumosArbol.rango(new Insumo(minimo, new Double(0), ""), new Insumo(maximo, new Double(0), ""), Insumo.comparadorCosto);
+    	
+        Object[][] listaInsumos = new Object[cantInsumos][3];
+    	
+        int fila = 0;
+    	for(Insumo i : insumos) {
+            listaInsumos[fila][0]= i.getId();
+            listaInsumos[fila][1]= i.getDescripcion();
+            listaInsumos[fila][2]= 0.0;
+            fila++;
+    	}
         
         return listaInsumos;
     }
@@ -80,11 +78,19 @@ public class GestorInsumos{
         int cantInsumos = insumos.size();
         
     	ArbolBinarioBusqueda<Insumo> insumosArbol = new ArbolBinarioBusqueda<Insumo>(insumos.get(0));
-    	for(int i = 1 ; i < cantInsumos ; i++)	insumosArbol.agregar(insumos.get(i));
+    	for(int i = 1 ; i < cantInsumos ; i++)	insumosArbol.agregar(insumos.get(i), Insumo.comparadorStock);
     	
-    	
+    	insumos = insumosArbol.rango(new Insumo(new Double(0), minimo, ""), new Insumo(new Double(0), maximo, ""), Insumo.comparadorStock);
     	
         Object[][] listaInsumos = new Object[cantInsumos][3];
+        
+        int fila = 0;
+    	for(Insumo i : insumos) {
+            listaInsumos[fila][0]= i.getId();
+            listaInsumos[fila][1]= i.getDescripcion();
+            listaInsumos[fila][2]= 0.0;
+            fila++;
+    	}
         
         return listaInsumos;
     }
