@@ -20,6 +20,7 @@ public class PantallaInsumo implements ActionListener{
     private static PantallaInsumo single;
     JPanel panel;
     JTable tabla;
+    JPanel panelBuscar;
     final static String MENU = "Menu";
     final static String CREAR = "Crear";
     final static String BUSCAR = "BuscarInsumo";
@@ -119,21 +120,24 @@ public class PantallaInsumo implements ActionListener{
             JPanel p = (JPanel)panel.getParent();
             CardLayout pane = (CardLayout)(p.getLayout());
             pane.show(p, "CrearInsumo");
+
         }else if(button == "BuscarInsumo"){
             JPanel p = (JPanel)panel.getParent();
             CardLayout pane = (CardLayout)(p.getLayout());
+
             pane.show(p, BUSCAR);
+
         }else if(button == "Cancelar"){
             JPanel p = (JPanel)panel.getParent();
             CardLayout pane = (CardLayout)(p.getLayout());
             pane.show(p, "Insumos");
 
-        }else if(button == "Buscar1") {
+        }/*else if(button == "Buscar1") {
             //TODO BUSCAR SEGUN CRITERIOS -- TENER EN CUENTA QUE CAPAZ ES NECESARIO HACER OTRA CLASE
             JPanel p = (JPanel) panel.getParent();
             CardLayout pane = (CardLayout) (p.getLayout());
-            pane.show(p, BUSCAR);
-        }
+            pane.show(p, BUSCAR);*/
+
     }
 
     public JPanel crearTablaInsumos(Object[][] data){
@@ -227,7 +231,7 @@ public class PantallaInsumo implements ActionListener{
 
     public void agregarPantallaBuscar(JPanel p){
 
-        JPanel panelBuscar = new JPanel(new MigLayout(" fill, insets 0"));
+        panelBuscar = new JPanel(new MigLayout(" fill, insets 0"));
 
         JPanel panel1 = new JPanel(new MigLayout(""));
         panel1.setName("panel datos buscar insumo");
@@ -381,6 +385,7 @@ public class PantallaInsumo implements ActionListener{
         panel.remove(1);
         panel.add(this.crearTablaInsumos(GestorInsumos.getGestor().listarInsumos()));
         panel.revalidate();
+        actualizarTablaInsumosBuscar(panelBuscar);
 
     }
 

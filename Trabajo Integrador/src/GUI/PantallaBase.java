@@ -28,7 +28,6 @@ public class PantallaBase implements ActionListener{
         PantallaCamiones.crearPantalla(panel);
         PantallaInformacion.crearPantalla(panel);
 
-        PantallaPlantas.crearPantallaCrear(panel);
         PantallaInsumo.crearPantallaBuscar(panel);
         PantallaInsumo.crearPantallaCrear(panel);
         
