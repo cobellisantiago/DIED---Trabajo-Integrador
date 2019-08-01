@@ -1,3 +1,4 @@
+
 package GUI;
 
 import net.miginfocom.swing.MigLayout;
@@ -32,7 +33,6 @@ public class PantallaPlantas implements ActionListener{
         /*panel = new JPanel();
         JButton menu1 = new JButton(MENU);
         menu1.addActionListener(this);
-
         panel.add(menu1);
         panel.add(new JButton(CREAR));
         panel.add(new JButton(BUSCAR));
@@ -100,3 +100,4 @@ public class PantallaPlantas implements ActionListener{
         panel.add(panelGrafo);
     }
 }
+

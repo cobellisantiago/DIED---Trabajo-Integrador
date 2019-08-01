@@ -19,8 +19,7 @@ public class PantallaBase implements ActionListener{
 
     public void agregarComponentePane(Container pane) {
         panel = new JPanel(new CardLayout());
-
-
+        
         PantallaMenu.crearPantalla(panel);
         PantallaInsumo.crearPantalla(panel);
         PantallaPlantas.crearPantalla(panel);
@@ -31,6 +30,7 @@ public class PantallaBase implements ActionListener{
 
         PantallaInsumo.crearPantallaBuscar(panel);
         PantallaInsumo.crearPantallaCrear(panel);
+        
 
         pane.add(panel, BorderLayout.CENTER);
     }

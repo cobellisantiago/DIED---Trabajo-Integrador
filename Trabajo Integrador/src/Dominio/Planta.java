@@ -10,25 +10,25 @@ import java.util.stream.Collectors;
 
 public class Planta extends Vertice {
 
-    private static ArrayList<Planta> instances = new ArrayList<Planta>();
+	private static ArrayList<Planta> instances = new ArrayList<Planta>();
     private List<Stock> listaStocks;
     private Integer id;
     private String nombre;
 
 
     @SuppressWarnings("unused")
-    private Planta() {}
+	private Planta() {}
 
     public Planta(String nomb) {
-        this.id = instances.size() + 1;
-        this.nombre = nomb;
-        instances.add(this);
+    	this.id = instances.size() + 1;
+    	this.nombre = nomb;
+    	instances.add(this);
     }
 
     public static ArrayList<Planta> getInstances() {
-        return instances;
+    	return instances;
     }
-
+    
     public Double costoTotal() {
         Double costoTotal;
         costoTotal = listaStocks.stream().mapToDouble((s) -> s.getCantidad() * s.getInsumo().getCosto()).sum();
