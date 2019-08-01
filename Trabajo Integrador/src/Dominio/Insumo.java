@@ -17,14 +17,14 @@ public class Insumo implements Comparable<Insumo> {
     protected Double peso; //en Kg
     protected Boolean esRefrigerado;
     protected UnidadDeMedida unidadMedida;
-    
+
 
     public Insumo (Double c, Double sT, String s) {
-    	this.costo = c;
-    	this.stockTotal = sT;
-    	this.descripcion = s;
+        this.costo = c;
+        this.stockTotal = sT;
+        this.descripcion = s;
     }
-    
+
     public Insumo(String descrip, Double costoActual, Double pesoEnKg, Boolean refrigeracion){
         this.id = instances.size() + 1;
         this.descripcion = descrip;
@@ -35,7 +35,9 @@ public class Insumo implements Comparable<Insumo> {
         instances.add(this);
     }
 
-    public Insumo(){
+    @SuppressWarnings("unused")
+    private Insumo(){
+        this.id = instances.size() + 1;
         instances.add(this);
     };
 
@@ -45,9 +47,9 @@ public class Insumo implements Comparable<Insumo> {
 
     public int compareTo(Insumo obj){
 
-      if(this.costo > obj.costo)    return 1;
-      if(this.costo < obj.costo)    return -1;
-      return 0;
+        if(this.costo > obj.costo)    return 1;
+        if(this.costo < obj.costo)    return -1;
+        return 0;
     }
 
     public Integer getId() {
@@ -98,25 +100,25 @@ public class Insumo implements Comparable<Insumo> {
     public void setUnidadMedida(UnidadDeMedida unidadMedida) {
         this.unidadMedida = unidadMedida;
     }
-    
+
     public static Comparator<Insumo> comparadorNombre = new Comparator<Insumo>(){
-    	public int compare(Insumo i1, Insumo i2) {
-    		return i1.descripcion.compareTo(i2.descripcion);
-    	}
+        public int compare(Insumo i1, Insumo i2) {
+            return i1.descripcion.compareTo(i2.descripcion);
+        }
     };
-    
+
     public static Comparator<Insumo> comparadorCosto = new Comparator<Insumo>(){
-    	public int compare(Insumo i1, Insumo i2) {
-    		return i1.costo.compareTo(i2.costo);
-    	}
+        public int compare(Insumo i1, Insumo i2) {
+            return i1.costo.compareTo(i2.costo);
+        }
     };
-    
+
     public static Comparator<Insumo> comparadorStock = new Comparator<Insumo>(){
-    	public int compare(Insumo i1, Insumo i2) {
-    		Double stockI1 = GestorInsumos.getGestor().getStockTotal(i1);
-    		Double stockI2 = GestorInsumos.getGestor().getStockTotal(i2);
-    		return i1.compareTo(i2);
-    	}
+        public int compare(Insumo i1, Insumo i2) {
+            Double stockI1 = GestorInsumos.getGestor().getStockTotal(i1);
+            Double stockI2 = GestorInsumos.getGestor().getStockTotal(i2);
+            return i1.compareTo(i2);
+        }
     };
-    
+
 }

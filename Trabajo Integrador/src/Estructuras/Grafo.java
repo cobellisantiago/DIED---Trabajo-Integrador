@@ -23,6 +23,7 @@ public class Grafo<T> {
     private List<Arista<T>> aristas;
     private List<Vertice<T>> vertices;
 
+
     public Grafo(){
         this.aristas = new ArrayList<Arista<T>>();
         this.vertices = new ArrayList<Vertice<T>>();
@@ -376,5 +377,8 @@ public class Grafo<T> {
         return false;
     }
 
+   public List<Vertice<T>> getVertices() {
+        return vertices;
+    }
 
 }

@@ -9,13 +9,13 @@ import java.util.List;
 
 public class GrafoController {
     private PanelGrafoPlantas panel;
-    private TareaLogica logicaTareas;
-    private ProyectoLogica logicaProyecto;
+   // private TareaLogica logicaTareas;
+    //private ProyectoLogica logicaProyecto;
 
     public GrafoController(PanelGrafoPlantas listener) {
         this.panel = listener;
-        this.logicaTareas = new TareaLogicaDefault();
-        this.logicaProyecto = new ProyectoLogicaDefault();
+       // this.logicaTareas = new TareaLogicaDefault();
+       // this.logicaProyecto = new ProyectoLogicaDefault();
     }
 
     public void inicalizarVertices() {
