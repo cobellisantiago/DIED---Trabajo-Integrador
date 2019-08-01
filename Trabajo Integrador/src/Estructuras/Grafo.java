@@ -264,9 +264,9 @@ public class Grafo<T> {
         return distancias;
     }
 
-    protected Arista<T> buscarArista(T v1, T v2){
+    /*protected Arista<T> buscarArista(T v1, T v2){
         return this.buscarArista(new Vertice<T>(v1), new Vertice<T>(v2));
-    }
+    }*/
 
 
     protected Arista<T> buscarArista(Vertice<T> v1, Vertice<T> v2){

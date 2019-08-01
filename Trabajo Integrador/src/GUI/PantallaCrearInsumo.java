@@ -132,6 +132,7 @@ public class PantallaCrearInsumo implements ActionListener{
                 GestorInsumos.getGestor().crear(descrip.getText(), Double.valueOf(costo.getText()), Double.valueOf(peso.getText()), refrige.isSelected());
                 popUpCorrecto();
                 PantallaInsumo.getSingle().actualizarTablaInsumos();
+                //PantallaInsumo.getSingle().actualizarTablaInsumosBuscar(PantallaInsumo.getSingle().panel);
             } else descrip.setText(DESCRIP);
         }else if(button == "Cancelar"){
             JPanel p = (JPanel)panelGeneral.getParent();
