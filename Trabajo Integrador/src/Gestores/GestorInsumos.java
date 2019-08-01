@@ -1,6 +1,8 @@
 package Gestores;
 
 import Dominio.Insumo;
+import Dominio.Planta;
+import Dominio.Stock;
 import Dominio.Unidades.UnidadDeMedida;
 import Estructuras.ArbolBinarioBusqueda;
 import jdk.nashorn.internal.ir.annotations.Ignore;
@@ -23,11 +25,16 @@ public class GestorInsumos{
 
     }
 
-    public Double getStockTotal(Insumo i) {
-    	//Se necesita realizar la implementacion de la relacion entre las plantas y los insumos.
+    /*public Double getStockTotal(Insumo ins) {
+    	ArrayList<Stock> stock = Stock.getInstances();
+    	Double result = new Double(0);
     	
-    	return new Double(0);
-    }
+    	for(Stock i : stock) {
+    		if(i.getInsumo().equals(ins))	result += i.getCantidad();
+    	}
+
+    	return result;
+    }*/
     
     public Object[][] buscarNombre(String nombre) {
     	List<Insumo> insumos = Insumo.getInstances();
@@ -115,7 +122,18 @@ public class GestorInsumos{
         return listaInsumos;
     }
 
-
+    public Insumo getInsumo(Integer id) {
+    	ArrayList<Insumo> insumos = Insumo.getInstances();
+    	for(Insumo i : insumos) {
+    		if(i.getId().equals(id))	return i;
+    	}
+    	return null;
+    }
+    
+    public void agregarStock(Insumo ins, Double cant) {
+    	ins.setStockTotal(ins.getStockTotal() + cant);
+    }
+    
     public void editar() {
 
     }

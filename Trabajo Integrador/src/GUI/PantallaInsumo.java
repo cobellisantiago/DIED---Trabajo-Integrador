@@ -369,9 +369,19 @@ public class PantallaInsumo implements ActionListener{
                     panelBuscar.revalidate();
                 }
                 else if(stockRadioButton.isSelected()) {
+                	Double minimo;
+                	Double maximo;
+                	try {
+                		minimo = Double.valueOf(costoMinimoTextField.getText());
+                	}	catch(NumberFormatException a){
+                		minimo = Double.NEGATIVE_INFINITY;
+                	}
+                	try {
+                		maximo = Double.valueOf(costoMaximoTextField.getText());
+                	}	catch(NumberFormatException a){
+                		maximo = Double.POSITIVE_INFINITY;
+                	}
                 	panelBuscar.remove(2);
-                	Double minimo = stockMinimoTextField.getText() == "Minimo" ? Double.NEGATIVE_INFINITY : Double.valueOf(stockMinimoTextField.getText());
-                	Double maximo = stockMaximoTextField.getText() == "Maximo" ? Double.POSITIVE_INFINITY : Double.valueOf(stockMaximoTextField.getText());
                 	panelBuscar.add(single.crearTablaInsumos(GestorInsumos.getGestor().buscarStock(minimo, maximo)),"span, grow",2);
                 	panelBuscar.revalidate();
                 }

@@ -33,6 +33,8 @@ public class PantallaBase implements ActionListener{
 
         PantallaCrearPlanta.crearPantalla(panel);
         
+        PantallaCrearStock.crearPantalla(panel);
+        
 
         pane.add(panel, BorderLayout.CENTER);
     }

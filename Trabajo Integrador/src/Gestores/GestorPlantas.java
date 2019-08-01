@@ -1,5 +1,6 @@
 package Gestores;
 
+import Dominio.Insumo;
 import Dominio.Planta;
 import Dominio.Unidades.UnidadDeMedida;
 import Estructuras.ArbolBinarioBusqueda;
@@ -41,6 +42,13 @@ public class GestorPlantas{
         return listaPlantas;
     }
 
+    public Planta getPlanta(Integer id) {
+    	ArrayList<Planta> plantas = Planta.getInstances();
+    	for(Planta i : plantas) {
+    		if(i.getId().equals(id))	return i;
+    	}
+    	return null;
+    }
 
     public void editar() {
 

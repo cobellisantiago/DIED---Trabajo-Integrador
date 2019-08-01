@@ -34,6 +34,7 @@ public class PantallaPlantas implements ActionListener{
         return single;
     }
 
+
     @SuppressWarnings("Duplicates")
     public void agregarPantalla(JPanel p) {
         /*panel = new JPanel();
@@ -47,7 +48,7 @@ public class PantallaPlantas implements ActionListener{
 
         panel = new JPanel(new BorderLayout(10,10));
 
-        JLabel tituloLabel = new JLabel("PLANTAS");
+        JLabel tituloLabel = new JLabel("Plantas");
         tituloLabel.setFont(new Font("Roboto",Font.BOLD,32));
 
 

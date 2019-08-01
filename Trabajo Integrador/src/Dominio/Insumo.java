@@ -31,6 +31,7 @@ public class Insumo implements Comparable<Insumo> {
         this.costo = costoActual;
         this.peso = pesoEnKg;
         this.esRefrigerado = refrigeracion;
+        this.stockTotal = new Double(0);
 
         instances.add(this);
     }
@@ -93,6 +94,14 @@ public class Insumo implements Comparable<Insumo> {
         this.esRefrigerado = esRefrigerado;
     }
 
+    public Double getStockTotal() {
+        return stockTotal;
+    }
+
+    public void setStockTotal(Double stock) {
+        this.stockTotal = stock;
+    }
+    
     public UnidadDeMedida getUnidadMedida() {
         return unidadMedida;
     }
@@ -115,9 +124,7 @@ public class Insumo implements Comparable<Insumo> {
 
     public static Comparator<Insumo> comparadorStock = new Comparator<Insumo>(){
         public int compare(Insumo i1, Insumo i2) {
-            Double stockI1 = GestorInsumos.getGestor().getStockTotal(i1);
-            Double stockI2 = GestorInsumos.getGestor().getStockTotal(i2);
-            return i1.compareTo(i2);
+            return i1.stockTotal.compareTo(i2.stockTotal);
         }
     };
 

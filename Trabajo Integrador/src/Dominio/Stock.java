@@ -1,12 +1,31 @@
 package Dominio;
 
-public class Stock {
+import java.util.ArrayList;
 
+import Gestores.GestorInsumos;
+
+public class Stock {
+	
+	private static ArrayList<Stock> instances = new ArrayList<Stock>();
     private Integer id;
-    private Integer cantidad;
+    private Double cantidad;
     private Integer puntoPedido;
     private Insumo insumo;
+    private Planta planta;
 
+    @SuppressWarnings("unused")
+	private Stock() {}
+    
+    public Stock(Double cant, Integer puntoPed, Insumo ins, Planta plant) {
+    	this.id = instances.size() + 1;
+    	this.cantidad = cant;
+    	this.puntoPedido = puntoPed;
+    	this.insumo = ins;
+    	this.planta = plant;
+    	instances.add(this);
+    	GestorInsumos.getGestor().agregarStock(ins, cant);
+    }
+    
     public Integer getId() {
         return id;
     }
@@ -15,11 +34,11 @@ public class Stock {
         this.id = id;
     }
 
-    public Integer getCantidad() {
+    public Double getCantidad() {
         return cantidad;
     }
 
-    public void setCantidad(Integer cantidad) {
+    public void setCantidad(Double cantidad) {
         this.cantidad = cantidad;
     }
 
@@ -37,5 +56,17 @@ public class Stock {
 
     public void setInsumo(Insumo insumo) {
         this.insumo = insumo;
+    }
+    
+    public Planta getPlanta() {
+        return planta;
+    }
+
+    public void setPlanta(Planta planta) {
+        this.planta = planta;
+    }
+    
+    public static ArrayList<Stock> getInstances(){
+    	return instances;
     }
 }
