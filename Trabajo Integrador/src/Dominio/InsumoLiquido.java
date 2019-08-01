@@ -6,7 +6,7 @@ public class InsumoLiquido extends Insumo{
 
     public Double densidad;
 
-    public InsumoLiquido(){};
+    //public InsumoLiquido(){};
 
     public InsumoLiquido(String descrip, Double costoActual, Double peso, Boolean refrigeracion, UnidadDeMedida unidad, Double densidad){
 

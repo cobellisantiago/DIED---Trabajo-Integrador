@@ -20,7 +20,7 @@ public class GrafoController {
 
     public void inicalizarVertices() {
         Runnable r = () -> {
-            List<Planta> lista = this.logicaTareas.buscar();
+            List<Planta> lista = Planta.getInstances();
             int y = 100;
             int x = 0;
             int i = 0;

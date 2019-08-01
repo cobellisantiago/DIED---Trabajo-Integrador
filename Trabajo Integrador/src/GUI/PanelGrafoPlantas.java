@@ -166,7 +166,7 @@ public class PanelGrafoPlantas extends JPanel{
         }
     }
 
-    public static PanelGrafoPlantas crearPanel(JPanel p){
+    /*public static PanelGrafoPlantas crearPanel(JPanel p){
         if(single == null) {
             single = new PanelGrafoPlantas();
             single.dibujarPanel(p);
@@ -176,6 +176,6 @@ public class PanelGrafoPlantas extends JPanel{
 
     private void dibujarPanel(JPanel panel){
 
-    }
+    }*/
 
 }

@@ -30,6 +30,8 @@ public class PantallaBase implements ActionListener{
 
         PantallaInsumo.crearPantallaBuscar(panel);
         PantallaInsumo.crearPantallaCrear(panel);
+
+        PantallaCrearPlanta.crearPantalla(panel);
         
 
         pane.add(panel, BorderLayout.CENTER);
