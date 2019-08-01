@@ -1,6 +1,7 @@
 package Estructuras;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 import Dominio.Insumo;
@@ -57,13 +58,9 @@ public class ArbolVacio<E extends Comparable<E>> extends Arbol<E> {
     }
 
     @Override
-    public void agregar(E a) {
+    public void agregar(E a, Comparator<E> comparador) {
         // TODO Auto-generated method stub
 
-    }
-    @Override
-    public void agregarCosto(E a) {
-    	
     }
     @Override
     public int profundidad() {
@@ -86,19 +83,7 @@ public class ArbolVacio<E extends Comparable<E>> extends Arbol<E> {
     }
 
     @Override
-    public List<E> rango(E inicio, E fin) {
-        List<E> listaVacia = new ArrayList<>();
-        return listaVacia;
-    }
-    
-    @Override
-    public List<E> rangoCosto(E inicio, E fin) {
-        List<E> listaVacia = new ArrayList<>();
-        return listaVacia;
-    }
-    
-    @Override
-    public List<E> rangoStock(E inicio, E fin) {
+    public List<E> rango(E inicio, E fin, Comparator<E> comparador) {
         List<E> listaVacia = new ArrayList<>();
         return listaVacia;
     }

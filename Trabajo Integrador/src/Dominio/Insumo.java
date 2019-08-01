@@ -19,9 +19,10 @@ public class Insumo implements Comparable<Insumo> {
     protected UnidadDeMedida unidadMedida;
     
 
-    public Insumo(Double c, Double sT) {
+    public Insumo (Double c, Double sT, String s) {
     	this.costo = c;
     	this.stockTotal = sT;
+    	this.descripcion = s;
     }
     
     public Insumo(String descrip, Double costoActual, Double pesoEnKg, Boolean refrigeracion){
