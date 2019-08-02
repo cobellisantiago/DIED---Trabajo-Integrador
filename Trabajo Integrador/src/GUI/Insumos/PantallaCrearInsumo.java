@@ -129,12 +129,22 @@ public class PantallaCrearInsumo implements ActionListener{
                 GestorInsumos.getGestor().crear(descrip.getText(), Double.valueOf(costo.getText()), Double.valueOf(peso.getText()), refrige.isSelected());
                 popUpCorrecto();
                 PantallaInsumo.getSingle().actualizarTablaInsumos();
+                actualizarValores();
                 //PantallaInsumo.getSingle().actualizarTablaInsumosBuscar(PantallaInsumo.getSingle().panel);
             } else descrip.setText(DESCRIP);
         }else if(button == "Cancelar"){
             JPanel p = (JPanel)panelGeneral.getParent();
             CardLayout pane = (CardLayout)(p.getLayout());
             pane.show(p, "Insumos");
+            actualizarValores();
         }
+    }
+
+    public void actualizarValores(){
+        descrip.setText("");
+        costo.setText("");
+        refrige.setSelected(false);
+        peso.setText("");
+        unidad.setText("");
     }
 }

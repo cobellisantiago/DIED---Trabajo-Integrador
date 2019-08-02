@@ -129,15 +129,33 @@ public class GestorInsumos{
     	}
     	return null;
     }
+
+    public Insumo getInsumoPorNombre(String nombre) {
+        ArrayList<Insumo> insumos = Insumo.getInstances();
+        for(Insumo i : insumos) {
+            if(i.getDescripcion().equals(nombre))	return i;
+        }
+        return null;
+    }
     
     public void agregarStock(Insumo ins, Double cant) {
     	ins.setStockTotal(ins.getStockTotal() + cant);
     }
     
-    public void editar() {
+    public void editarPorNombre(String nombre,String newName,Double newCosto, Double newPesoEnKg, Boolean newRefrigeracion ) {
+        Insumo insumoAEditar = getInsumoPorNombre(nombre);
+        insumoAEditar.editar(newName,newCosto, newPesoEnKg, newRefrigeracion);
 
     }
-    public void eliminiar() {
+    public void eliminiarPorNombre(String nombre) {
+        Insumo insumoAEliminar = getInsumoPorNombre(nombre);
+        for (Insumo i : Insumo.getInstances()) {
+            if(i.equals(insumoAEliminar)){
+                 i.borrar();
+                return;
+            }
+        }
+
 
     }
 

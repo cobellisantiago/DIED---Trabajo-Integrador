@@ -2,51 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="04aadc18-91c6-4d86-9ee5-1254dacfd608" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Trabajo Integrador/src/GUI/Caminos/PantallaCaminos.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Trabajo Integrador/src/GUI/Caminos/PantallaCrearCamino.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Trabajo Integrador/src/GUI/Plantas/PantallaMapaPlanta.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Trabajo Integrador/src/GUI/Plantas/PantallaPlantas.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Trabajo Integrador/out/production/Trabajo Integrador/Dominio/Insumo$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/Trabajo Integrador/out/production/Trabajo Integrador/Dominio/Insumo$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Trabajo Integrador/out/production/Trabajo Integrador/Dominio/Insumo$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/Trabajo Integrador/out/production/Trabajo Integrador/Dominio/Insumo$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Trabajo Integrador/out/production/Trabajo Integrador/Dominio/Insumo$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/Trabajo Integrador/out/production/Trabajo Integrador/Dominio/Insumo$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Trabajo Integrador/out/production/Trabajo Integrador/Dominio/Insumo.class" beforeDir="false" afterPath="$PROJECT_DIR$/Trabajo Integrador/out/production/Trabajo Integrador/Dominio/Insumo.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Trabajo Integrador/out/production/Trabajo Integrador/Dominio/Planta.class" beforeDir="false" afterPath="$PROJECT_DIR$/Trabajo Integrador/out/production/Trabajo Integrador/Dominio/Planta.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Trabajo Integrador/out/production/Trabajo Integrador/Dominio/Stock.class" beforeDir="false" afterPath="$PROJECT_DIR$/Trabajo Integrador/out/production/Trabajo Integrador/Dominio/Stock.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Trabajo Integrador/out/production/Trabajo Integrador/GUI/PantallaBase.class" beforeDir="false" afterPath="$PROJECT_DIR$/Trabajo Integrador/out/production/Trabajo Integrador/GUI/PantallaBase.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Trabajo Integrador/out/production/Trabajo Integrador/GUI/PantallaCaminos.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Trabajo Integrador/out/production/Trabajo Integrador/GUI/PantallaCrearInsumo$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Trabajo Integrador/out/production/Trabajo Integrador/GUI/PantallaCrearInsumo$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Trabajo Integrador/out/production/Trabajo Integrador/GUI/PantallaCrearInsumo.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Trabajo Integrador/out/production/Trabajo Integrador/GUI/PantallaCrearPlanta$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Trabajo Integrador/out/production/Trabajo Integrador/GUI/PantallaCrearPlanta$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Trabajo Integrador/out/production/Trabajo Integrador/GUI/PantallaCrearPlanta.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Trabajo Integrador/out/production/Trabajo Integrador/GUI/PantallaInsumo$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Trabajo Integrador/out/production/Trabajo Integrador/GUI/PantallaInsumo$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Trabajo Integrador/out/production/Trabajo Integrador/GUI/PantallaInsumo$3$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Trabajo Integrador/out/production/Trabajo Integrador/GUI/PantallaInsumo$3$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Trabajo Integrador/out/production/Trabajo Integrador/GUI/PantallaInsumo$3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Trabajo Integrador/out/production/Trabajo Integrador/GUI/PantallaInsumo$4.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Trabajo Integrador/out/production/Trabajo Integrador/GUI/PantallaInsumo.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Trabajo Integrador/out/production/Trabajo Integrador/GUI/PantallaPlantas.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Trabajo Integrador/out/production/Trabajo Integrador/GUI/PantallaStock.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Trabajo Integrador/out/production/Trabajo Integrador/Gestores/GestorInsumos.class" beforeDir="false" afterPath="$PROJECT_DIR$/Trabajo Integrador/out/production/Trabajo Integrador/Gestores/GestorInsumos.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Trabajo Integrador/out/production/Trabajo Integrador/Gestores/GestorPlantas.class" beforeDir="false" afterPath="$PROJECT_DIR$/Trabajo Integrador/out/production/Trabajo Integrador/Gestores/GestorPlantas.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Trabajo Integrador/src/Dominio/Planta.java" beforeDir="false" afterPath="$PROJECT_DIR$/Trabajo Integrador/src/Dominio/Planta.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Trabajo Integrador/src/GUI/AristaView.java" beforeDir="false" afterPath="$PROJECT_DIR$/Trabajo Integrador/src/GUI/Grafo/AristaView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Trabajo Integrador/src/GUI/GrafoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Trabajo Integrador/src/GUI/Grafo/GrafoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Trabajo Integrador/src/GUI/PanelGrafoPlantas.java" beforeDir="false" afterPath="$PROJECT_DIR$/Trabajo Integrador/src/GUI/Grafo/PanelGrafoPlantas.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Trabajo Integrador/src/GUI/PantallaBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/Trabajo Integrador/src/GUI/PantallaBase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Trabajo Integrador/src/GUI/PantallaCaminos.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Trabajo Integrador/src/GUI/PantallaCrearInsumo.java" beforeDir="false" afterPath="$PROJECT_DIR$/Trabajo Integrador/src/GUI/Insumos/PantallaCrearInsumo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Trabajo Integrador/src/GUI/PantallaCrearPlanta.java" beforeDir="false" afterPath="$PROJECT_DIR$/Trabajo Integrador/src/GUI/Plantas/PantallaCrearPlanta.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Trabajo Integrador/src/GUI/PantallaCrearStock.java" beforeDir="false" afterPath="$PROJECT_DIR$/Trabajo Integrador/src/GUI/Stock/PantallaCrearStock.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Trabajo Integrador/src/GUI/PantallaInsumo.java" beforeDir="false" afterPath="$PROJECT_DIR$/Trabajo Integrador/src/GUI/Insumos/PantallaInsumo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Trabajo Integrador/src/GUI/PantallaPlantas.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Trabajo Integrador/src/GUI/PantallaStock.java" beforeDir="false" afterPath="$PROJECT_DIR$/Trabajo Integrador/src/GUI/Stock/PantallaStock.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Trabajo Integrador/src/GUI/VerticeView.java" beforeDir="false" afterPath="$PROJECT_DIR$/Trabajo Integrador/src/GUI/Grafo/VerticeView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Trabajo Integrador/src/Dominio/Insumo.java" beforeDir="false" afterPath="$PROJECT_DIR$/Trabajo Integrador/src/Dominio/Insumo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Trabajo Integrador/src/GUI/Insumos/PantallaCrearInsumo.java" beforeDir="false" afterPath="$PROJECT_DIR$/Trabajo Integrador/src/GUI/Insumos/PantallaCrearInsumo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Trabajo Integrador/src/GUI/Insumos/PantallaInsumo.java" beforeDir="false" afterPath="$PROJECT_DIR$/Trabajo Integrador/src/GUI/Insumos/PantallaInsumo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Trabajo Integrador/src/Gestores/GestorInsumos.java" beforeDir="false" afterPath="$PROJECT_DIR$/Trabajo Integrador/src/Gestores/GestorInsumos.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/Trabajo Integrador/out/production/Trabajo Integrador/" />
@@ -61,52 +21,64 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Trabajo Integrador/src/GUI/PantallaBase.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="47" column="49" selection-start-line="47" selection-start-column="49" selection-end-line="47" selection-end-column="49" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Trabajo Integrador/src/GUI/Caminos/PantallaCrearCamino.java">
+        <entry file="file://$PROJECT_DIR$/Trabajo Integrador/src/GUI/Insumos/PantallaInsumo.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="748">
-              <caret line="59" column="29" selection-start-line="59" selection-start-column="29" selection-end-line="59" selection-end-column="29" />
+            <state relative-caret-position="347">
+              <caret line="388" column="52" selection-start-line="388" selection-start-column="52" selection-end-line="388" selection-end-column="52" />
               <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="method#popUpCorrecto#0;class#PantallaCrearCamino#0" />
-                <element signature="e#4869#4870#0" expanded="true" />
-                <element signature="e#4917#4918#0" expanded="true" />
+                <element signature="method#crearPantalla#0;class#PantallaInsumo#0" />
+                <element signature="method#crearPantallaBuscar#0;class#PantallaInsumo#0" />
+                <element signature="method#crearPantallaCrear#0;class#PantallaInsumo#0" />
+                <element signature="method#agregarPantalla#0;class#PantallaInsumo#0" />
+                <element signature="method#actionPerformed#0;class#PantallaInsumo#0" />
+                <element signature="method#crearTablaInsumos#0;class#PantallaInsumo#0" />
+                <element signature="class#10440:10969" />
+                <element signature="class#11022:11551" />
+                <element signature="class#11043:12705" />
+                <element signature="method#actionPerformed#0;class#10975:12637" />
+                <element signature="e#14586#14617#0" expanded="true" />
+                <element signature="method#actualizarTablaInsumos#0;class#PantallaInsumo#0" />
+                <element signature="method#actualizarTablaInsumosBuscar#0;class#PantallaInsumo#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Trabajo Integrador/src/GUI/Caminos/PantallaCaminos.java">
+        <entry file="file://$PROJECT_DIR$/Trabajo Integrador/src/GUI/Insumos/PantallaCrearInsumo.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-231">
-              <caret line="51" column="34" selection-start-line="51" selection-start-column="34" selection-end-line="51" selection-end-column="34" />
+            <state relative-caret-position="299">
+              <caret line="131" column="36" selection-start-line="131" selection-start-column="36" selection-end-line="131" selection-end-column="36" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Trabajo Integrador/src/GUI/Insumos/PantallaInsumo.java">
+        <entry file="file://$PROJECT_DIR$/Trabajo Integrador/src/Gestores/GestorInsumos.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1895">
-              <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+            <state relative-caret-position="425">
+              <caret line="146" column="59" selection-start-line="146" selection-start-column="59" selection-end-line="146" selection-end-column="59" />
               <folding>
-                <element signature="method#crearPantalla#0;class#PantallaInsumo#0" />
-                <element signature="method#crearPantallaBuscar#0;class#PantallaInsumo#0" />
-                <element signature="method#crearPantallaCrear#0;class#PantallaInsumo#0" />
-                <element signature="method#actionPerformed#0;class#PantallaInsumo#0" />
-                <element signature="method#crearTablaInsumos#0;class#PantallaInsumo#0" />
-                <element signature="method#actualizarTablaInsumos#0;class#PantallaInsumo#0" />
-                <element signature="method#actualizarTablaInsumosBuscar#0;class#PantallaInsumo#0" />
+                <element signature="method#buscarNombre#0;class#GestorInsumos#0" />
+                <element signature="method#buscarCosto#0;class#GestorInsumos#0" />
+                <element signature="method#buscarStock#0;class#GestorInsumos#0" />
+                <element signature="method#listarInsumos#0;class#GestorInsumos#0" />
+                <element signature="method#getInsumo#1;class#GestorInsumos#0" />
+                <element signature="method#eliminiarPorNombre#0;class#GestorInsumos#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Trabajo Integrador/src/Dominio/Insumo.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="731">
+              <caret line="52" column="101" selection-start-line="52" selection-start-column="101" selection-end-line="52" selection-end-column="101" />
+              <folding>
+                <element signature="method#editar#0;class#Insumo#0" />
+                <element signature="method#compareTo#0;class#Insumo#0" />
               </folding>
             </state>
           </provider>
@@ -124,6 +96,7 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>framePadre</find>
+      <find>color</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -139,7 +112,6 @@
         <option value="$PROJECT_DIR$/Trabajo Integrador/src/Estructuras/Arista.java" />
         <option value="$PROJECT_DIR$/Trabajo Integrador/src/Dominio/Ruta.java" />
         <option value="$PROJECT_DIR$/Trabajo Integrador/src/Estructuras/Grafo.java" />
-        <option value="$PROJECT_DIR$/Trabajo Integrador/src/Dominio/Insumo.java" />
         <option value="$PROJECT_DIR$/Trabajo Integrador/src/Estructuras/GrafoPlanta.java" />
         <option value="$PROJECT_DIR$/Trabajo Integrador/src/Dominio/InsumoLiquido.java" />
         <option value="$PROJECT_DIR$/Trabajo Integrador/src/GUI/PantallaPlantas.java" />
@@ -151,11 +123,14 @@
         <option value="$PROJECT_DIR$/Trabajo Integrador/src/GUI/Grafo/PanelGrafoPlantas.java" />
         <option value="$PROJECT_DIR$/Trabajo Integrador/src/GUI/Grafo/GrafoController.java" />
         <option value="$PROJECT_DIR$/Trabajo Integrador/src/GUI/Plantas/PantallaCrearPlanta.java" />
-        <option value="$PROJECT_DIR$/Trabajo Integrador/src/GUI/Insumos/PantallaCrearInsumo.java" />
         <option value="$PROJECT_DIR$/Trabajo Integrador/src/GUI/PantallaBase.java" />
         <option value="$PROJECT_DIR$/Trabajo Integrador/src/Dominio/Planta.java" />
         <option value="$PROJECT_DIR$/Trabajo Integrador/src/GUI/Caminos/PantallaCaminos.java" />
         <option value="$PROJECT_DIR$/Trabajo Integrador/src/GUI/Caminos/PantallaCrearCamino.java" />
+        <option value="$PROJECT_DIR$/Trabajo Integrador/src/Dominio/Insumo.java" />
+        <option value="$PROJECT_DIR$/Trabajo Integrador/src/Gestores/GestorInsumos.java" />
+        <option value="$PROJECT_DIR$/Trabajo Integrador/src/GUI/Insumos/PantallaCrearInsumo.java" />
+        <option value="$PROJECT_DIR$/Trabajo Integrador/src/GUI/Insumos/PantallaInsumo.java" />
       </list>
     </option>
   </component>
@@ -169,8 +144,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -201,15 +176,7 @@
               <item name="DIED---Trabajo-Integrador" type="462c0819:PsiDirectoryNode" />
               <item name="Trabajo Integrador" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="GUI" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DIED---Trabajo-Integrador" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DIED---Trabajo-Integrador" type="462c0819:PsiDirectoryNode" />
-              <item name="Trabajo Integrador" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="GUI" type="462c0819:PsiDirectoryNode" />
-              <item name="Insumos" type="462c0819:PsiDirectoryNode" />
+              <item name="Gestores" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -263,18 +230,19 @@
       <option name="presentableId" value="Default" />
       <updated>1564662159932</updated>
       <workItem from="1564662163874" duration="11426000" />
-      <workItem from="1564690182414" duration="9411000" />
+      <workItem from="1564690182414" duration="9626000" />
+      <workItem from="1564757380120" duration="7716000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="20837000" />
+    <option name="totallyTimeSpent" value="28768000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49856323" visible="true" weight="0.25301206" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49856323" visible="true" weight="0.25635877" />
       <window_info id="Structure" order="1" sideWeight="0.50143677" side_tool="true" weight="0.24966533" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -362,22 +330,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Trabajo Integrador/src/Gestores/GestorInsumos.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="11" column="40" selection-start-line="11" selection-start-column="40" selection-end-line="11" selection-end-column="40" />
-          <folding>
-            <element signature="method#buscarNombre#0;class#GestorInsumos#0" />
-            <element signature="e#1045#1053#0" expanded="true" />
-            <element signature="method#buscarCosto#0;class#GestorInsumos#0" />
-            <element signature="e#1929#1937#0" expanded="true" />
-            <element signature="method#buscarStock#0;class#GestorInsumos#0" />
-            <element signature="e#2785#2793#0" expanded="true" />
-            <element signature="method#listarInsumos#0;class#GestorInsumos#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Trabajo Integrador/out/production/Trabajo Integrador/Dominio/Insumo.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-102" />
@@ -402,41 +354,6 @@
             <element signature="method#buscarPlanta#0;class#GrafoPlanta#0" />
             <element signature="method#buscarPlanta#1;class#GrafoPlanta#0" />
             <element signature="method#buscarPlanta#2;class#GrafoPlanta#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Trabajo Integrador/src/Dominio/Insumo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1938">
-          <caret line="123" column="1" selection-start-line="123" selection-start-column="1" selection-end-line="123" selection-end-column="1" />
-          <folding>
-            <element signature="e#1176#1177#0" expanded="true" />
-            <element signature="e#1208#1209#0" expanded="true" />
-            <element signature="e#1399#1400#0" expanded="true" />
-            <element signature="e#1424#1425#0" expanded="true" />
-            <element signature="e#1457#1458#0" expanded="true" />
-            <element signature="e#1485#1486#0" expanded="true" />
-            <element signature="e#1523#1524#0" expanded="true" />
-            <element signature="e#1557#1558#0" expanded="true" />
-            <element signature="e#1611#1612#0" expanded="true" />
-            <element signature="e#1657#1658#0" expanded="true" />
-            <element signature="e#1689#1690#0" expanded="true" />
-            <element signature="e#1717#1718#0" expanded="true" />
-            <element signature="e#1759#1760#0" expanded="true" />
-            <element signature="e#1793#1794#0" expanded="true" />
-            <element signature="e#1825#1826#0" expanded="true" />
-            <element signature="e#1852#1853#0" expanded="true" />
-            <element signature="e#1892#1893#0" expanded="true" />
-            <element signature="e#1924#1925#0" expanded="true" />
-            <element signature="e#1965#1966#0" expanded="true" />
-            <element signature="e#2001#2002#0" expanded="true" />
-            <element signature="e#2060#2061#0" expanded="true" />
-            <element signature="e#2110#2111#0" expanded="true" />
-            <element signature="e#2157#2158#0" expanded="true" />
-            <element signature="e#2192#2193#0" expanded="true" />
-            <element signature="e#2256#2257#0" expanded="true" />
-            <element signature="e#2304#2305#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -534,13 +451,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Trabajo Integrador/src/GUI/PantallaBase.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="47" column="49" selection-start-line="47" selection-start-column="49" selection-end-line="47" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Trabajo Integrador/src/Estructuras/Vertice.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
@@ -568,47 +478,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Trabajo Integrador/src/Gestores/GestorPlantas.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="31" column="14" selection-start-line="31" selection-start-column="14" selection-end-line="31" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Trabajo Integrador/src/GUI/Insumos/PantallaCrearInsumo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="141">
-          <caret line="124" lean-forward="true" selection-start-line="124" selection-end-line="124" />
-          <folding>
-            <element signature="method#agregarPantalla#0;class#PantallaCrearInsumo#0" />
-            <element signature="method#popUpCorrecto#0;class#PantallaCrearInsumo#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Trabajo Integrador/src/GUI/Insumos/PantallaInsumo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1895">
-          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-          <folding>
-            <element signature="method#crearPantalla#0;class#PantallaInsumo#0" />
-            <element signature="method#crearPantallaBuscar#0;class#PantallaInsumo#0" />
-            <element signature="method#crearPantallaCrear#0;class#PantallaInsumo#0" />
-            <element signature="method#actionPerformed#0;class#PantallaInsumo#0" />
-            <element signature="method#crearTablaInsumos#0;class#PantallaInsumo#0" />
-            <element signature="method#actualizarTablaInsumos#0;class#PantallaInsumo#0" />
-            <element signature="method#actualizarTablaInsumosBuscar#0;class#PantallaInsumo#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Trabajo Integrador/src/GUI/Caminos/PantallaCaminos.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-231">
-          <caret line="51" column="34" selection-start-line="51" selection-start-column="34" selection-end-line="51" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_211/src.zip!/javax/swing/JComboBox.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="143">
@@ -616,15 +485,89 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Trabajo Integrador/src/GUI/Caminos/PantallaCaminos.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="799">
+          <caret line="51" column="34" selection-start-line="51" selection-start-column="34" selection-end-line="51" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Trabajo Integrador/src/GUI/Caminos/PantallaCrearCamino.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="748">
+        <state relative-caret-position="136">
           <caret line="59" column="29" selection-start-line="59" selection-start-column="29" selection-end-line="59" selection-end-column="29" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#popUpCorrecto#0;class#PantallaCrearCamino#0" />
-            <element signature="e#4869#4870#0" expanded="true" />
-            <element signature="e#4917#4918#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Trabajo Integrador/src/GUI/PantallaBase.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="47" column="49" selection-start-line="47" selection-start-column="49" selection-end-line="47" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Trabajo Integrador/src/Gestores/GestorPlantas.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="31" column="14" selection-start-line="31" selection-start-column="14" selection-end-line="31" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Trabajo Integrador/src/Gestores/GestorInsumos.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="146" column="59" selection-start-line="146" selection-start-column="59" selection-end-line="146" selection-end-column="59" />
+          <folding>
+            <element signature="method#buscarNombre#0;class#GestorInsumos#0" />
+            <element signature="method#buscarCosto#0;class#GestorInsumos#0" />
+            <element signature="method#buscarStock#0;class#GestorInsumos#0" />
+            <element signature="method#listarInsumos#0;class#GestorInsumos#0" />
+            <element signature="method#getInsumo#1;class#GestorInsumos#0" />
+            <element signature="method#eliminiarPorNombre#0;class#GestorInsumos#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Trabajo Integrador/src/Dominio/Insumo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="731">
+          <caret line="52" column="101" selection-start-line="52" selection-start-column="101" selection-end-line="52" selection-end-column="101" />
+          <folding>
+            <element signature="method#editar#0;class#Insumo#0" />
+            <element signature="method#compareTo#0;class#Insumo#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Trabajo Integrador/src/GUI/Insumos/PantallaCrearInsumo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="299">
+          <caret line="131" column="36" selection-start-line="131" selection-start-column="36" selection-end-line="131" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Trabajo Integrador/src/GUI/Insumos/PantallaInsumo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="347">
+          <caret line="388" column="52" selection-start-line="388" selection-start-column="52" selection-end-line="388" selection-end-column="52" />
+          <folding>
+            <element signature="method#crearPantalla#0;class#PantallaInsumo#0" />
+            <element signature="method#crearPantallaBuscar#0;class#PantallaInsumo#0" />
+            <element signature="method#crearPantallaCrear#0;class#PantallaInsumo#0" />
+            <element signature="method#agregarPantalla#0;class#PantallaInsumo#0" />
+            <element signature="method#actionPerformed#0;class#PantallaInsumo#0" />
+            <element signature="method#crearTablaInsumos#0;class#PantallaInsumo#0" />
+            <element signature="class#10440:10969" />
+            <element signature="class#11022:11551" />
+            <element signature="class#11043:12705" />
+            <element signature="method#actionPerformed#0;class#10975:12637" />
+            <element signature="e#14586#14617#0" expanded="true" />
+            <element signature="method#actualizarTablaInsumos#0;class#PantallaInsumo#0" />
+            <element signature="method#actualizarTablaInsumosBuscar#0;class#PantallaInsumo#0" />
           </folding>
         </state>
       </provider>

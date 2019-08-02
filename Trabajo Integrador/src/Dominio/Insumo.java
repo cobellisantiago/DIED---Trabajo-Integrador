@@ -46,6 +46,17 @@ public class Insumo implements Comparable<Insumo> {
         return instances;
     }
 
+    public void borrar(){
+        instances.remove(this);
+    }
+
+    public void editar(String newName,Double newCosto, Double newPesoEnKg, Boolean newRefrigeracion ){
+        this.descripcion = newName ;
+        this.costo = newCosto ;
+        this.peso= newPesoEnKg ;
+        this.esRefrigerado= newRefrigeracion ;
+    }
+
     public int compareTo(Insumo obj){
 
         if(this.costo > obj.costo)    return 1;
