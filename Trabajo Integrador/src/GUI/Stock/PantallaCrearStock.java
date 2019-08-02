@@ -4,6 +4,8 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
+import Dominio.Insumo;
+import Dominio.Planta;
 import Gestores.GestorStock;
 import net.miginfocom.swing.MigLayout;
 
@@ -13,8 +15,8 @@ public class PantallaCrearStock implements ActionListener{
     JDialog dialog;
     JTextField cantidad;
     JTextField puntoPedido;
-    JTextField insumo;
-    JTextField planta;
+    JComboBox<Integer> insumo;
+    JComboBox<Integer> planta;
     final static String CREAR = "Crear Stock";
     final static String NOMBRE = "Nombre";
     //final static String UNIDAD = "Unidad";
@@ -25,11 +27,10 @@ public class PantallaCrearStock implements ActionListener{
         if(single == null) {
             single = new PantallaCrearStock();
         }
-        single.dialog = new JDialog();
         single.cantidad = new JTextField(20);
         single.puntoPedido = new JTextField(20);
-        single.insumo = new JTextField(20);
-        single.planta = new JTextField(20);
+        single.insumo = new JComboBox<Integer>();
+        single.planta = new JComboBox<Integer>();
         single.agregarPantalla(p);
     }
 
@@ -48,6 +49,10 @@ public class PantallaCrearStock implements ActionListener{
         tituloLabel.setForeground(Color.BLUE);
         tituloLabel.setHorizontalAlignment(JLabel.CENTER);
         panelDatos.add(tituloLabel,"span, growx, gapbottom 15, gaptop 5");
+        
+        for (Insumo i: Insumo.getInstances())	insumo.addItem(i.getId());
+
+        for (Planta i: Planta.getInstances())	planta.addItem(i.getId());
 
         panelDatos.add(cantidadLabel,"align label");
         panelDatos.add(cantidad, "wrap");
@@ -79,7 +84,8 @@ public class PantallaCrearStock implements ActionListener{
 
     public void popUpCorrecto(){
         JPanel panel = new JPanel(new MigLayout("fill, insets 0"));
-        this.dialog.setSize(400, 200);
+        JDialog dialog = new JDialog();
+        dialog.setSize(400, 200);
 
         JLabel preguntaLabel= new JLabel("Stock creado correctamente");
         preguntaLabel.setFont(new Font("Roboto",Font.BOLD,15));
@@ -110,17 +116,18 @@ public class PantallaCrearStock implements ActionListener{
         panel.add(cancelar,"left, gapleft 25");
         panel.add(aceptar,"right, gapright 25");
 
-        this.dialog.add(panel);
+        dialog.add(panel);
 
-        this.dialog.setModal(true);
-        this.dialog.setLocationRelativeTo(null);
-        this.dialog.setVisible(true);
+        dialog.setModal(true);
+        dialog.setLocationRelativeTo(null);
+        dialog.setVisible(true);
 
     }
 
     public void popUpIncorrecto(){
         JPanel panel = new JPanel(new MigLayout("fill, insets 0"));
-        this.dialog.setSize(400, 200);
+        JDialog dialog = new JDialog();
+        dialog.setSize(400, 200);
 
         JLabel preguntaLabel= new JLabel("Stock no creado");
         preguntaLabel.setFont(new Font("Roboto",Font.BOLD,15));
@@ -151,19 +158,19 @@ public class PantallaCrearStock implements ActionListener{
         panel.add(cancelar,"left, gapleft 25");
         panel.add(aceptar,"right, gapright 25");
 
-        this.dialog.add(panel);
+        dialog.add(panel);
 
-        this.dialog.setModal(true);
-        this.dialog.setLocationRelativeTo(null);
-        this.dialog.setVisible(true);
+        dialog.setModal(true);
+        dialog.setLocationRelativeTo(null);
+        dialog.setVisible(true);
 
     }
     
     public void actionPerformed(ActionEvent e){
         String button = ((JButton) e.getSource()).getText();
         if(button == "Crear") {
-            if (!cantidad.getText().isEmpty() && !puntoPedido.getText().isEmpty() && !insumo.getText().isEmpty() && !planta.getText().isEmpty()) {
-                if(GestorStock.getGestor().crear(Double.valueOf(cantidad.getText()), Integer.valueOf(puntoPedido.getText()), Integer.valueOf(insumo.getText()), Integer.valueOf(planta.getText())))	popUpCorrecto();
+            if (!cantidad.getText().isEmpty() && !puntoPedido.getText().isEmpty() && !insumo.getSelectedItem().toString().isEmpty() && !planta.getSelectedItem().toString().isEmpty()) {
+                if(GestorStock.getGestor().crear(Double.valueOf(cantidad.getText()), Integer.valueOf(puntoPedido.getText()), Integer.valueOf(insumo.getSelectedItem().toString()), Integer.valueOf(planta.getSelectedItem().toString())))	popUpCorrecto();
                 else	popUpIncorrecto();
                 PantallaStock.getSingle().actualizarTablaStock();
             }

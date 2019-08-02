@@ -15,7 +15,7 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-public class PantallaBase implements ActionListener{
+public class PantallaBase{
     private static JPanel panel;
     PantallaMenu pantallaMenu;
     PantallaInsumo pantallaInsumos;
@@ -63,13 +63,6 @@ public class PantallaBase implements ActionListener{
         frame.pack();
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
-    }
-
-    public void actionPerformed(ActionEvent e){
-        String button = ((JButton) e.getSource()).getText();
-
-        CardLayout p = (CardLayout)(panel.getLayout());
-        p.show(panel, button);
     }
 
    /* public static void main(String[] args) {

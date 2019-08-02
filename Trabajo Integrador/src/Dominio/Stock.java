@@ -23,7 +23,6 @@ public class Stock {
     	this.insumo = ins;
     	this.planta = plant;
     	instances.add(this);
-    	GestorInsumos.getGestor().agregarStock(ins, cant);
     }
     
     public Integer getId() {

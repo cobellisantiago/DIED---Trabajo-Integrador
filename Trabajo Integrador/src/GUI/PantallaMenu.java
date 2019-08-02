@@ -7,6 +7,8 @@ import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 
+import GUI.Insumos.PantallaInsumo;
+
 public class PantallaMenu implements ActionListener{
 
     private static PantallaMenu single;
@@ -138,6 +140,8 @@ public class PantallaMenu implements ActionListener{
 
         JPanel p = (JPanel)panel.getParent();
         CardLayout pane = (CardLayout)(p.getLayout());
+        
+        if(button == INSUMOS)	PantallaInsumo.getSingle().actualizarTablaInsumos();
         pane.show(p, button);
     }
 }

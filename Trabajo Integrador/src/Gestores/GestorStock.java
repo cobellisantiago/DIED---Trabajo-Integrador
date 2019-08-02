@@ -26,6 +26,7 @@ public class GestorStock{
     	
         if(!(insu == null || plan == null)) {
         	new Stock(cant, puntoPed, insu, plan);
+        	GestorInsumos.getGestor().agregarStock(insu, cant);
         	return true;
         }
         return false;

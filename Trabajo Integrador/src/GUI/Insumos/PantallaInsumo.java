@@ -365,12 +365,12 @@ public class PantallaInsumo implements ActionListener{
                 	Double minimo;
                 	Double maximo;
                 	try {
-                		minimo = Double.valueOf(costoMinimoTextField.getText());
+                		minimo = Double.valueOf(stockMinimoTextField.getText());
                 	}	catch(NumberFormatException a){
                 		minimo = Double.NEGATIVE_INFINITY;
                 	}
                 	try {
-                		maximo = Double.valueOf(costoMaximoTextField.getText());
+                		maximo = Double.valueOf(stockMaximoTextField.getText());
                 	}	catch(NumberFormatException a){
                 		maximo = Double.POSITIVE_INFINITY;
                 	}

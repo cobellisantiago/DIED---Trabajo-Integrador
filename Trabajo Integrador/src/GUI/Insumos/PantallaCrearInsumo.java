@@ -10,7 +10,6 @@ import net.miginfocom.swing.MigLayout;
 public class PantallaCrearInsumo implements ActionListener{
     private static PantallaCrearInsumo single;
     JPanel panelGeneral;
-    JDialog dialog;
     JTextField descrip;
     JTextField costo;
     JCheckBox refrige;
@@ -29,7 +28,6 @@ public class PantallaCrearInsumo implements ActionListener{
         if(single == null) {
             single = new PantallaCrearInsumo();
         }
-        single.dialog = new JDialog();
         single.descrip = new JTextField(20);
         single.costo = new JTextField(20);
         single.refrige = new JCheckBox();
@@ -84,7 +82,8 @@ public class PantallaCrearInsumo implements ActionListener{
 
     public void popUpCorrecto(){
         JPanel panel = new JPanel(new MigLayout("fill, insets 0"));
-        this.dialog.setSize(400, 200);
+        JDialog dialog = new JDialog();
+        dialog.setSize(400, 200);
 
         JLabel preguntaLabel= new JLabel("Insumo creado correctamente");
         preguntaLabel.setFont(new Font("Roboto",Font.BOLD,15));
@@ -115,11 +114,11 @@ public class PantallaCrearInsumo implements ActionListener{
         panel.add(cancelar,"left, gapleft 25");
         panel.add(aceptar,"right, gapright 25");
 
-        this.dialog.add(panel);
+        dialog.add(panel);
 
-        this.dialog.setModal(true);
-        this.dialog.setLocationRelativeTo(null);
-        this.dialog.setVisible(true);
+        dialog.setModal(true);
+        dialog.setLocationRelativeTo(null);
+        dialog.setVisible(true);
 
     }
 

@@ -51,7 +51,7 @@ public class GestorInsumos{
     	for(Insumo i : insumos) {
             listaInsumos[fila][0]= i.getId();
             listaInsumos[fila][1]= i.getDescripcion();
-            listaInsumos[fila][2]= 0.0;
+            listaInsumos[fila][2]= i.getStockTotal();
             fila++;
     	}
     	
@@ -73,7 +73,7 @@ public class GestorInsumos{
     	for(Insumo i : insumos) {
             listaInsumos[fila][0]= i.getId();
             listaInsumos[fila][1]= i.getDescripcion();
-            listaInsumos[fila][2]= 0.0;
+            listaInsumos[fila][2]= i.getStockTotal();
             fila++;
     	}
         
@@ -95,7 +95,7 @@ public class GestorInsumos{
     	for(Insumo i : insumos) {
             listaInsumos[fila][0]= i.getId();
             listaInsumos[fila][1]= i.getDescripcion();
-            listaInsumos[fila][2]= 0.0;
+            listaInsumos[fila][2]= i.getStockTotal();
             fila++;
     	}
         
@@ -115,7 +115,7 @@ public class GestorInsumos{
             col=1;
             listaInsumos[fila][col]= i.getDescripcion();
             col=2;
-            listaInsumos[fila][col]= 0.0;
+            listaInsumos[fila][col]= i.getStockTotal();
             fila++;
         }
 
