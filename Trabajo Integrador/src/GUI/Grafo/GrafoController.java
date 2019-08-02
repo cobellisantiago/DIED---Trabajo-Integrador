@@ -1,14 +1,17 @@
 package GUI.Grafo;
 
 import Dominio.Planta;
+import Dominio.Camino;
 
 import javax.swing.*;
 import java.awt.*;
 import java.lang.reflect.InvocationTargetException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class GrafoController {
     private PanelGrafoPlantas panel;
+    private ArrayList<VerticeView> vertices = new ArrayList<VerticeView>();
    // private TareaLogica logicaTareas;
     //private ProyectoLogica logicaProyecto;
 
@@ -40,6 +43,7 @@ public class GrafoController {
                 v.setId(p.getId());
                 v.setNombre(p.getNombre());
                 panel.agregar(v);
+                vertices.add(v);
             }
             try {
                 SwingUtilities.invokeAndWait(() -> panel.repaint());
@@ -54,14 +58,16 @@ public class GrafoController {
         hilo.start();
     }
 
-   /* public void inicalizarAristas() {
+    public void inicalizarAristas() {
         Runnable r = () -> {
-            List<Ruta> lista = Ruta.getInstances();
+            List<Camino> lista = Camino.getInstances();
             int y = 100;
             int x = 0;
             int i = 0;
             Color c = null;
-            for(Ruta p : lista){
+            VerticeView ini = null;
+            VerticeView desti = null;
+            for(Camino p : lista){
                 i++;
                 x +=30;
                 if( i % 2 == 0 ) {
@@ -71,8 +77,13 @@ public class GrafoController {
                     y = 200;
                     c = Color.RED;
                 }
+                for(VerticeView j : vertices) {
+                	if(j.getId() == p.getInicio().getValor().getId())	ini = j;
+                	else if(j.getId() == p.getFin().getValor().getId())	desti = j;
+                	if(ini != null && desti != null)	break;
+                }
 
-                AristaView v = new AristaView();
+                AristaView v = new AristaView(ini, desti);
 
                 panel.agregar(v);
             }
@@ -87,5 +98,5 @@ public class GrafoController {
         Thread hilo = new Thread(r);
 
         hilo.start();
-    }*/
+    }
 }

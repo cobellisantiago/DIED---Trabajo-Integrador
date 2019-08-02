@@ -3,6 +3,7 @@ package GUI.Caminos;
 import Dominio.Planta;
 import GUI.Insumos.PantallaCrearInsumo;
 import GUI.Insumos.PantallaInsumo;
+import Gestores.GestorCaminos;
 import Gestores.GestorInsumos;
 import Gestores.GestorPlantas;
 import net.miginfocom.swing.MigLayout;
@@ -19,13 +20,13 @@ public class PantallaCrearCamino implements ActionListener {
     private static PantallaCrearCamino single;
     JPanel panelGeneral;
     JDialog dialog;
-    JComboBox<String> origen;
-    JComboBox<String> fin;
+    JComboBox<Integer> origen;
+    JComboBox<Integer> fin;
     JTextField distancia;
     JTextField tiempo;
     JTextField pesoMax;
-    String plantaOrigen;
-    String plantaFin;
+    Integer plantaOrigen;
+    Integer plantaFin;
 
     final static String CREAR = "Crear Insumo";
     final static String DESCRIP = "Descripcion";
@@ -55,8 +56,8 @@ public class PantallaCrearCamino implements ActionListener {
         JPanel panelDatos = new JPanel (new MigLayout(""));
         panelDatos.setBackground(Color.white);
         JLabel tituloLabel = new JLabel("Crear Camino");
-        JLabel origenLabel = new JLabel("Origen: ");
-        JLabel finLabel = new JLabel("Fin: ");
+        JLabel origenLabel = new JLabel("Id planta origen: ");
+        JLabel finLabel = new JLabel("Id planta destino: ");
         JLabel distanciaLabel = new JLabel("Distancia: ");
         JLabel tiempoLabel = new JLabel("Tiempo: ");
         JLabel pesoMaxLabel = new JLabel("Peso maximo soportado: ");
@@ -67,18 +68,18 @@ public class PantallaCrearCamino implements ActionListener {
         panelDatos.add(tituloLabel,"span, growx, gapbottom 15, gaptop 5");
 
         for (Planta a: Planta.getInstances()) {
-            origen.addItem(a.getNombre());
+            origen.addItem(a.getId());
         }
 
         for (Planta a: Planta.getInstances()) {
-            fin.addItem(a.getNombre());
+            fin.addItem(a.getId());
         }
 
         origen.addItemListener(new ItemListener() {
             @Override
             public void itemStateChanged(ItemEvent e) {
                 JComboBox cb = (JComboBox)e.getSource();
-                plantaOrigen = (String)cb.getSelectedItem();
+                plantaOrigen = (Integer)cb.getSelectedItem();
                 origen.getModel().setSelectedItem(plantaOrigen);
                 fin.removeItem(plantaOrigen);
             }
@@ -88,7 +89,7 @@ public class PantallaCrearCamino implements ActionListener {
             @Override
             public void itemStateChanged(ItemEvent e) {
                 JComboBox cb = (JComboBox)e.getSource();
-                plantaFin = (String)cb.getSelectedItem();
+                plantaFin = (Integer)cb.getSelectedItem();
                 fin.getModel().setSelectedItem(plantaFin);
 
             }
@@ -172,12 +173,10 @@ public class PantallaCrearCamino implements ActionListener {
     public void actionPerformed(ActionEvent e){
         String button = ((JButton) e.getSource()).getText();
         if(button == "Crear") {
-            if (!((String)origen.getSelectedItem()).isEmpty() && !((String)fin.getSelectedItem()).isEmpty() && !tiempo.getText().isEmpty()&& !distancia.getText().isEmpty()
+            if (!origen.getSelectedItem().toString().isEmpty() && !fin.getSelectedItem().toString().isEmpty() && !tiempo.getText().isEmpty()&& !distancia.getText().isEmpty()
                     && !pesoMax.getText().isEmpty()) {
-                //GestorInsumos.getGestor().crear(descrip.getText(), Double.valueOf(costo.getText()), Double.valueOf(peso.getText()), refrige.isSelected());
+                GestorCaminos.getGestor().crear(Integer.valueOf(origen.getSelectedItem().toString()), Integer.valueOf(fin.getSelectedItem().toString()), Double.valueOf(distancia.getText()), Integer.valueOf(tiempo.getText()));
                 popUpCorrecto();
-                //PantallaInsumo.getSingle().actualizarTablaInsumos();
-                //PantallaInsumo.getSingle().actualizarTablaInsumosBuscar(PantallaInsumo.getSingle().panel);
             } //else descrip.setText(DESCRIP);
         }else if(button == "Cancelar"){
             JPanel p = (JPanel)panelGeneral.getParent();

@@ -10,6 +10,8 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
+import GUI.PantallaBase;
+
 public class PantallaPlantas implements ActionListener{
 
 
@@ -114,6 +116,8 @@ public class PantallaPlantas implements ActionListener{
         }else if(button == "MapaPlanta") {
             JPanel p = (JPanel)panel.getParent();
             CardLayout pane = (CardLayout)(p.getLayout());
+            PantallaBase.getPanel().remove(PantallaMapaPlanta.getSingle().getPanelGeneral());
+            PantallaMapaPlanta.crearPantalla(PantallaBase.getPanel());
             pane.show(p, "MapaPlanta");
 
         }

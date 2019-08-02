@@ -40,6 +40,7 @@ public class PanelGrafoPlantas extends JPanel{
         this.colaColores.add(Color.ORANGE);
         this.colaColores.add(Color.CYAN);
         this.controller.inicalizarVertices();
+        this.controller.inicalizarAristas();
 
         addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent event) {
@@ -104,8 +105,8 @@ public class PanelGrafoPlantas extends JPanel{
             g2d.setPaint(Color.BLACK);
             Polygon flecha = new Polygon();
             flecha.addPoint(a.getDestino().getCoordenadaX(), a.getDestino().getCoordenadaY()+7);
-            flecha.addPoint(a.getDestino().getCoordenadaX()+20, a.getDestino().getCoordenadaY()+10);
-            flecha.addPoint(a.getDestino().getCoordenadaX(), a.getDestino().getCoordenadaY()+18);
+            flecha.addPoint(a.getOrigen().getCoordenadaX()+20, a.getOrigen().getCoordenadaY()+10);
+            //flecha.addPoint(a.getDestino().getCoordenadaX(), a.getDestino().getCoordenadaY()+18);
             g2d.fillPolygon(flecha);
         }
     }

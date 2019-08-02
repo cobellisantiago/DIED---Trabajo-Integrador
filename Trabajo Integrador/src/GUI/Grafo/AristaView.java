@@ -12,8 +12,9 @@ public class AristaView {
     private Stroke formatoLinea;
     private Paint color;
 
-    public AristaView() {
-
+    public AristaView(VerticeView inicio, VerticeView fin) {
+    	this.origen = inicio;
+    	this.destino = fin;
     }
 
     /**

@@ -11,7 +11,7 @@ import java.awt.event.ActionListener;
 public class PantallaMapaPlanta implements ActionListener {
 
     private static PantallaMapaPlanta single;
-    JPanel panelGeneral;
+    public JPanel panelGeneral;
 
     private PantallaMapaPlanta(){}
 
@@ -23,6 +23,14 @@ public class PantallaMapaPlanta implements ActionListener {
         single.agregarPantalla(p);
     }
 
+    public static PantallaMapaPlanta getSingle() {
+    	return single;
+    }
+    
+    public JPanel getPanelGeneral() {
+    	return panelGeneral;
+    }
+    
     private void agregarPantalla(JPanel p) {
 
         JPanel panelGrafo = new PanelGrafoPlantas();

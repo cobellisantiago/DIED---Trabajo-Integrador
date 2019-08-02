@@ -6,7 +6,7 @@ import java.util.Optional;
 
 import Dominio.Insumo;
 import Dominio.Planta;
-import Dominio.Ruta;
+import Dominio.Camino;
 
 public class GrafoPlanta extends Grafo<Planta> {
 
@@ -22,7 +22,6 @@ public class GrafoPlanta extends Grafo<Planta> {
     public Planta buscarPlanta(Planta inicial, Insumo i, Integer saltos) {
 
         if(inicial.necesitaInsumo(i)) return inicial;
-        boolean encontrado=false;
         List<Planta> listaPlantas;
         listaPlantas = getAdyacentes(inicial);
         for(int a=saltos;a>=0;a--) {
