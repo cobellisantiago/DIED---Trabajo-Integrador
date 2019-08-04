@@ -12,6 +12,8 @@ import java.util.List;
 public class GrafoController {
     private PanelGrafoPlantas panel;
     private ArrayList<VerticeView> vertices = new ArrayList<VerticeView>();
+    Thread hiloArista;
+    Thread hiloVertice;
    // private TareaLogica logicaTareas;
     //private ProyectoLogica logicaProyecto;
 
@@ -51,32 +53,24 @@ public class GrafoController {
             } catch (InvocationTargetException | InterruptedException e) {
                 e.printStackTrace();
             }
+            
         };
+        hiloVertice = new Thread(r);
 
-        Thread hilo = new Thread(r);
-
-        hilo.start();
+        hiloVertice.start();
     }
 
     public void inicalizarAristas() {
         Runnable r = () -> {
+        	try {
+				hiloVertice.join();
+			} catch (InterruptedException e1) {
+				e1.printStackTrace();
+			}
             List<Camino> lista = Camino.getInstances();
-            int y = 100;
-            int x = 0;
-            int i = 0;
-            Color c = null;
             VerticeView ini = null;
             VerticeView desti = null;
             for(Camino p : lista){
-                i++;
-                x +=30;
-                if( i % 2 == 0 ) {
-                    y = 100;
-                    c = Color.BLUE;
-                } else {
-                    y = 200;
-                    c = Color.RED;
-                }
                 for(VerticeView j : vertices) {
                 	if(j.getId() == p.getInicio().getValor().getId())	ini = j;
                 	else if(j.getId() == p.getFin().getValor().getId())	desti = j;
@@ -86,6 +80,8 @@ public class GrafoController {
                 AristaView v = new AristaView(ini, desti);
 
                 panel.agregar(v);
+                ini = null;
+                desti = null;
             }
             try {
                 SwingUtilities.invokeAndWait(() -> panel.repaint());
@@ -94,9 +90,8 @@ public class GrafoController {
                 e.printStackTrace();
             }
         };
+        hiloArista = new Thread(r); 
 
-        Thread hilo = new Thread(r);
-
-        hilo.start();
+        hiloArista.start();
     }
 }

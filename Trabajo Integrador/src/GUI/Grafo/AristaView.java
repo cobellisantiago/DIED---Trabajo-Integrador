@@ -24,7 +24,7 @@ public class AristaView {
      * @return
      */
     public Paint getColor() {
-        if(this.color==null) this.color = new GradientPaint(origen.getCoordenadaX() + 10,origen.getCoordenadaY() + 10,destino.getColorBase(),destino.getCoordenadaX() + 10, destino.getCoordenadaY() + 10,origen.getColorBase());
+        if(this.color==null) this.color = new GradientPaint(origen.getCoordenadaX() + 10, origen.getCoordenadaY() + 10,destino.getColorBase(),destino.getCoordenadaX() + 10, destino.getCoordenadaY() + 10, origen.getColorBase());
         return color;
     }
 
@@ -83,6 +83,10 @@ public class AristaView {
     @Override
     public String toString() {
         return "Arista{" + "origen=" + origen + ", destino=" + destino + ", linea=" + linea + ", formatoLinea=" + formatoLinea + ", gradiente=" + color + '}';
+    }
+    
+    public void update() {
+    	this.linea = new Line2D.Double(origen.getCoordenadaX() + 10, origen.getCoordenadaY() + 10, destino.getCoordenadaX() + 10, destino.getCoordenadaY() + 10);
     }
 
 

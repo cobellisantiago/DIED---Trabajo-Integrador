@@ -74,11 +74,15 @@ public class PantallaCrearCamino implements ActionListener {
         for (Planta a: Planta.getInstances()) {
             fin.addItem(a.getId());
         }
+        
+        origen.setSelectedItem(null);
+        fin.setSelectedItem(null);
 
         origen.addItemListener(new ItemListener() {
             @Override
             public void itemStateChanged(ItemEvent e) {
                 JComboBox cb = (JComboBox)e.getSource();
+                if(fin.getItemCount() != Planta.getInstances().size())	fin.insertItemAt(plantaOrigen, plantaOrigen-1);
                 plantaOrigen = (Integer)cb.getSelectedItem();
                 origen.getModel().setSelectedItem(plantaOrigen);
                 fin.removeItem(plantaOrigen);
@@ -95,9 +99,7 @@ public class PantallaCrearCamino implements ActionListener {
             }
         });
 
-        origen.setSelectedItem(null);
-        fin.setSelectedItem(null);
-
+        
 
         panelDatos.add(origenLabel,"align label");
         panelDatos.add(origen, "wrap");
@@ -133,12 +135,12 @@ public class PantallaCrearCamino implements ActionListener {
         JPanel panel = new JPanel(new MigLayout("fill, insets 0"));
         this.dialog.setSize(400, 200);
 
-        JLabel preguntaLabel= new JLabel("Insumo creado correctamente");
+        JLabel preguntaLabel= new JLabel("Camino creado correctamente");
         preguntaLabel.setFont(new Font("Roboto",Font.BOLD,15));
         panel.add(preguntaLabel,"center,span, wrap");
 
 
-        JButton aceptar = new JButton("Crear otro insumo");
+        JButton aceptar = new JButton("Crear otro camino");
 
         aceptar.addActionListener(new ActionListener() {
             @Override
@@ -147,13 +149,13 @@ public class PantallaCrearCamino implements ActionListener {
             }
         });
 
-        JButton cancelar = new JButton("Volver a Insumos");
+        JButton cancelar = new JButton("Volver a Caminos");
         cancelar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 JPanel p = (JPanel)panelGeneral.getParent();
                 CardLayout pane = (CardLayout)(p.getLayout());
-                pane.show(p, "Insumos");
+                pane.show(p, "Caminos");
                 //dialog.setVisible(false);
                 dialog.dispose();
             }

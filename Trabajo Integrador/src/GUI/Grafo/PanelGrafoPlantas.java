@@ -51,6 +51,8 @@ public class PanelGrafoPlantas extends JPanel{
                         aristaSeleccionada = v;
                         aristaSeleccionada.setColor(Color.CYAN);
                         actualizarVertice(aristaSeleccionada, event.getPoint());
+                        actualizarArista(aristaSeleccionada);
+                        repaint();
                     }
                     System.out.println("DOBLE CLICK");
                 }
@@ -61,6 +63,8 @@ public class PanelGrafoPlantas extends JPanel{
                 if(aristaSeleccionada != null) {
                     aristaSeleccionada.setColor(Color.BLUE);
                     actualizarVertice(aristaSeleccionada, event.getPoint());
+                    actualizarArista(aristaSeleccionada);
+                    repaint();
                 }
                 aristaSeleccionada = null;
                 arrastrando = false;
@@ -73,6 +77,8 @@ public class PanelGrafoPlantas extends JPanel{
             public void mouseDragged(MouseEvent event) {
                 if(aristaSeleccionada != null) {
                     actualizarVertice(aristaSeleccionada ,event.getPoint());
+                    actualizarArista(aristaSeleccionada);
+                    repaint();
                 }
             }
         });
@@ -135,16 +141,21 @@ public class PanelGrafoPlantas extends JPanel{
     }
 
     private void actualizarVertice(VerticeView v, Point puntoNuevo) {
-        int OFFSET_X = v.getNombre().length()*20;
-        int OFFSET_Y = 31;
-        repaint(xRepintado-5,yRepintado-5,v.RADIO+OFFSET_X, v.RADIO + OFFSET_Y);
         xRepintado = puntoNuevo.x;
         yRepintado = puntoNuevo.y;
         v.setCoordenadaX(xRepintado);
         v.setCoordenadaY(yRepintado);
         v.update();
-        repaint(xRepintado-5,yRepintado-5,v.RADIO+OFFSET_X, v.RADIO + OFFSET_Y);
     }
+    
+    public void actualizarArista(VerticeView v) {
+    	for(AristaView a : aristas) {
+        	if(a.getOrigen().equals(v) || a.getDestino().equals(v)) {
+        		a.update();
+        	}
+        }
+    }
+
 
     private void dibujarFlecha(Graphics2D g2, Point tip, Point tail, Color color){
         double phi;
