@@ -4,6 +4,8 @@ import Dominio.Insumo;
 import Dominio.Planta;
 import GUI.Caminos.PantallaCaminos;
 import GUI.Caminos.PantallaCrearCamino;
+import GUI.Camiones.PantallaCamiones;
+import GUI.Camiones.PantallaCrearCamion;
 import GUI.Insumos.PantallaInsumo;
 import GUI.Plantas.PantallaCrearPlanta;
 import GUI.Plantas.PantallaMapaPlanta;
@@ -12,7 +14,6 @@ import GUI.Stock.PantallaCrearStock;
 import GUI.Stock.PantallaStock;
 
 import java.awt.*;
-import java.awt.event.*;
 import javax.swing.*;
 
 public class PantallaBase{
@@ -21,6 +22,7 @@ public class PantallaBase{
     PantallaInsumo pantallaInsumos;
     PantallaPlantas pantallaPlantas;
     PantallaStock pantallaStock;
+    PantallaCamiones pantallaCamiones;
 
     public static JPanel getPanel() {
         return panel;
@@ -46,6 +48,8 @@ public class PantallaBase{
         PantallaCrearStock.crearPantalla(panel);
 
         PantallaCrearCamino.crearPantalla(panel);
+
+        PantallaCrearCamion.crearPantalla(panel);
         
 
         pane.add(panel, BorderLayout.CENTER);
