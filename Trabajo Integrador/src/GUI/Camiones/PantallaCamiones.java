@@ -1,5 +1,6 @@
 package GUI.Camiones;
 
+import Gestores.GestorCamiones;
 import net.miginfocom.swing.MigLayout;
 
 import java.awt.*;
@@ -13,6 +14,8 @@ import GUI.PantallaBase;
 public class PantallaCamiones implements ActionListener{
     private static PantallaCamiones single;
     JPanel panel;
+    JTable tabla;
+    String camioneseleccionado;
     final static String MENU = "Menu";
     final static String CREAR = "Crear";
     final static String BUSCAR = "Buscar";
@@ -24,11 +27,20 @@ public class PantallaCamiones implements ActionListener{
     public static PantallaCamiones crearPantalla(JPanel p){
         if(single == null) {
             single = new PantallaCamiones();
-            single.agregarPantalla(p);
         }
+        single.agregarPantalla(p);
         return single;
     }
 
+    public static void crearPantallaCrear(JPanel p){
+
+        PantallaCrearCamion.crearPantalla(p);
+
+    }
+
+    public static PantallaCamiones getSingle() {
+        return single;
+    }
 
     public void agregarPantalla(JPanel p) {
         /*panel = new JPanel();
@@ -77,6 +89,14 @@ public class PantallaCamiones implements ActionListener{
 
         panel.setBackground(new Color(207,216,220));
 
+        JPanel panel2 = new JPanel(new MigLayout("fillx","[][grow][]"));
+        crearTablaCamiones(GestorCamiones.getGestor().listarCamiones());
+
+        panel.add(crearTablaCamiones(GestorCamiones.getGestor().listarCamiones()),BorderLayout.CENTER);
+        //panel.setBorder(BorderFactory.createTitledBorder("Panel de INSUMOS"));
+        panel.setBackground(new Color(207,216,220));
+        
+        
         p.add(panel, "Camiones");
     }
 
@@ -93,11 +113,99 @@ public class PantallaCamiones implements ActionListener{
             pane.show(p, "CrearCamion");
             //Operaciones de crear, buscar, editar y borrar.
 
+        }else if(button == "Cancelar"){
+            JPanel p = (JPanel)panel.getParent();
+            CardLayout pane = (CardLayout)(p.getLayout());
+            pane.show(p, "Camiones");
+            tabla.clearSelection();
+            actualizarTablaCamiones();
+
         }
     }
 
-    public static PantallaCamiones getSingle() {
-        return single;
+
+    public JPanel crearTablaCamiones(Object[][] data){
+
+        JPanel panel = new JPanel(new MigLayout(" fillx","[][grow][]"));
+        panel.setBackground(new Color(207,216,220));
+        String columns[]={"Id","Costo por Km","Capacidad", "Liquido"};
+
+        final Class[] columnClass = new Class[] {
+                Integer.class, Double.class, Double.class, Double.class
+        };
+        
+        DefaultTableModel model = new DefaultTableModel(data, columns){
+            @Override
+            public boolean isCellEditable(int row, int column)
+            {
+                return false;
+            }
+            @Override
+            public Class<?> getColumnClass(int columnIndex)
+            {
+                return columnClass[columnIndex];
+            }
+
+        };
+        
+        JTable tablaCamiones = new JTable(model);
+        tablaCamiones.setRowHeight(35);
+        tablaCamiones.setGridColor(Color.gray);
+        tablaCamiones.setSelectionBackground(new Color(38,198,218));
+        tablaCamiones.setShowGrid(true);
+        tablaCamiones.setFont(new Font("Roboto",Font.PLAIN,15 ));
+        tablaCamiones.getTableHeader().setFont(new Font("Roboto", Font.BOLD, 20));
+        ((JLabel)tablaCamiones.getTableHeader().getDefaultRenderer()).setHorizontalAlignment(JLabel.CENTER);
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment( JLabel.CENTER );
+        tablaCamiones.setDefaultRenderer(Object.class, centerRenderer);
+
+        tablaCamiones.setAutoCreateRowSorter(true);
+        JScrollPane sp=new JScrollPane(tablaCamiones);
+        sp.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+        panel.add(sp, "span 2 3, grow , wrap");
+        //panel.setBorder(BorderFactory.createTitledBorder("Panel de TABLE"));
+        tabla=tablaCamiones;
+        
+        tablaCamiones.addMouseListener(new MouseAdapter() {
+            public void mousePressed(MouseEvent mouseEvent) {
+                JTable table =(JTable) mouseEvent.getSource();
+                Point point = mouseEvent.getPoint();
+                int row = table.rowAtPoint(point);
+                if (mouseEvent.getClickCount() == 2 && table.getSelectedRow() != -1) {
+
+                    /*for (Component component : panel.getParent().getComponents()) {
+                        if(component.getName() == "panel datos buscar insumo" ){
+                            for (Component component1 : ((JPanel) component).getComponents()) {
+                                if(component1 instanceof JButton && ((JButton)component1).getText() == "Eliminar"){
+                                    component1.setEnabled(true);
+
+                                }
+                                if(component1 instanceof JButton && ((JButton)component1).getText( ) == "Editar"){
+                                    System.out.println("Boton editar");
+                                    component1.setEnabled(true);
+
+                                }
+                            }
+
+                        }
+                    }*/
+                    camioneseleccionado = tablaCamiones.getValueAt(tablaCamiones.getSelectedRow(), 1).toString();
+                    System.out.println(tablaCamiones.getValueAt(tablaCamiones.getSelectedRow(), 0).toString());
+                }
+            }
+        });
+
+        return panel;
+        
+    }
+
+    public void actualizarTablaCamiones(){
+
+        panel.remove(1);
+        panel.add(this.crearTablaCamiones(GestorCamiones.getGestor().listarCamiones()));
+        panel.revalidate();
+
     }
 
 }
