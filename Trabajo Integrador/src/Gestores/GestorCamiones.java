@@ -16,7 +16,7 @@ public class GestorCamiones {
 
     public void crear(String marca, String modelo, Integer dominio, Integer anio,
                       Integer costoPorKm, Integer capacidad){
-        new Camion(marca, modelo, dominio, anio, costoPorKm, capacidad);
+        //new Camion(marca, modelo, dominio, anio, costoPorKm, capacidad);
     }
 
 

@@ -46,6 +46,8 @@ public class PantallaBase{
         PantallaCrearStock.crearPantalla(panel);
 
         PantallaCrearCamino.crearPantalla(panel);
+
+
         
 
         pane.add(panel, BorderLayout.CENTER);
