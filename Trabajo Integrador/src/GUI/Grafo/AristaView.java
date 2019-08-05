@@ -24,7 +24,7 @@ public class AristaView {
      * @return
      */
     public Paint getColor() {
-        if(this.color==null) this.color = new GradientPaint(origen.getCoordenadaX() + 10, origen.getCoordenadaY() + 10,destino.getColorBase(),destino.getCoordenadaX() + 10, destino.getCoordenadaY() + 10, origen.getColorBase());
+        if(this.color==null) this.color = new GradientPaint(origen.getCoordenadaX() + 10, origen.getCoordenadaY() + 10, Color.WHITE,destino.getCoordenadaX() + 10, destino.getCoordenadaY() + 10, Color.GRAY);
         return color;
     }
 
@@ -56,7 +56,7 @@ public class AristaView {
      * @return
      */
     public Stroke getFormatoLinea() {
-        if(this.formatoLinea==null)  this.formatoLinea = new BasicStroke(5.0f, BasicStroke.CAP_BUTT, BasicStroke.JOIN_ROUND);
+        if(this.formatoLinea==null)  this.formatoLinea = new BasicStroke(2.0f, BasicStroke.CAP_BUTT, BasicStroke.JOIN_ROUND);
         return formatoLinea;
     }
 

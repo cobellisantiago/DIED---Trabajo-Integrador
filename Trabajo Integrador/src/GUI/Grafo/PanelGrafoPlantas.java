@@ -26,7 +26,7 @@ public class PanelGrafoPlantas extends JPanel{
 
     private Boolean arrastrando = false;
 
-    public PanelGrafoPlantas(){
+    private PanelGrafoPlantas(){
 
        // this.framePadre = (JFrame) this.getParent();
         this.controller = new GrafoController(this);
@@ -49,19 +49,19 @@ public class PanelGrafoPlantas extends JPanel{
                     VerticeView v = clicEnUnNodo(event.getPoint());
                     if(v != null) {
                         aristaSeleccionada = v;
-                        aristaSeleccionada.setColor(Color.CYAN);
+                        aristaSeleccionada.setColor(Color.MAGENTA);
                         actualizarVertice(aristaSeleccionada, event.getPoint());
                         actualizarArista(aristaSeleccionada);
                         repaint();
                     }
-                    System.out.println("DOBLE CLICK");
+                    //System.out.println("DOBLE CLICK");
                 }
             }
 
             public void mouseReleased(MouseEvent event) {
-                System.out.println("mouseReleased: "+event.getPoint());
+                //System.out.println("mouseReleased: "+event.getPoint());
                 if(aristaSeleccionada != null) {
-                    aristaSeleccionada.setColor(Color.BLUE);
+                    aristaSeleccionada.setColor(Color.PINK);
                     actualizarVertice(aristaSeleccionada, event.getPoint());
                     actualizarArista(aristaSeleccionada);
                     repaint();
@@ -82,8 +82,23 @@ public class PanelGrafoPlantas extends JPanel{
                 }
             }
         });
+        
+        single = this;
+    }
+    
+    public static PanelGrafoPlantas getSingle() {
+    	if(single == null) return new PanelGrafoPlantas();
+    	return single;
+    }
+    
+    public static void deleteSingle() {
+    	single = null;
     }
 
+    public void setNormalColor() {
+    	for(VerticeView ver : vertices)	ver.setColor(Color.PINK);
+    }
+    
     public void agregar(AristaView arista){
         this.aristas.add(arista);
     }
@@ -111,8 +126,8 @@ public class PanelGrafoPlantas extends JPanel{
             g2d.setPaint(Color.BLACK);
             Polygon flecha = new Polygon();
             flecha.addPoint(a.getDestino().getCoordenadaX(), a.getDestino().getCoordenadaY()+7);
-            flecha.addPoint(a.getOrigen().getCoordenadaX()+20, a.getOrigen().getCoordenadaY()+10);
-            //flecha.addPoint(a.getDestino().getCoordenadaX(), a.getDestino().getCoordenadaY()+18);
+            flecha.addPoint(a.getDestino().getCoordenadaX()+20, a.getDestino().getCoordenadaY()+10);
+            flecha.addPoint(a.getDestino().getCoordenadaX(), a.getDestino().getCoordenadaY()+18);
             g2d.fillPolygon(flecha);
         }
     }
@@ -178,6 +193,11 @@ public class PanelGrafoPlantas extends JPanel{
         }
     }
 
+    public VerticeView getVertice(Integer id) {
+    	for(VerticeView i : vertices)	if(i.getId().equals(id))	return i;
+    	return null;
+    }
+    
     /*public static PanelGrafoPlantas crearPanel(JPanel p){
         if(single == null) {
             single = new PanelGrafoPlantas();

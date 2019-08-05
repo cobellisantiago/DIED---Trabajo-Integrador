@@ -35,12 +35,11 @@ public class GrafoController {
                 x +=30;
                 if( i % 2 == 0 ) {
                     y = 100;
-                    c = Color.BLUE;
                 } else {
                     y = 200;
-                    c = Color.RED;
                 }
-
+                c = Color.PINK;
+                
                 VerticeView v = new VerticeView(x,y,c);
                 v.setId(p.getId());
                 v.setNombre(p.getNombre());

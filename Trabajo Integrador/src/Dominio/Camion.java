@@ -49,9 +49,9 @@ public class Camion {
 
     public void setDominio(Double dominio) { this.dominio = dominio; }
 
-    public Integer getAño() { return anio; }
+    public Integer getAnio() { return anio; }
 
-    public void setAño(Integer año) { this.anio = año; }
+    public void setAnio(Integer anio) { this.anio = anio; }
 
     public Double getCostoPorKm() { return costoPorKm; }
 

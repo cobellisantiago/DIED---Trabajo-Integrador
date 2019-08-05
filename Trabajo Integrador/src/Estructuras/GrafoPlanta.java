@@ -49,6 +49,10 @@ public class GrafoPlanta extends Grafo<Planta> {
         return null;
     }
 
+    public ArrayList<Planta> getMejorCamino(){
+    	return null;
+    }
+    
     /*@Override
     public void conectar(Planta n1, Planta n2, Number valor) {
         Vertice<Planta> n = new Vertice<>(n1);
