@@ -52,6 +52,8 @@ public class Arista<T> {
 
     @Override
     public boolean equals(Object obj) {
+        if(((Arista)obj).getInicio().equals(this.inicio) && ((Arista)obj).getFin().equals(this.fin))
         return (obj instanceof Arista<?>) && ((Arista<?>)obj).getValor().equals(this.valor);
+        else return false;
     }
 }

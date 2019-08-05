@@ -36,7 +36,7 @@ public class Grafo<T> {
     }
 
     private void addNodo(Vertice<T> nodo){
-        this.vertices.add(nodo);
+       if(!vertices.contains(nodo)) this.vertices.add(nodo);
     }
 
     public void conectar(T n1,T n2){
@@ -48,7 +48,7 @@ public class Grafo<T> {
     }
 
     private void conectar(Vertice<T> nodo1,Vertice<T> nodo2,Number valor){
-        this.aristas.add(new Arista<T>(nodo1,nodo2,valor));
+        if(!aristas.contains(new Arista<T>(nodo1,nodo2,valor))) this.aristas.add(new Arista<T>(nodo1,nodo2,valor));
     }
 
     public Vertice<T> getNodo(T valor){
@@ -134,38 +134,47 @@ public class Grafo<T> {
         Double resultadoFlujo = 0.0;
         Double resultado;
         //estructuras auxiliares
-        Queue<Vertice<T>> pendientes = new LinkedList<Vertice<T>>();
-        HashSet<Vertice<T>> marcados = new HashSet<Vertice<T>>();
-        HashSet<Arista<T>> aristasOriginales = new HashSet<Arista<T>>();
-        HashSet<Arista<T>> aristasMenosPeso = new HashSet<Arista<T>>();
+        Grafo aristasOriginales = new Grafo();
+        Queue<Arista<T>> aristasMenosPeso = new LinkedList<>();
 
 
         List<List<Vertice<T>>> caminos = this.caminos(inicio,fin);
         Arista<T> aristaAux = null;
 
+        for(List<Vertice<T>> camino: caminos){
+            for (Vertice<T> v: camino) {
+                if (camino.indexOf(v) != camino.size() - 1)
+                    aristaAux = buscarArista(v, camino.get(camino.indexOf(v) + 1));
+                else aristaAux = null;
+                if (aristaAux != null) {
+                    aristasOriginales.addNodo(v);
+                    aristasOriginales.addNodo(camino.get(camino.indexOf(v) + 1));
+                    aristasOriginales.conectar(v, camino.get(camino.indexOf(v) + 1),aristaAux.getValor());
+
+                }
+            }
+        }
+
         for(List<Vertice<T>> camino : caminos){
             resultado = 100000000000000000000000.0;
             // -------->> RECORRO EL CAMINO OBTENIENDO LAS ARISTAS Y CALCULANDO EL MAXIMO DEL CAMINO
             for (Vertice<T> v: camino) {
-                if(camino.indexOf(v)!=camino.size()-1) aristaAux = buscarArista(v,camino.get(camino.indexOf(v)+1));
+                if(camino.indexOf(v)!=camino.size()-1) aristaAux = aristasOriginales.buscarArista(v,camino.get(camino.indexOf(v)+1));
+                else aristaAux = null;
                 if(aristaAux != null){
-                    aristasOriginales.add(aristaAux);
                     aristasMenosPeso.add(aristaAux);
                 }
                 if(camino.indexOf(v)!=camino.size()-1){
-                    if((Double)valorArista(v,camino.get(camino.indexOf(v)+1))<resultado) resultado=(Double)valorArista(v,camino.get(camino.indexOf(v)+1));
+                    if((Double)aristasOriginales.valorArista(v,camino.get(camino.indexOf(v)+1))<resultado)
+                        resultado=(Double)aristasOriginales.valorArista(v,camino.get(camino.indexOf(v)+1));
                 }
 
             }
             // --------->> DESPUES DE RECORRER UN CAMINO REDUZCO EL PESO DE LAS ARISTAS DE DICHO CAMINO
-            for (Arista a:aristasMenosPeso) {
-                if((Double)a.getValor()-resultado < 0)a.setValor(0.0);
-                else a.setValor((Double)a.getValor()-resultado);
-                for (Arista b: aristasOriginales) {
-                    if(a.equals(b)){
-                        b.setValor(a.getValor());
-                    }
-                }
+            while(!aristasMenosPeso.isEmpty()){
+                Arista aux = aristasMenosPeso.poll();
+                if((Double)aux.getValor() - resultado < 0) aux.setValor(0.0);
+                else aux.setValor((Double)aux.getValor() - resultado);
             }
             resultadoFlujo+=resultado;
         }

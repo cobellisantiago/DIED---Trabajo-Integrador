@@ -2,18 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="04aadc18-91c6-4d86-9ee5-1254dacfd608" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Trabajo Integrador/src/Dominio/Camino.java" beforeDir="false" afterPath="$PROJECT_DIR$/Trabajo Integrador/src/Dominio/Camino.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Trabajo Integrador/src/Dominio/Planta.java" beforeDir="false" afterPath="$PROJECT_DIR$/Trabajo Integrador/src/Dominio/Planta.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Trabajo Integrador/src/Estructuras/Arista.java" beforeDir="false" afterPath="$PROJECT_DIR$/Trabajo Integrador/src/Estructuras/Arista.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Trabajo Integrador/src/Estructuras/Grafo.java" beforeDir="false" afterPath="$PROJECT_DIR$/Trabajo Integrador/src/Estructuras/Grafo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Trabajo Integrador/src/Estructuras/GrafoPlanta.java" beforeDir="false" afterPath="$PROJECT_DIR$/Trabajo Integrador/src/Estructuras/GrafoPlanta.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Trabajo Integrador/src/GUI/Caminos/PantallaCaminos.java" beforeDir="false" afterPath="$PROJECT_DIR$/Trabajo Integrador/src/GUI/Caminos/PantallaCaminos.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Trabajo Integrador/src/GUI/Caminos/PantallaCrearCamino.java" beforeDir="false" afterPath="$PROJECT_DIR$/Trabajo Integrador/src/GUI/Caminos/PantallaCrearCamino.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Trabajo Integrador/src/GUI/Insumos/PantallaInsumo.java" beforeDir="false" afterPath="$PROJECT_DIR$/Trabajo Integrador/src/GUI/Insumos/PantallaInsumo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Trabajo Integrador/src/GUI/PantallaBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/Trabajo Integrador/src/GUI/PantallaBase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Trabajo Integrador/src/GUI/Plantas/PantallaMapaPlanta.java" beforeDir="false" afterPath="$PROJECT_DIR$/Trabajo Integrador/src/GUI/Plantas/PantallaMapaPlanta.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Trabajo Integrador/src/GUI/Plantas/PantallaPlantas.java" beforeDir="false" afterPath="$PROJECT_DIR$/Trabajo Integrador/src/GUI/Plantas/PantallaPlantas.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Trabajo Integrador/src/Gestores/GestorCaminos.java" beforeDir="false" afterPath="$PROJECT_DIR$/Trabajo Integrador/src/Gestores/GestorCaminos.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Trabajo Integrador/src/Gestores/GestorPlantas.java" beforeDir="false" afterPath="$PROJECT_DIR$/Trabajo Integrador/src/Gestores/GestorPlantas.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/Trabajo Integrador/out/production/Trabajo Integrador/" />
@@ -27,11 +17,11 @@
     <option name="isMigrated" value="true" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Trabajo Integrador/src/Gestores/GestorCaminos.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
+            <state relative-caret-position="476">
               <caret line="48" column="155" selection-start-line="48" selection-start-column="155" selection-end-line="48" selection-end-column="155" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -55,27 +45,32 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Trabajo Integrador/src/Estructuras/Grafo.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="146" column="51" selection-start-line="146" selection-start-column="51" selection-end-line="146" selection-end-column="51" />
+            <state relative-caret-position="-579">
+              <caret line="135" column="32" selection-start-line="135" selection-start-column="32" selection-end-line="135" selection-end-column="32" />
               <folding>
                 <element signature="method#Grafo#0;class#Grafo#0" />
-                <element signature="method#conectar#2;class#Grafo#0" />
+                <element signature="e#865#866#0" expanded="true" />
+                <element signature="e#938#939#0" expanded="true" />
+                <element signature="e#974#975#0" expanded="true" />
+                <element signature="e#1034#1035#0" expanded="true" />
+                <element signature="e#1085#1086#0" expanded="true" />
+                <element signature="e#1147#1148#0" expanded="true" />
                 <element signature="method#getNodo#0;class#Grafo#0" />
                 <element signature="method#getAdyacentes#0;class#Grafo#0" />
                 <element signature="method#getAdyacentes#1;class#Grafo#0" />
+                <element signature="e#2553#2554#0" expanded="true" />
+                <element signature="e#2612#2613#0" expanded="true" />
                 <element signature="method#gradoEntrada#0;class#Grafo#0" />
                 <element signature="method#gradoSalida#0;class#Grafo#0" />
-                <element signature="e#4132#4143#0" expanded="true" />
-                <element signature="e#4215#4226#0" expanded="true" />
                 <element signature="method#recorridoProfundidad#0;class#Grafo#0" />
                 <element signature="method#recorridoTopologico#0;class#Grafo#0" />
                 <element signature="method#esAdyacente#0;class#Grafo#0" />
                 <element signature="method#buscarCaminosAux#0;class#Grafo#0" />
-                <element signature="e#8757#8758#0" expanded="true" />
-                <element signature="e#8826#8827#0" expanded="true" />
+                <element signature="e#10209#10210#0" expanded="true" />
+                <element signature="e#10278#10279#0" expanded="true" />
                 <element signature="method#caminos#0;class#Grafo#0" />
                 <element signature="method#caminosMinimoDikstra#0;class#Grafo#0" />
                 <element signature="method#caminosMinimoDikstra#1;class#Grafo#0" />
@@ -84,17 +79,30 @@
                 <element signature="method#existeCamino#0;class#Grafo#0" />
                 <element signature="method#existeCaminoRec#0;class#Grafo#0" />
                 <element signature="method#existeCaminoRec#1;class#Grafo#0" />
-                <element signature="e#15322#15323#0" expanded="true" />
+                <element signature="e#15785#15786#0" expanded="true" />
                 <element signature="method#valorArista#0;class#Grafo#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Trabajo Integrador/src/Estructuras/Arista.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="306">
+              <caret line="56" column="26" selection-start-line="56" selection-start-column="26" selection-end-line="56" selection-end-column="26" />
+              <folding>
+                <element signature="e#152#153#0" expanded="true" />
+                <element signature="e#177#178#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Trabajo Integrador/src/GUI/Caminos/PantallaCaminos.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-690">
+            <state relative-caret-position="17">
               <caret line="64" column="34" selection-start-line="64" selection-start-column="34" selection-end-line="64" selection-end-column="34" />
             </state>
           </provider>
@@ -103,8 +111,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Trabajo Integrador/src/GUI/PantallaBase.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="118" lean-forward="true" selection-start-line="118" selection-end-line="118" />
+            <state relative-caret-position="1683">
+              <caret line="118" selection-start-line="118" selection-end-line="118" />
             </state>
           </provider>
         </entry>
@@ -137,7 +145,6 @@
         <option value="$PROJECT_DIR$/Trabajo Integrador/src/GUI/PantallaCrearInsumo.java" />
         <option value="$PROJECT_DIR$/Trabajo Integrador/src/GUI/PantallaInsumo.java" />
         <option value="$PROJECT_DIR$/Trabajo Integrador/src/GUI/VerticeView.java" />
-        <option value="$PROJECT_DIR$/Trabajo Integrador/src/Estructuras/Arista.java" />
         <option value="$PROJECT_DIR$/Trabajo Integrador/src/Dominio/Ruta.java" />
         <option value="$PROJECT_DIR$/Trabajo Integrador/src/Dominio/InsumoLiquido.java" />
         <option value="$PROJECT_DIR$/Trabajo Integrador/src/GUI/PantallaPlantas.java" />
@@ -165,8 +172,9 @@
         <option value="$PROJECT_DIR$/Trabajo Integrador/src/Estructuras/GrafoPlanta.java" />
         <option value="$PROJECT_DIR$/Trabajo Integrador/src/Dominio/Planta.java" />
         <option value="$PROJECT_DIR$/Trabajo Integrador/src/Gestores/GestorCaminos.java" />
-        <option value="$PROJECT_DIR$/Trabajo Integrador/src/Estructuras/Grafo.java" />
         <option value="$PROJECT_DIR$/Trabajo Integrador/src/GUI/Caminos/PantallaCaminos.java" />
+        <option value="$PROJECT_DIR$/Trabajo Integrador/src/Estructuras/Arista.java" />
+        <option value="$PROJECT_DIR$/Trabajo Integrador/src/Estructuras/Grafo.java" />
       </list>
     </option>
   </component>
@@ -180,6 +188,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -203,7 +212,7 @@
               <item name="DIED---Trabajo-Integrador" type="462c0819:PsiDirectoryNode" />
               <item name="Trabajo Integrador" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="GUI" type="462c0819:PsiDirectoryNode" />
+              <item name="Estructuras" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="DIED---Trabajo-Integrador" type="b2602c69:ProjectViewProjectNode" />
@@ -211,13 +220,11 @@
               <item name="Trabajo Integrador" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="GUI" type="462c0819:PsiDirectoryNode" />
-              <item name="Caminos" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
     </panes>
   </component>
@@ -271,16 +278,18 @@
       <workItem from="1564757380120" duration="7716000" />
       <workItem from="1564948773145" duration="1416000" />
       <workItem from="1564951143242" duration="23322000" />
+      <workItem from="1565008090776" duration="4057000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="53506000" />
+    <option name="totallyTimeSpent" value="57563000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49856323" visible="true" weight="0.16599733" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49856323" visible="true" weight="0.16800536" />
       <window_info id="Structure" order="1" sideWeight="0.50143677" side_tool="true" weight="0.24966533" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -290,7 +299,7 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3275862" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.3275862" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.3994253" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.40229884" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -315,40 +324,11 @@
     <option name="version" value="1" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Trabajo Integrador/src/Estructuras/Grafo.java</url>
-          <line>169</line>
-          <properties />
-          <option name="timeStamp" value="44" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Trabajo Integrador/src/Estructuras/Grafo.java</url>
-          <line>165</line>
-          <properties />
-          <option name="timeStamp" value="45" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Trabajo Integrador/src/Estructuras/Grafo.java</url>
-          <line>161</line>
-          <properties />
-          <option name="timeStamp" value="46" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Trabajo Integrador/src/Estructuras/Grafo.java</url>
-          <line>154</line>
-          <properties />
-          <option name="timeStamp" value="47" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Trabajo Integrador/src/Estructuras/Grafo.java</url>
-          <line>155</line>
-          <properties />
-          <option name="timeStamp" value="52" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <watches-manager>
+      <configuration name="Application">
+        <watch expression="aristasMenosPeso" />
+      </configuration>
+    </watches-manager>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/Trabajo Integrador/src/Dominio/Ruta.java" />
@@ -454,13 +434,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Trabajo Integrador/src/GUI/PantallaCamiones.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-238">
-          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/Trabajo Integrador/src/GUI/PantallaCamiones.java" />
     <entry file="file://$PROJECT_DIR$/Trabajo Integrador/src/GUI/PantallaMenu.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1843">
@@ -631,14 +605,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Trabajo Integrador/src/Estructuras/Arista.java">
+    <entry file="file://$PROJECT_DIR$/Trabajo Integrador/src/GUI/Camiones/PantallaCamiones.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="25" lean-forward="true" selection-start-line="5" selection-start-column="25" selection-end-line="5" selection-end-column="25" />
-          <folding>
-            <element signature="e#152#153#0" expanded="true" />
-            <element signature="e#177#178#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="68">
+          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Trabajo Integrador/src/GUI/PantallaBase.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1683">
+          <caret line="118" selection-start-line="118" selection-end-line="118" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Trabajo Integrador/src/GUI/Caminos/PantallaCaminos.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="64" column="34" selection-start-line="64" selection-start-column="34" selection-end-line="64" selection-end-column="34" />
         </state>
       </provider>
     </entry>
@@ -657,7 +641,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Trabajo Integrador/src/Gestores/GestorCaminos.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
+        <state relative-caret-position="476">
           <caret line="48" column="155" selection-start-line="48" selection-start-column="155" selection-end-line="48" selection-end-column="155" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -665,33 +649,42 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Trabajo Integrador/src/GUI/PantallaBase.java">
+    <entry file="file://$PROJECT_DIR$/Trabajo Integrador/src/Estructuras/Arista.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="118" lean-forward="true" selection-start-line="118" selection-end-line="118" />
+        <state relative-caret-position="306">
+          <caret line="56" column="26" selection-start-line="56" selection-start-column="26" selection-end-line="56" selection-end-column="26" />
+          <folding>
+            <element signature="e#152#153#0" expanded="true" />
+            <element signature="e#177#178#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Trabajo Integrador/src/Estructuras/Grafo.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="146" column="51" selection-start-line="146" selection-start-column="51" selection-end-line="146" selection-end-column="51" />
+        <state relative-caret-position="-579">
+          <caret line="135" column="32" selection-start-line="135" selection-start-column="32" selection-end-line="135" selection-end-column="32" />
           <folding>
             <element signature="method#Grafo#0;class#Grafo#0" />
-            <element signature="method#conectar#2;class#Grafo#0" />
+            <element signature="e#865#866#0" expanded="true" />
+            <element signature="e#938#939#0" expanded="true" />
+            <element signature="e#974#975#0" expanded="true" />
+            <element signature="e#1034#1035#0" expanded="true" />
+            <element signature="e#1085#1086#0" expanded="true" />
+            <element signature="e#1147#1148#0" expanded="true" />
             <element signature="method#getNodo#0;class#Grafo#0" />
             <element signature="method#getAdyacentes#0;class#Grafo#0" />
             <element signature="method#getAdyacentes#1;class#Grafo#0" />
+            <element signature="e#2553#2554#0" expanded="true" />
+            <element signature="e#2612#2613#0" expanded="true" />
             <element signature="method#gradoEntrada#0;class#Grafo#0" />
             <element signature="method#gradoSalida#0;class#Grafo#0" />
-            <element signature="e#4132#4143#0" expanded="true" />
-            <element signature="e#4215#4226#0" expanded="true" />
             <element signature="method#recorridoProfundidad#0;class#Grafo#0" />
             <element signature="method#recorridoTopologico#0;class#Grafo#0" />
             <element signature="method#esAdyacente#0;class#Grafo#0" />
             <element signature="method#buscarCaminosAux#0;class#Grafo#0" />
-            <element signature="e#8757#8758#0" expanded="true" />
-            <element signature="e#8826#8827#0" expanded="true" />
+            <element signature="e#10209#10210#0" expanded="true" />
+            <element signature="e#10278#10279#0" expanded="true" />
             <element signature="method#caminos#0;class#Grafo#0" />
             <element signature="method#caminosMinimoDikstra#0;class#Grafo#0" />
             <element signature="method#caminosMinimoDikstra#1;class#Grafo#0" />
@@ -700,23 +693,9 @@
             <element signature="method#existeCamino#0;class#Grafo#0" />
             <element signature="method#existeCaminoRec#0;class#Grafo#0" />
             <element signature="method#existeCaminoRec#1;class#Grafo#0" />
-            <element signature="e#15322#15323#0" expanded="true" />
+            <element signature="e#15785#15786#0" expanded="true" />
             <element signature="method#valorArista#0;class#Grafo#0" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Trabajo Integrador/src/GUI/Camiones/PantallaCamiones.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Trabajo Integrador/src/GUI/Caminos/PantallaCaminos.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-690">
-          <caret line="64" column="34" selection-start-line="64" selection-start-column="34" selection-end-line="64" selection-end-column="34" />
         </state>
       </provider>
     </entry>
