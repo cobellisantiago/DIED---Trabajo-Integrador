@@ -236,8 +236,10 @@ public class PantallaInsumo implements ActionListener{
 
         panelBuscar = new JPanel(new MigLayout(" fill, insets 0"));
 
+
         JPanel panel1 = new JPanel(new MigLayout(""));
         panel1.setName("panel datos buscar insumo");
+
 
         JLabel titulo = new JLabel("Buscar Insumo");
 

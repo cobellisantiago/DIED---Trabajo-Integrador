@@ -1,5 +1,6 @@
 package GUI;
 
+import Dominio.Camino;
 import Dominio.Insumo;
 import Dominio.Planta;
 import GUI.Caminos.PantallaCaminos;
@@ -12,6 +13,8 @@ import GUI.Plantas.PantallaMapaPlanta;
 import GUI.Plantas.PantallaPlantas;
 import GUI.Stock.PantallaCrearStock;
 import GUI.Stock.PantallaStock;
+import Gestores.GestorCaminos;
+import Gestores.GestorPlantas;
 
 import java.awt.*;
 import javax.swing.*;
@@ -87,14 +90,32 @@ public class PantallaBase{
         Insumo insumo8 = new Insumo("I",80.0,2.5,false);
         Insumo insumo9 = new Insumo("j",90.0,2.5,false);
 
-        Planta planta1 = new Planta("P1");
+        //Planta planta1 = new Planta("Planta Acopio Puerto");
         Planta planta2 = new Planta("P2");
         Planta planta3 = new Planta("P3");
         Planta planta4 = new Planta("P4");
         Planta planta5 = new Planta("P5");
         Planta planta6 = new Planta("P6");
         Planta planta7 = new Planta("P7");
-        Planta planta8 = new Planta("P8");
+        //Planta planta8 = new Planta("Planta Acopio Final");
+
+        GestorCaminos.getGestor().crear(0,1,200.0,150,13000.0);
+
+        GestorCaminos.getGestor().crear(0,2,150.0,180,15000.0);
+
+        GestorCaminos.getGestor().crear(1,3,100.0,70,10000.0);
+
+        GestorCaminos.getGestor().crear(1,4,80.0,40,10000.0);
+
+        GestorCaminos.getGestor().crear(2,5,250.0,180,10000.0);
+
+        GestorCaminos.getGestor().crear(5,6,400.0,350,5000.0);
+
+        GestorCaminos.getGestor().crear(6,4,320.,300,20000.0);
+
+        GestorCaminos.getGestor().crear(5,7,100.0,70,6000.0);
+
+        GestorCaminos.getGestor().crear(3,7,200.0,150,7000.0);
 
 
         /* Use an appropriate Look and Feel */

@@ -11,6 +11,8 @@ import java.util.stream.Collectors;
 public class Planta extends Vertice {
 
 	private static ArrayList<Planta> instances = new ArrayList<Planta>();
+	private static Planta planta_de_acopio_puerto = new Planta("Planta de Acopio Puerto",0);
+    private static Planta planta_de_acopio_final = new Planta("Planta de Acopio Final",1);
     private List<Stock> listaStocks;
     private Integer id;
     private String nombre;
@@ -19,14 +21,33 @@ public class Planta extends Vertice {
     @SuppressWarnings("unused")
 	private Planta() {}
 
-    public Planta(String nomb) {
-    	this.id = instances.size() + 1;
+	//Solo para las de acopio
+    private Planta(String nombre, Integer id) {
+        this.nombre = nombre;
+        this.id = id;
+        instances.add(this);
+    }
+
+    public Planta(String nomb){
+
+        this.id = instances.size()-1;
+        System.out.println("Id: "+id);
+    	Planta.planta_de_acopio_final.setId(instances.size());
+        System.out.println("Id Final: "+Planta.planta_de_acopio_final.getId());
     	this.nombre = nomb;
     	instances.add(this);
     }
 
     public static ArrayList<Planta> getInstances() {
     	return instances;
+    }
+
+    public static Planta getPuerto() {
+        return planta_de_acopio_puerto;
+    }
+
+    public static Planta getFinal() {
+        return planta_de_acopio_final;
     }
     
     public Double costoTotal() {
@@ -89,5 +110,11 @@ public class Planta extends Vertice {
     @Override
     public String toString() {
         return nombre.toString();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return this.getNombre().equals(((Planta)obj).getNombre());
+
     }
 }

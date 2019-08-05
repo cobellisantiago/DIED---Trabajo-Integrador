@@ -1,5 +1,7 @@
 package Estructuras;
 
+import Dominio.Planta;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -50,7 +52,18 @@ public class Grafo<T> {
     }
 
     public Vertice<T> getNodo(T valor){
-        return this.vertices.get(this.vertices.indexOf(new Vertice<T>(valor)));
+
+        try{
+            if (getVertices().contains(new Vertice<T>(valor))) {
+                //System.out.println("Get nodo: "+this.vertices.get(this.vertices.indexOf(new Vertice<T>(valor))));
+                return this.vertices.get(this.vertices.indexOf(new Vertice<T>(valor)));
+            }else{
+                return null;
+            }
+        }catch (ArrayIndexOutOfBoundsException e){
+            return null;
+        }
+        //return this.vertices.get(this.vertices.indexOf(new Vertice<T>(valor)));
     }
 
     public List<T> getAdyacentes(T valor){
@@ -63,7 +76,6 @@ public class Grafo<T> {
         }
         return salida;
     }
-
 
     private List<Vertice<T>> getAdyacentes(Vertice<T> unNodo){
         List<Vertice<T>> salida = new ArrayList<Vertice<T>>();
@@ -118,6 +130,50 @@ public class Grafo<T> {
         return resultado;
     }
 
+    public Double flujoMaximo(Vertice<T> inicio,Vertice<T> fin){
+        Double resultadoFlujo = 0.0;
+        Double resultado;
+        //estructuras auxiliares
+        Queue<Vertice<T>> pendientes = new LinkedList<Vertice<T>>();
+        HashSet<Vertice<T>> marcados = new HashSet<Vertice<T>>();
+        HashSet<Arista<T>> aristasOriginales = new HashSet<Arista<T>>();
+        HashSet<Arista<T>> aristasMenosPeso = new HashSet<Arista<T>>();
+
+
+        List<List<Vertice<T>>> caminos = this.caminos(inicio,fin);
+        Arista<T> aristaAux = null;
+
+        for(List<Vertice<T>> camino : caminos){
+            resultado = 100000000000000000000000.0;
+            // -------->> RECORRO EL CAMINO OBTENIENDO LAS ARISTAS Y CALCULANDO EL MAXIMO DEL CAMINO
+            for (Vertice<T> v: camino) {
+                if(camino.indexOf(v)!=camino.size()-1) aristaAux = buscarArista(v,camino.get(camino.indexOf(v)+1));
+                if(aristaAux != null){
+                    aristasOriginales.add(aristaAux);
+                    aristasMenosPeso.add(aristaAux);
+                }
+                if(camino.indexOf(v)!=camino.size()-1){
+                    if((Double)valorArista(v,camino.get(camino.indexOf(v)+1))<resultado) resultado=(Double)valorArista(v,camino.get(camino.indexOf(v)+1));
+                }
+
+            }
+            // --------->> DESPUES DE RECORRER UN CAMINO REDUZCO EL PESO DE LAS ARISTAS DE DICHO CAMINO
+            for (Arista a:aristasMenosPeso) {
+                if((Double)a.getValor()-resultado < 0)a.setValor(0.0);
+                else a.setValor((Double)a.getValor()-resultado);
+                for (Arista b: aristasOriginales) {
+                    if(a.equals(b)){
+                        b.setValor(a.getValor());
+                    }
+                }
+            }
+            resultadoFlujo+=resultado;
+        }
+
+
+        return resultadoFlujo;
+    }
+
     public List<T> recorridoProfundidad(Vertice<T> inicio){
         List<T> resultado = new ArrayList<T>();
         Stack<Vertice<T>> pendientes = new Stack<Vertice<T>>();
@@ -165,7 +221,7 @@ public class Grafo<T> {
             }
         }
 
-        System.out.println(resultado);
+        System.out.println("Resultado: " + resultado);
         return resultado;
     }
 
@@ -184,12 +240,12 @@ public class Grafo<T> {
         ;
 
         for(Vertice<T> ady: adyacentes){
-            System.out.println(">> " + ady);
+            //System.out.println(">> " + ady);
             copiaMarcados = marcados.stream().collect(Collectors.toList());
             if(ady.equals(v2)) {
                 copiaMarcados.add(v2);
                 todos.add(new ArrayList<Vertice<T>>(copiaMarcados));
-                System.out.println("ENCONTRO CAMINO "+ todos.toString());
+               // System.out.println("ENCONTRO CAMINO "+ todos.toString());
             } else {
                 if( !copiaMarcados.contains(ady)) {
                     copiaMarcados.add(ady);
@@ -200,7 +256,7 @@ public class Grafo<T> {
 
     }
 
-    public List<List<Vertice<T>>> caminos(T v1,T v2){
+    public List<List<Vertice<T>>> caminosPlantas(T v1,T v2){
         return this.caminos(new Vertice(v1), new Vertice(v2));
     }
 
@@ -269,7 +325,7 @@ public class Grafo<T> {
         return this.buscarArista(new Vertice<T>(v1), new Vertice<T>(v2));
     }*/
 
-
+    //ERA PROTECTED Y LO CAMBIE A PUBLIC OJO!
     protected Arista<T> buscarArista(Vertice<T> v1, Vertice<T> v2){
         for(Arista<T> unaArista : this.aristas) {
 
@@ -381,4 +437,11 @@ public class Grafo<T> {
         return vertices;
     }
 
+    public Number valorArista(Vertice<T> inicio, Vertice<T> fin){
+       // System.out.println(buscarArista(inicio,fin).getValor());
+        System.out.println("VALOR ARISTAS");
+       //imprimirAristas();
+        if(buscarArista(inicio,fin) == null) return 0.0;
+        return  buscarArista(inicio,fin).getValor();
+    }
 }

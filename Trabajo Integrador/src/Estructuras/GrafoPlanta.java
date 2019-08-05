@@ -49,6 +49,12 @@ public class GrafoPlanta extends Grafo<Planta> {
         return null;
     }
 
+    /*@Override
+    public void conectar(Planta n1, Planta n2, Number valor) {
+        Vertice<Planta> n = new Vertice<>(n1);
+        Vertice<Planta> m = new Vertice<>(n2);
+        super.conectar(n1, n2,valor);
+    }*/
 }
 
 

@@ -177,13 +177,15 @@ public class PantallaCrearCamino implements ActionListener {
         if(button == "Crear") {
             if (!origen.getSelectedItem().toString().isEmpty() && !fin.getSelectedItem().toString().isEmpty() && !tiempo.getText().isEmpty()&& !distancia.getText().isEmpty()
                     && !pesoMax.getText().isEmpty()) {
-                GestorCaminos.getGestor().crear(Integer.valueOf(origen.getSelectedItem().toString()), Integer.valueOf(fin.getSelectedItem().toString()), Double.valueOf(distancia.getText()), Integer.valueOf(tiempo.getText()));
+                GestorCaminos.getGestor().crear(Integer.valueOf(origen.getSelectedItem().toString()), Integer.valueOf(fin.getSelectedItem().toString()),
+                        Double.valueOf(distancia.getText()), Integer.valueOf(tiempo.getText()),Double.valueOf(pesoMax.getText()));
                 popUpCorrecto();
             } //else descrip.setText(DESCRIP);
         }else if(button == "Cancelar"){
             JPanel p = (JPanel)panelGeneral.getParent();
             CardLayout pane = (CardLayout)(p.getLayout());
             pane.show(p, "Caminos");
+
         }
     }
 

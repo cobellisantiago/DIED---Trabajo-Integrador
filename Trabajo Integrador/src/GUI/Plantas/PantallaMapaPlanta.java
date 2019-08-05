@@ -32,9 +32,9 @@ public class PantallaMapaPlanta implements ActionListener {
     }
     
     private void agregarPantalla(JPanel p) {
-
+        panelGeneral.setLayout(new MigLayout("debug, fill, insets 0",""));
         JPanel panelGrafo = new PanelGrafoPlantas();
-
+        //panelGrafo.setLayout(new MigLayout("debug, fill","[][grow]"));
         ImageIcon backIcon = new ImageIcon(new ImageIcon("Trabajo Integrador/src/GUI/Icons/left-arrow.png").getImage()
                 .getScaledInstance(35, 35, Image.SCALE_DEFAULT));
 
@@ -50,14 +50,14 @@ public class PantallaMapaPlanta implements ActionListener {
         menu.setVerticalTextPosition(JButton.TOP);
         menu.setHorizontalTextPosition(JButton.CENTER);
 
-        JPanel panelBotones = new JPanel(new MigLayout("fill","[][grow]"));
+        JPanel panelBotones = new JPanel(new MigLayout("fill",""));
         //panelBotones.add(tituloLabel,"span, center");
         panelBotones.add(menu, "left");
 
-        panelGeneral.add(panelBotones,BorderLayout.NORTH);
+        panelGeneral.add(panelBotones,"wrap, span ");
         panelBotones.setBorder(BorderFactory.createTitledBorder("Panel de Botones"));
         panelGrafo.setBorder(BorderFactory.createTitledBorder("Panel de Grafo"));
-        panelGeneral.add(panelGrafo,BorderLayout.SOUTH);
+        panelGeneral.add(panelGrafo, "span, grow");
 
         p.add(panelGeneral,"MapaPlanta");
     }

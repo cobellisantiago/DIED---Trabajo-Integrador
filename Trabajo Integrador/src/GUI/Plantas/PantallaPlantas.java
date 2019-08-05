@@ -81,6 +81,8 @@ public class PantallaPlantas implements ActionListener{
         mapaButton.setName("MapaPlanta");
         mapaButton.addActionListener(this);
 
+
+
         JPanel panelBotones = new JPanel(new MigLayout("fill","[][grow]"));
         panelBotones.add(tituloLabel,"span, center");
         panelBotones.add(menu, "left");

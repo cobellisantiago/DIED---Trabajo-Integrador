@@ -53,6 +53,8 @@ public class GestorPlantas{
     public void editar() {
 
     }
+
+
     public void eliminiar() {
 
     }
