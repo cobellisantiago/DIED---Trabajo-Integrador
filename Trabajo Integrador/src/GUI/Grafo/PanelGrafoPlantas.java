@@ -1,6 +1,12 @@
 package GUI.Grafo;
 
 import javax.swing.*;
+
+import Dominio.Camino;
+import Estructuras.Vertice;
+import Gestores.GestorCaminos;
+import Gestores.GestorPlantas;
+
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -86,6 +92,7 @@ public class PanelGrafoPlantas extends JPanel{
         
         single = this;
     }
+   
     
     public static PanelGrafoPlantas getSingle() {
     	if(single == null) return new PanelGrafoPlantas();
@@ -98,7 +105,7 @@ public class PanelGrafoPlantas extends JPanel{
 
     public void setNormalColor() {
     	for(VerticeView ver : vertices)	ver.setColor(Color.PINK);
-    	for(AristaView ari : aristas)	ari.setColor(Color.WHITE, Color.GRAY);
+    	for(AristaView ari : aristas)	ari.setColor(Color.BLACK, Color.GRAY);
     }
     
     public void agregar(AristaView arista){
@@ -123,6 +130,10 @@ public class PanelGrafoPlantas extends JPanel{
             g2d.setPaint(a.getColor());
             g2d.setStroke ( a.getFormatoLinea());
             g2d.draw(a.getLinea());
+            Camino camino = GestorCaminos.getGestor().getCamino(GestorPlantas.getGestor().getPlanta(a.getOrigen().getId()), GestorPlantas.getGestor().getPlanta(a.getDestino().getId()));
+            Integer textX = a.getOrigen().getCoordenadaX() + (a.getDestino().getCoordenadaX() - a.getOrigen().getCoordenadaX()) / 2;
+            Integer textY = a.getOrigen().getCoordenadaY() + (a.getDestino().getCoordenadaY() - a.getOrigen().getCoordenadaY()) / 2;   
+            g2d.drawString("(D "+camino.getDistancia().toString()+")( T "+camino.getDuracion().toString()+")( PM "+camino.getPesoMaximo().toString()+")", textX, textY);
             //dibujo una flecha al final
             // con el color del origen para que se note
             g2d.setPaint(Color.BLACK);

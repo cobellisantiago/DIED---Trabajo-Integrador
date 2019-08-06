@@ -82,7 +82,7 @@ public class PantallaCrearCamino implements ActionListener {
             @Override
             public void itemStateChanged(ItemEvent e) {
                 JComboBox cb = (JComboBox)e.getSource();
-                if(fin.getItemCount() != Planta.getInstances().size())	fin.insertItemAt(plantaOrigen, plantaOrigen-1);
+                if(fin.getItemCount() != Planta.getInstances().size())	fin.insertItemAt(plantaOrigen, plantaOrigen);
                 plantaOrigen = (Integer)cb.getSelectedItem();
                 origen.getModel().setSelectedItem(plantaOrigen);
                 fin.removeItem(plantaOrigen);

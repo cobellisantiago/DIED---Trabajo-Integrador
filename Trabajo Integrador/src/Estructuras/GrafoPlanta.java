@@ -50,7 +50,7 @@ public class GrafoPlanta extends Grafo<Planta> {
         return null;
     }
 
-    public List<List<Vertice<Planta>>> mejorCaminoLongitud(ArrayList<Planta> listaPlantas){
+    public List<List<Vertice<Planta>>> mejoresCaminos(ArrayList<Planta> listaPlantas){
     	
     	ArrayList<Vertice<Planta>> listaVertices = new ArrayList<Vertice<Planta>>();
     	List<List<Vertice<Planta>>> caminos = this.caminos(getNodo(Planta.getPuerto()), getNodo(Planta.getFinal()));

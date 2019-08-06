@@ -45,4 +45,8 @@ public class Camino extends Arista<Planta> {
     public Integer getDuracion() {
     	return duracion;
     }
+    
+    public Double getPesoMaximo() {
+    	return pesoMaximo;
+    }
 }
