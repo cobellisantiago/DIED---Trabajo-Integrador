@@ -68,7 +68,7 @@ public class PantallaMapaPlanta implements ActionListener {
         
         JComboBox<Integer> cbInsumo = new JComboBox<Integer>();
         
-        cbInsumo.addItemListener(new ItemListener() {
+        /*cbInsumo.addItemListener(new ItemListener() {
             @Override
             public void itemStateChanged(ItemEvent e) {
                 JComboBox<Integer> c = (JComboBox<Integer>)e.getSource();
@@ -108,13 +108,74 @@ public class PantallaMapaPlanta implements ActionListener {
                 }
             	grafo.repaint();
             }
-        });
+        });*/
         
         cbInsumo.addItem(null);
         
         for(Insumo i : Insumo.getInstances())	cbInsumo.addItem(i.getId());
 
         cbInsumo.setSelectedItem(null);
+        
+        JButton buttonCaminoLong = new JButton("Seleccionar mejor camino por longitud");
+        buttonCaminoLong.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+            	PanelGrafoPlantas grafo = PanelGrafoPlantas.getSingle();
+            	grafo.setNormalColor();
+                if(cbInsumo.getSelectedItem() != null) {
+                    ArrayList<Integer> listaId = new ArrayList<Integer>();
+                    ArrayList<Planta> listaPlantas = new ArrayList<Planta>();
+                	Insumo ins = GestorInsumos.getGestor().getInsumo((Integer)cbInsumo.getSelectedItem());
+                	for(Stock s : Stock.getInstances()) {
+                		if(s.getInsumo().equals(ins) && !(s.getPuntoPedido() < s.getCantidad())) {
+                			listaId.add(grafo.getVertice(s.getPlanta().getId()).getId());
+                			grafo.getVertice(s.getPlanta().getId()).setColor(Color.GREEN);
+                		}
+                	}
+                	
+                	for(Integer id : listaId)	listaPlantas.add(GestorPlantas.getGestor().getPlanta(id));
+                	
+                	List<List<Vertice<Planta>>> mejoresCaminos = Camino.getGrafoPlanta().mejoresCaminos(listaPlantas);
+
+                	List<Vertice<Planta>> mejorCaminoT = mejoresCaminos.get(1);
+
+                	for(int i = 0 ; i < mejorCaminoT.size()-1 ; i++) {
+                		grafo.getArista(mejorCaminoT.get(i).getValor().getId(), mejorCaminoT.get(i+1).getValor().getId()).setColor(Color.RED);
+                	}
+                }
+                grafo.repaint();
+            }});
+        
+        JButton buttonCaminoTiempo = new JButton("Seleccionar mejor camino por tiempo");
+        buttonCaminoTiempo.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+            	PanelGrafoPlantas grafo = PanelGrafoPlantas.getSingle();
+            	grafo.setNormalColor();
+                if(cbInsumo.getSelectedItem() != null) {
+                    ArrayList<Integer> listaId = new ArrayList<Integer>();
+                    ArrayList<Planta> listaPlantas = new ArrayList<Planta>();
+                	Insumo ins = GestorInsumos.getGestor().getInsumo((Integer)cbInsumo.getSelectedItem());
+                	for(Stock s : Stock.getInstances()) {
+                		if(s.getInsumo().equals(ins) && !(s.getPuntoPedido() < s.getCantidad())) {
+                			listaId.add(grafo.getVertice(s.getPlanta().getId()).getId());
+                			grafo.getVertice(s.getPlanta().getId()).setColor(Color.GREEN);
+                		}
+                	}
+                	
+                	for(Integer id : listaId)	listaPlantas.add(GestorPlantas.getGestor().getPlanta(id));
+                	
+                	List<List<Vertice<Planta>>> mejoresCaminos = Camino.getGrafoPlanta().mejoresCaminos(listaPlantas);
+                	
+                	List<Vertice<Planta>> mejorCaminoL = mejoresCaminos.get(0);
+                	
+                	for(int i = 0 ; i < mejorCaminoL.size()-1 ; i++) {
+                		grafo.getArista(mejorCaminoL.get(i).getValor().getId(), mejorCaminoL.get(i+1).getValor().getId()).setColor(Color.RED);
+                	}
+                }
+                grafo.repaint();
+            }});
+        
         
         JLabel cbLabelPlantaF = new JLabel("Id Planta Fin");
         
@@ -156,37 +217,64 @@ public class PantallaMapaPlanta implements ActionListener {
 
         cbPlantaO.setSelectedItem(null);
         
+        JComboBox<List<Integer>> cbCaminos = new JComboBox<List<Integer>>();
+        
         JButton buttonCaminos = new JButton("Buscar caminos entre plantas");
         buttonCaminos.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Integer pO = (Integer)cbPlantaO.getSelectedItem();
                 Integer pF = (Integer)cbPlantaF.getSelectedItem();
+                PanelGrafoPlantas.getSingle().setNormalColor();
                 if(pO != null && pF != null) {
+                	cbCaminos.removeAllItems();
                 	List<List<Vertice<Planta>>> caminos = Camino.getGrafoPlanta().caminos(Camino.getGrafoPlanta().getNodo(GestorPlantas.getGestor().getPlanta(pO)), Camino.getGrafoPlanta().getNodo(GestorPlantas.getGestor().getPlanta(pF)));
                 	for(List<Vertice<Planta>> camino : caminos) {
-                		for(int i = 0 ; i < camino.size()-1 ; i++) {
-                			PanelGrafoPlantas.getSingle().getArista(camino.get(i).getValor().getId(), camino.get(i+1).getValor().getId()).setColor(Color.YELLOW);;
+                		List<Integer> listaAux = new ArrayList<Integer>();
+                		for(Vertice<Planta> ver : camino) {
+                			listaAux.add(ver.getValor().getId());
                 		}
+                		cbCaminos.addItem(listaAux);
                 	}
-                	PanelGrafoPlantas.getSingle().repaint();
                 }
             }
         });
         
-        JPanel panelBotones = new JPanel(new MigLayout("wrap 3","[][grow]"));
+        
+
+        cbCaminos.addItemListener(new ItemListener() {
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+                JComboBox cb = (JComboBox)e.getSource();
+                PanelGrafoPlantas.getSingle().setNormalColor();
+                List<Integer> camino = (List<Integer>)cb.getSelectedItem();
+                if(camino != null) {
+                	for(int i = 0 ; i < camino.size()-1 ; i++) {
+            			PanelGrafoPlantas.getSingle().getArista(camino.get(i), camino.get(i+1)).setColor(Color.RED);;
+            		}	
+                }
+                PanelGrafoPlantas.getSingle().repaint();
+            }
+        });
+
+        cbCaminos.setSelectedItem(null);
+        
+        JPanel panelBotones = new JPanel(new MigLayout("wrap 4","[][grow]"));
         //panelBotones.add(tituloLabel,"span, center");
-        panelBotones.add(menu, "left, span 2");
+        panelBotones.add(menu, "left");
         panelBotones.add(cbLabelInsumo, "split 2");
         panelBotones.add(cbInsumo, "");
-        panelBotones.add(new JLabel(""), "span 2");
+        panelBotones.add(buttonCaminoLong, "");
+        panelBotones.add(buttonCaminoTiempo, "");
+        panelBotones.add(new JLabel(""), "");
         panelBotones.add(cbLabelPlantaO, "split 2");
         panelBotones.add(cbPlantaO, "");
-        panelBotones.add(new JLabel(""), "span 2");
         panelBotones.add(cbLabelPlantaF, "split 2");
         panelBotones.add(cbPlantaF, "");
-        panelBotones.add(new JLabel(""), "span 2");
-        panelBotones.add(buttonCaminos, "gap 12");
+        panelBotones.add(buttonCaminos, "");
+        panelBotones.add(new JLabel(""), "");
+        panelBotones.add(new JLabel("Caminos"), "split 2");
+        panelBotones.add(cbCaminos, "");
 
         panelGeneral.add(panelBotones,"span, wrap, grow");
         panelBotones.setBorder(BorderFactory.createTitledBorder("Panel de Botones"));
