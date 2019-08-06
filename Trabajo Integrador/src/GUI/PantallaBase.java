@@ -99,7 +99,7 @@ public class PantallaBase{
         Planta planta7 = new Planta("P7");
         //Planta planta8 = new Planta("Planta Acopio Final");
 
-        GestorCaminos.getGestor().crear(0,1,200.0,150,13000.0);
+        GestorCaminos.getGestor().crear(0,1,200.0,1500,13000.0);
 
         GestorCaminos.getGestor().crear(0,2,150.0,180,15000.0);
 
@@ -116,6 +116,8 @@ public class PantallaBase{
         GestorCaminos.getGestor().crear(5,7,100.0,70,6000.0);
 
         GestorCaminos.getGestor().crear(3,7,200.0,150,7000.0);
+        
+        GestorCaminos.getGestor().crear(4,3,200.0,150,7000.0);
 
 
         /* Use an appropriate Look and Feel */

@@ -41,4 +41,8 @@ public class Camino extends Arista<Planta> {
     public Double getDistancia() {
     	return distancia;
     }
+    
+    public Integer getDuracion() {
+    	return duracion;
+    }
 }

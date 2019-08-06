@@ -21,7 +21,7 @@ public class GestorCaminos extends GrafoPlanta{
     }
     
     public Camino getCamino(Planta inicial, Planta fin) {
-    	for(Camino c : Camino.getInstances())	if(c.getInicio().equals(inicial) && c.getFin().equals(fin))	return c;
+    	for(Camino c : Camino.getInstances())	if(c.getInicio().getValor().equals(inicial) && c.getFin().getValor().equals(fin))	return c;
     	return null;
     }
     

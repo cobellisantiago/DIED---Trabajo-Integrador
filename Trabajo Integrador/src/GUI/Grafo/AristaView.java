@@ -29,9 +29,12 @@ public class AristaView {
     }
 
     public void setColor(Paint color) {
-        this.color = color;
+    	this.color = color;
     }
-
+    
+    public void setColor(Color color1, Color color2) {
+        this.color = new GradientPaint(origen.getCoordenadaX() + 10, origen.getCoordenadaY() + 10, color1,destino.getCoordenadaX() + 10, destino.getCoordenadaY() + 10, color2); 
+    }
 
     public boolean pertenece(Point2D p) {
         return this.linea.contains(p);

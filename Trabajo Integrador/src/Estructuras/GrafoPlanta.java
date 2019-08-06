@@ -50,7 +50,7 @@ public class GrafoPlanta extends Grafo<Planta> {
         return null;
     }
 
-    public List<Vertice<Planta>> mejorCaminoLongitud(ArrayList<Planta> listaPlantas){
+    public List<List<Vertice<Planta>>> mejorCaminoLongitud(ArrayList<Planta> listaPlantas){
     	
     	ArrayList<Vertice<Planta>> listaVertices = new ArrayList<Vertice<Planta>>();
     	List<List<Vertice<Planta>>> caminos = this.caminos(getNodo(Planta.getPuerto()), getNodo(Planta.getFinal()));
@@ -64,29 +64,45 @@ public class GrafoPlanta extends Grafo<Planta> {
     		}
     	}
     	
-    	for(List<Vertice<Planta>> camino : caminos) {
+    	List<List<Vertice<Planta>>> caminosAux = new ArrayList<List<Vertice<Planta>>>();
+    	
+    	for(List<Vertice<Planta>> camino : caminos) caminosAux.add(camino);
+    	
+    	for(List<Vertice<Planta>> camino : caminosAux) {
     			if(!camino.containsAll(listaVertices)) {
     				caminos.remove(camino);
     			}
     	}
     	
-    	Double mejorLong = new Double(0);
-    	List<Vertice<Planta>> mejorCamino = null;
+    	Double mejorLong = Double.MAX_VALUE;
+    	Double mejorTiem = Double.MAX_VALUE;
+    	List<List<Vertice<Planta>>> mejoresCaminos = new ArrayList<List<Vertice<Planta>>>();
+    	
+    	mejoresCaminos.add(0, new ArrayList<Vertice<Planta>>());
+    	mejoresCaminos.add(1, new ArrayList<Vertice<Planta>>());
     	
     	for(List<Vertice<Planta>> camino : caminos) {
     		Double longitudAux = new Double(0);
+    		Double tiempoAux = new Double(0);
 			for(int i = 0 ; i < camino.size()-1 ; i++) {
-				longitudAux += GestorCaminos.getGestor().getCamino(camino.get(i).getValor(), camino.get(i+1).getValor()).getDistancia();
+				Camino caminoAux = GestorCaminos.getGestor().getCamino(camino.get(i).getValor(), camino.get(i+1).getValor());
+				longitudAux += caminoAux.getDistancia();
+				tiempoAux += caminoAux.getDuracion();
 			}
 			if(longitudAux < mejorLong) {
 				mejorLong = longitudAux;
-				mejorCamino = camino;
+				mejoresCaminos.remove(0);
+				mejoresCaminos.add(0, camino);
+			}
+			if(tiempoAux < mejorTiem) {
+				mejorTiem = tiempoAux;
+				mejoresCaminos.remove(1);
+				mejoresCaminos.add(1, camino);
 			}
     	}
     	
     	
-    	
-    	return mejorCamino;
+    	return mejoresCaminos;
     }
     
     /*@Override

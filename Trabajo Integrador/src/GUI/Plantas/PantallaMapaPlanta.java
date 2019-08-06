@@ -90,10 +90,19 @@ public class PantallaMapaPlanta implements ActionListener {
                 	
                 	for(Integer id : listaId)	listaPlantas.add(GestorPlantas.getGestor().getPlanta(id));
                 	
-                	List<Vertice<Planta>> mejorCaminoL = Camino.getGrafoPlanta().mejorCaminoLongitud(listaPlantas);
+                	List<List<Vertice<Planta>>> mejoresCaminos = Camino.getGrafoPlanta().mejorCaminoLongitud(listaPlantas);
+                	
+                	List<Vertice<Planta>> mejorCaminoL = mejoresCaminos.get(0);
+                	List<Vertice<Planta>> mejorCaminoT = mejoresCaminos.get(1);
+                	
+                	//System.out.println(mejorCaminoL);
                 	
                 	for(int i = 0 ; i < mejorCaminoL.size()-1 ; i++) {
-                		grafo.getArista(mejorCaminoL.get(i).getValor().getId(), mejorCaminoL.get(i+1).getValor().getId()).setColor(Color.DARK_GRAY);;
+                		grafo.getArista(mejorCaminoL.get(i).getValor().getId(), mejorCaminoL.get(i+1).getValor().getId()).setColor(Color.RED);
+                	}
+                	
+                	for(int i = 0 ; i < mejorCaminoT.size()-1 ; i++) {
+                		grafo.getArista(mejorCaminoT.get(i).getValor().getId(), mejorCaminoT.get(i+1).getValor().getId()).setColor(Color.GREEN);
                 	}
                 	
                 }

@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.geom.AffineTransform;
 import java.awt.geom.Line2D;
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -97,6 +98,7 @@ public class PanelGrafoPlantas extends JPanel{
 
     public void setNormalColor() {
     	for(VerticeView ver : vertices)	ver.setColor(Color.PINK);
+    	for(AristaView ari : aristas)	ari.setColor(Color.WHITE, Color.GRAY);
     }
     
     public void agregar(AristaView arista){
@@ -125,9 +127,25 @@ public class PanelGrafoPlantas extends JPanel{
             // con el color del origen para que se note
             g2d.setPaint(Color.BLACK);
             Polygon flecha = new Polygon();
+            /*Integer vectorX = a.getDestino().getCoordenadaX() - a.getOrigen().getCoordenadaX();
+            Integer vectorY = a.getDestino().getCoordenadaY() - a.getOrigen().getCoordenadaY();
+            Integer vectorModulo = (int) Math.round(Math.sqrt(vectorX * vectorX + vectorY * vectorY));
+            Integer X1 = a.getDestino().getCoordenadaX() + vectorX * 1 / vectorModulo;
+            Integer Y1 = a.getDestino().getCoordenadaY() + vectorY * 1 / vectorModulo;
+            Integer vectorNormalX = -vectorY;
+            Integer vectorNormalY = vectorX;
+            Integer X2 = X1 - vectorX * 10 / vectorModulo + vectorNormalX * 5 / vectorModulo;
+            Integer Y2 = Y1 - vectorY * 10 / vectorModulo + vectorNormalY * 5 / vectorModulo;
+            Integer X3 = X1 - vectorX * 10 / vectorModulo - vectorNormalX * 5 / vectorModulo;
+            Integer Y3 = Y1 - vectorY * 10 / vectorModulo - vectorNormalY * 5 / vectorModulo;
+            flecha.addPoint(X1, Y1);
+            flecha.addPoint(X2, Y2);
+            flecha.addPoint(X3, Y3);*/
+            
             flecha.addPoint(a.getDestino().getCoordenadaX(), a.getDestino().getCoordenadaY()+7);
             flecha.addPoint(a.getDestino().getCoordenadaX()+20, a.getDestino().getCoordenadaY()+10);
-            flecha.addPoint(a.getDestino().getCoordenadaX(), a.getDestino().getCoordenadaY()+18);
+            flecha.addPoint(a.getDestino().getCoordenadaX(), a.getDestino().getCoordenadaY()+10);
+            
             g2d.fillPolygon(flecha);
         }
     }
@@ -201,7 +219,7 @@ public class PanelGrafoPlantas extends JPanel{
     public AristaView getArista(Integer id1, Integer id2) {
     	VerticeView vertice1 = getVertice(id1);
     	VerticeView vertice2 = getVertice(id2);
-    	for(AristaView i : aristas)	if(i.getOrigen().equals(vertice1) && i.getOrigen().equals(vertice2))	return i;
+    	for(AristaView i : aristas)	if(i.getOrigen().equals(vertice1) && i.getDestino().equals(vertice2))	return i;
     	return null;
     }
     
