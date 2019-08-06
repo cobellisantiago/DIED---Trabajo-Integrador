@@ -7,9 +7,12 @@ import net.miginfocom.swing.MigLayout;
 
 import javax.swing.*;
 
+import Dominio.Camino;
 import Dominio.Insumo;
 import Dominio.Planta;
 import Dominio.Stock;
+import Estructuras.GrafoPlanta;
+import Estructuras.Vertice;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -17,6 +20,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.util.ArrayList;
+import java.util.List;
 
 public class PantallaMapaPlanta implements ActionListener {
 
@@ -70,13 +74,26 @@ public class PantallaMapaPlanta implements ActionListener {
                 JComboBox<Integer> c = (JComboBox<Integer>)e.getSource();
                 PanelGrafoPlantas grafo = PanelGrafoPlantas.getSingle();
                 
+                
+                
                 grafo.setNormalColor();
                 if(c.getSelectedItem() != null) {
-                	Insumo i = GestorInsumos.getGestor().getInsumo((Integer)c.getSelectedItem());
+                    ArrayList<Integer> listaId = new ArrayList<Integer>();
+                    ArrayList<Planta> listaPlantas = new ArrayList<Planta>();
+                	Insumo ins = GestorInsumos.getGestor().getInsumo((Integer)c.getSelectedItem());
                 	for(Stock s : Stock.getInstances()) {
-                		if(s.getInsumo().equals(i) && !(s.getPuntoPedido() < s.getCantidad())) {
-                			 grafo.getVertice(s.getPlanta().getId()).setColor(Color.GREEN);
+                		if(s.getInsumo().equals(ins) && !(s.getPuntoPedido() < s.getCantidad())) {
+                			listaId.add(grafo.getVertice(s.getPlanta().getId()).getId());
+                			grafo.getVertice(s.getPlanta().getId()).setColor(Color.GREEN);
                 		}
+                	}
+                	
+                	for(Integer id : listaId)	listaPlantas.add(GestorPlantas.getGestor().getPlanta(id));
+                	
+                	List<Vertice<Planta>> mejorCaminoL = Camino.getGrafoPlanta().mejorCaminoLongitud(listaPlantas);
+                	
+                	for(int i = 0 ; i < mejorCaminoL.size()-1 ; i++) {
+                		grafo.getArista(mejorCaminoL.get(i).getValor().getId(), mejorCaminoL.get(i+1).getValor().getId()).setColor(Color.DARK_GRAY);;
                 	}
                 	
                 }

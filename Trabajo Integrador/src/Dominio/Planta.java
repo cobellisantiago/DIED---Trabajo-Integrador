@@ -31,9 +31,9 @@ public class Planta extends Vertice {
     public Planta(String nomb){
 
         this.id = instances.size()-1;
-        System.out.println("Id: "+id);
+        //System.out.println("Id: "+id);
     	Planta.planta_de_acopio_final.setId(instances.size());
-        System.out.println("Id Final: "+Planta.planta_de_acopio_final.getId());
+        //System.out.println("Id Final: "+Planta.planta_de_acopio_final.getId());
     	this.nombre = nomb;
     	instances.add(this);
     }

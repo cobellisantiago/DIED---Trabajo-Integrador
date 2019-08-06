@@ -6,6 +6,7 @@ import java.util.Optional;
 
 import Dominio.Insumo;
 import Dominio.Planta;
+import Gestores.GestorCaminos;
 import Dominio.Camino;
 
 public class GrafoPlanta extends Grafo<Planta> {
@@ -49,8 +50,43 @@ public class GrafoPlanta extends Grafo<Planta> {
         return null;
     }
 
-    public ArrayList<Planta> getMejorCamino(){
-    	return null;
+    public List<Vertice<Planta>> mejorCaminoLongitud(ArrayList<Planta> listaPlantas){
+    	
+    	ArrayList<Vertice<Planta>> listaVertices = new ArrayList<Vertice<Planta>>();
+    	List<List<Vertice<Planta>>> caminos = this.caminos(getNodo(Planta.getPuerto()), getNodo(Planta.getFinal()));
+    	
+    	for(Vertice<Planta> ver : getVertices()) {
+    		for(Planta pl : listaPlantas) {
+    			if(ver.getValor().equals(pl)) {
+    				listaVertices.add(ver);
+    				break;
+    			}
+    		}
+    	}
+    	
+    	for(List<Vertice<Planta>> camino : caminos) {
+    			if(!camino.containsAll(listaVertices)) {
+    				caminos.remove(camino);
+    			}
+    	}
+    	
+    	Double mejorLong = new Double(0);
+    	List<Vertice<Planta>> mejorCamino = null;
+    	
+    	for(List<Vertice<Planta>> camino : caminos) {
+    		Double longitudAux = new Double(0);
+			for(int i = 0 ; i < camino.size()-1 ; i++) {
+				longitudAux += GestorCaminos.getGestor().getCamino(camino.get(i).getValor(), camino.get(i+1).getValor()).getDistancia();
+			}
+			if(longitudAux < mejorLong) {
+				mejorLong = longitudAux;
+				mejorCamino = camino;
+			}
+    	}
+    	
+    	
+    	
+    	return mejorCamino;
     }
     
     /*@Override

@@ -198,6 +198,13 @@ public class PanelGrafoPlantas extends JPanel{
     	return null;
     }
     
+    public AristaView getArista(Integer id1, Integer id2) {
+    	VerticeView vertice1 = getVertice(id1);
+    	VerticeView vertice2 = getVertice(id2);
+    	for(AristaView i : aristas)	if(i.getOrigen().equals(vertice1) && i.getOrigen().equals(vertice2))	return i;
+    	return null;
+    }
+    
     /*public static PanelGrafoPlantas crearPanel(JPanel p){
         if(single == null) {
             single = new PanelGrafoPlantas();

@@ -37,4 +37,8 @@ public class Camino extends Arista<Planta> {
     public static GrafoPlanta getGrafoPlanta() {
         return grafoPlanta;
     }
+    
+    public Double getDistancia() {
+    	return distancia;
+    }
 }

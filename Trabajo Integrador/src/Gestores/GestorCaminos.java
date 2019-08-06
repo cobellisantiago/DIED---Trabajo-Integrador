@@ -20,7 +20,11 @@ public class GestorCaminos extends GrafoPlanta{
         return gestor;
     }
     
-
+    public Camino getCamino(Planta inicial, Planta fin) {
+    	for(Camino c : Camino.getInstances())	if(c.getInicio().equals(inicial) && c.getFin().equals(fin))	return c;
+    	return null;
+    }
+    
     public void crear(Integer inicio, Integer fin, Double dist, Integer minutos,Double peso) {
 
     	Planta ini = GestorPlantas.getGestor().getPlanta(inicio);
