@@ -12,12 +12,12 @@ public class Camion {
     private Double dominio;
     private Integer anio;
     private Double costoPorKm;
-    private Double capacidad;
+    private Integer capacidad;
     private Boolean liquidos;
 
 
     public Camion(String marca, String modelo, Double dominio, Integer anio,
-                  Double costoPorKm, Double capacidad, Boolean liquidos) {
+                  Double costoPorKm, Integer capacidad, Boolean liquidos) {
         this.id = instances.size() + 1;
         this.marca = marca;
         this.modelo = modelo;
@@ -27,6 +27,54 @@ public class Camion {
         this.capacidad = capacidad;
         this.liquidos = liquidos;
         instances.add(this);
+    }
+
+
+    public boolean[] resolver(Double[] peso, Double[] valor) { //Peso de un insumo y valor (costo) de un insumo
+
+        int N = peso.length; // items
+        int W = capacidad+1; // max peso
+
+        Double[][] opt = new Double[N][W]; //matriz que guarda el valor de cada esecenario
+        boolean[][] sol = new boolean[N][W]; // matriz que guarda si el element esta en el esceario
+
+        for (int n = 0; n < N; n++) {
+            for (int w = 0; w < W; w++) {
+                Double option1 = n < 1 ? 0 : opt[n - 1][w]; //completar
+                Double option2 = -Double.MAX_VALUE;
+                if (peso[n]<=w) { //Hay espacio en la mochila? if(peso[n] <= w) option2 = valor[n] + opt[n-1][w-weight[n]]
+                    option2 = valor[n] + (n != 0 ? opt[n-1][(int)(w-peso[n])]: opt[n][(int)(w-peso[n])]);
+                }
+
+                opt[n][w] = Math.max(option1, option2);
+                sol[n][w] = (option2 > option1);
+            }
+        }
+        // determinar la combinación óptima
+        boolean[] esSolucion= new boolean[N];
+        for (int n = N-1, w = W-1; n >= 0; n--) {
+            if (sol[n][w]) {
+                esSolucion [n] = true;
+                // actualizar w
+                w =(int)(w-peso[n]);
+            } else {
+                esSolucion [n] = false;
+            }
+        }
+        System.out.println("Pares peso valor en solucion optima");
+        boolean b=false;
+        for(int i=0;i<N;i++){
+
+            if(esSolucion[i]){
+                if(b) System.out.print(" - ");
+                System.out.print("("+peso[i]+" "+valor[i]+")");
+                b=true;
+            }
+
+        }
+        System.out.println("\n");
+        return esSolucion;
+
     }
 
     public static ArrayList<Camion> getInstances(){
@@ -57,9 +105,9 @@ public class Camion {
 
     public void setCostoPorKm(Double costoPorKm) { this.costoPorKm = costoPorKm; }
 
-    public Double getCapacidad() { return capacidad; }
+    public Integer getCapacidad() { return capacidad; }
 
-    public void setCapacidad(Double capacidad) { this.capacidad = capacidad; }
+    public void setCapacidad(Integer capacidad) { this.capacidad = capacidad; }
 
     public Boolean getLiquidos() { return liquidos; }
 

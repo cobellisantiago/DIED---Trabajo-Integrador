@@ -1,8 +1,11 @@
 package Gestores;
 
 import Dominio.Camion;
+import Dominio.Insumo;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class GestorCamiones {
 
@@ -17,8 +20,30 @@ public class GestorCamiones {
     }
 
     public void crear(String marca, String modelo, Double dominio, Integer anio,
-                      Double costoPorKm, Double capacidad, Boolean liquido){
+                      Double costoPorKm, Integer capacidad, Boolean liquido){
         new Camion(marca, modelo, dominio, anio, costoPorKm, capacidad, liquido);
+    }
+
+    public List<String> mejorSeleccion(Integer id){
+        Camion camion = getCamionPorId(id);
+        ArrayList<Double> pesos = new ArrayList<>();
+        ArrayList<Double> costos = new ArrayList<>();
+        List<Boolean> resultados = new ArrayList<>();
+
+        for (Insumo i: Insumo.getInstances()) {
+
+           pesos.add( i.getPeso());
+           costos.add(i.getCosto());
+        }
+
+        /*resultados = Arrays.asList(camion.resolver(pesos.toArray(new Double[0]),costos.toArray(new Double[0])));
+        for (:
+             ) {
+
+        }*/
+
+        return null;
+
     }
 
     public Object[][] listarCamiones(){
@@ -41,6 +66,12 @@ public class GestorCamiones {
 
     }
 
-
+    public Camion getCamionPorId(Integer id){
+        for (Camion c: Camion.getInstances()
+             ) {
+            if(c.getId() == id) return c;
+        }
+        return null;
+    }
 }
 

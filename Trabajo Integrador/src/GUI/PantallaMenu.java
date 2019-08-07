@@ -36,17 +36,17 @@ public class PantallaMenu implements ActionListener{
         panel.setLayout(new FlowLayout(FlowLayout.CENTER,10,10));
 
 
-        ImageIcon insumoIcon = new ImageIcon(new ImageIcon("src/GUI/Icons/flour.png").getImage()
+        ImageIcon insumoIcon = new ImageIcon(new ImageIcon("Trabajo Integrador/src/GUI/Icons/flour.png").getImage()
                 .getScaledInstance(60, 60, Image.SCALE_DEFAULT));
-        ImageIcon plantaIcon = new ImageIcon(new ImageIcon("src/GUI/Icons/factory.png").getImage()
+        ImageIcon plantaIcon = new ImageIcon(new ImageIcon("Trabajo Integrador/src/GUI/Icons/factory.png").getImage()
                 .getScaledInstance(60, 60, Image.SCALE_DEFAULT));
-        ImageIcon stockIcon = new ImageIcon(new ImageIcon("src/GUI/Icons/stock.png").getImage()
+        ImageIcon stockIcon = new ImageIcon(new ImageIcon("Trabajo Integrador/src/GUI/Icons/stock.png").getImage()
                 .getScaledInstance(60, 60, Image.SCALE_DEFAULT));
-        ImageIcon caminosIcon = new ImageIcon(new ImageIcon("src/GUI/Icons/route.png").getImage()
+        ImageIcon caminosIcon = new ImageIcon(new ImageIcon("Trabajo Integrador/src/GUI/Icons/route.png").getImage()
                 .getScaledInstance(60, 60, Image.SCALE_DEFAULT));
-        ImageIcon camionesIcon = new ImageIcon(new ImageIcon("src/GUI/Icons/truck.png").getImage()
+        ImageIcon camionesIcon = new ImageIcon(new ImageIcon("Trabajo Integrador/src/GUI/Icons/truck.png").getImage()
                 .getScaledInstance(60, 60, Image.SCALE_DEFAULT));
-        ImageIcon informacionIcon = new ImageIcon(new ImageIcon("src/GUI/Icons/information.png").getImage()
+        ImageIcon informacionIcon = new ImageIcon(new ImageIcon("Trabajo Integrador/src/GUI/Icons/information.png").getImage()
                 .getScaledInstance(60, 60, Image.SCALE_DEFAULT));
 
         JButton insumosButton = new JButton(INSUMOS,insumoIcon);

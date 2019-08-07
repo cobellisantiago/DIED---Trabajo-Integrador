@@ -15,7 +15,7 @@ public class PantallaCamiones implements ActionListener{
     private static PantallaCamiones single;
     JPanel panel;
     JTable tabla;
-    String camioneseleccionado;
+    Integer camioneseleccionado;
     final static String MENU = "Menu";
     final static String CREAR = "Crear";
     final static String BUSCAR = "Buscar";
@@ -79,10 +79,49 @@ public class PantallaCamiones implements ActionListener{
         crear.setName("Crear");
         crear.addActionListener(this);
 
+        JButton mejorSeleccionButton = new JButton("Mejor Seleccion");
+        mejorSeleccionButton.setName("mejorSeleccion");
+        mejorSeleccionButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JDialog dialog = new JDialog();
+                JPanel panel = new JPanel(new MigLayout("fill, insets 0"));
+                dialog.setSize(400, 200);
+
+                JLabel preguntaLabel= new JLabel("Camion creado correctamente");
+                preguntaLabel.setFont(new Font("Roboto",Font.BOLD,15));
+                panel.add(preguntaLabel,"center,span, wrap");
+
+
+                JButton aceptar = new JButton("Crear otro camion");
+
+                aceptar.addActionListener(a -> dialog.dispose());
+
+                JButton cancelar = new JButton("Volver a Camiones");
+                cancelar.addActionListener(a -> {
+                    JPanel p = (JPanel)panel.getParent();
+                    CardLayout pane = (CardLayout)(p.getLayout());
+                    pane.show(p, "Camiones");
+                    dialog.setVisible(false);
+                    //dialog.dispose();
+                });
+
+                panel.add(cancelar,"left, gapleft 25");
+                panel.add(aceptar,"right, gapright 25");
+
+                dialog.add(panel);
+
+                dialog.setModal(true);
+                dialog.setLocationRelativeTo(null);
+                dialog.setVisible(true);
+            }
+        });
+
         JPanel panelBotones = new JPanel(new MigLayout("fill","[][grow]"));
         panelBotones.add(tituloLabel,"span, center");
         panelBotones.add(menu, "left");
         panelBotones.add(crear,"tag crear,span,split 3,center,gaptop 10,gapbottom 10, sizegroup bttn");
+        panelBotones.add(mejorSeleccionButton);
 
         panelBotones.setBackground(new Color(207,216,220));
         panel.add(panelBotones,BorderLayout.NORTH);
@@ -190,7 +229,7 @@ public class PantallaCamiones implements ActionListener{
 
                         }
                     }*/
-                    camioneseleccionado = tablaCamiones.getValueAt(tablaCamiones.getSelectedRow(), 1).toString();
+                    camioneseleccionado = (Integer)tablaCamiones.getValueAt(tablaCamiones.getSelectedRow(), 0);
                     System.out.println(tablaCamiones.getValueAt(tablaCamiones.getSelectedRow(), 0).toString());
                 }
             }

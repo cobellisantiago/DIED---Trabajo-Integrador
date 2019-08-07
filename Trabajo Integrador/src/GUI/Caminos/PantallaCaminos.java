@@ -6,10 +6,13 @@ import net.miginfocom.swing.MigLayout;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
 
 public class PantallaCaminos implements ActionListener{
     private static PantallaCaminos single;
-    JPanel panel;
+    private JPanel panel;
+
     final static String MENU = "Menu";
     final static String CREAR = "Crear";
     final static String BUSCAR = "Buscar";
@@ -115,6 +118,7 @@ public class PantallaCaminos implements ActionListener{
 
         p.add(panel, "Caminos");
     }
+
 
     public void actionPerformed(ActionEvent e){
         String button = ((JButton) e.getSource()).getName();
