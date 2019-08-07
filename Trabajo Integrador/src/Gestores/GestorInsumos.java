@@ -45,13 +45,16 @@ public class GestorInsumos{
     	
     	insumos = insumosArbol.rango(new Insumo(new Double(0), new Double(0), nombre), new Insumo(new Double(0), new Double(0), nombre), Insumo.comparadorNombre);
     	
-        Object[][] listaInsumos = new Object[cantInsumos][3];
+        Object[][] listaInsumos = new Object[cantInsumos][6];
         
         int fila = 0;
     	for(Insumo i : insumos) {
-            listaInsumos[fila][0]= i.getId();
+    		listaInsumos[fila][0]= i.getId();
             listaInsumos[fila][1]= i.getDescripcion();
-            listaInsumos[fila][2]= i.getStockTotal();
+            listaInsumos[fila][2]= i.getCosto();
+            listaInsumos[fila][3]= i.getEsRefrigerado();
+            listaInsumos[fila][4]= i.getPeso();
+            listaInsumos[fila][5]= i.getStockTotal();
             fila++;
     	}
     	
@@ -67,13 +70,16 @@ public class GestorInsumos{
     	
     	insumos = insumosArbol.rango(new Insumo(minimo, new Double(0), ""), new Insumo(maximo, new Double(0), ""), Insumo.comparadorCosto);
     	
-        Object[][] listaInsumos = new Object[cantInsumos][3];
+        Object[][] listaInsumos = new Object[cantInsumos][6];
     	
         int fila = 0;
     	for(Insumo i : insumos) {
-            listaInsumos[fila][0]= i.getId();
+    		listaInsumos[fila][0]= i.getId();
             listaInsumos[fila][1]= i.getDescripcion();
-            listaInsumos[fila][2]= i.getStockTotal();
+            listaInsumos[fila][2]= i.getCosto();
+            listaInsumos[fila][3]= i.getEsRefrigerado();
+            listaInsumos[fila][4]= i.getPeso();
+            listaInsumos[fila][5]= i.getStockTotal();
             fila++;
     	}
         
@@ -89,13 +95,16 @@ public class GestorInsumos{
     	
     	insumos = insumosArbol.rango(new Insumo(new Double(0), minimo, ""), new Insumo(new Double(0), maximo, ""), Insumo.comparadorStock);
     	
-        Object[][] listaInsumos = new Object[cantInsumos][3];
+        Object[][] listaInsumos = new Object[cantInsumos][6];
         
         int fila = 0;
     	for(Insumo i : insumos) {
-            listaInsumos[fila][0]= i.getId();
+    		listaInsumos[fila][0]= i.getId();
             listaInsumos[fila][1]= i.getDescripcion();
-            listaInsumos[fila][2]= i.getStockTotal();
+            listaInsumos[fila][2]= i.getCosto();
+            listaInsumos[fila][3]= i.getEsRefrigerado();
+            listaInsumos[fila][4]= i.getPeso();
+            listaInsumos[fila][5]= i.getStockTotal();
             fila++;
     	}
         
@@ -106,16 +115,15 @@ public class GestorInsumos{
         ArrayList<Insumo> insumos = new ArrayList<Insumo>();
         insumos = Insumo.getInstances();
         int cantInsumos = insumos.size();
-        Object[][] listaInsumos = new Object[cantInsumos][3];
-        int col;
+        Object[][] listaInsumos = new Object[cantInsumos][6];
         int fila =0;
         for(Insumo i : insumos){
-            col=0;
-            listaInsumos[fila][col]= i.getId();
-            col=1;
-            listaInsumos[fila][col]= i.getDescripcion();
-            col=2;
-            listaInsumos[fila][col]= i.getStockTotal();
+        	listaInsumos[fila][0]= i.getId();
+            listaInsumos[fila][1]= i.getDescripcion();
+            listaInsumos[fila][2]= i.getCosto();
+            listaInsumos[fila][3]= i.getEsRefrigerado();
+            listaInsumos[fila][4]= i.getPeso();
+            listaInsumos[fila][5]= i.getStockTotal();
             fila++;
         }
 

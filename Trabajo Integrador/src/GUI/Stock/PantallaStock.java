@@ -1,6 +1,7 @@
 
 package GUI.Stock;
 
+import Gestores.GestorPlantas;
 import Gestores.GestorStock;
 import net.miginfocom.swing.MigLayout;
 
@@ -9,6 +10,9 @@ import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+
+import Dominio.Planta;
+import Dominio.Stock;
 
 public class PantallaStock implements ActionListener{
 
@@ -69,15 +73,135 @@ public class PantallaStock implements ActionListener{
         crear.setName("Crear");
         crear.addActionListener(this);
 
-        JButton buscarButton = new JButton("Buscar");
-        buscarButton.setName(BUSCAR);
-        buscarButton.addActionListener(this);
+        JButton editar = new JButton("Editar");
+        JButton eliminar = new JButton("Eliminar");
+        eliminar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JPanel panelDialog = new JPanel(new MigLayout("fill, insets 0","[][]"));
+                JDialog dialog = new JDialog();
+                String stockSeleccionado = tabla.getValueAt(tabla.getSelectedRow(), 0).toString() + " - " + tabla.getValueAt(tabla.getSelectedRow(), 1).toString();
+                dialog.setSize(400, 200);
+                JLabel preguntaLabel= new JLabel("¿Seguro que desea eliminar el");
+                preguntaLabel.setFont(new Font("Roboto",Font.BOLD,15));
+                panelDialog.add(preguntaLabel,"span,center,wrap");
+                JLabel stockLabel= new JLabel("stock "+stockSeleccionado+" ?");
+                stockLabel.setFont(new Font("Roboto",Font.BOLD,15));
+                panelDialog.add(stockLabel,"span,center,wrap,gaptop 0");
+
+
+
+                JButton aceptar = new JButton("Aceptar");
+
+                aceptar.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        GestorStock.getGestor().eliminiar((Integer)tabla.getValueAt(tabla.getSelectedRow(), 0), (Integer)tabla.getValueAt(tabla.getSelectedRow(), 1));
+                        actualizarTablaStock();
+                        dialog.dispose();
+                        editar.setEnabled(false);
+                        eliminar.setEnabled(false);
+                    }
+                });
+
+                JButton cancelar = new JButton("Cancelar");
+                cancelar.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        dialog.dispose();
+                        editar.setEnabled(false);
+                        eliminar.setEnabled(false);
+                    }
+                });
+
+                panelDialog.add(cancelar,"left, gapleft 25");//"tag cancelar, sizegroup bttn");
+                panelDialog.add(aceptar,"right, gapright 25");//"tag aceptar, sizegroup bttn");
+
+                dialog.add(panelDialog);
+
+                dialog.setModal(true);
+                dialog.setLocationRelativeTo(null);
+                dialog.setVisible(true);
+            }
+        });
+
+        editar.addActionListener(new ActionListener() {
+            @SuppressWarnings("Duplicates")
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JPanel panelDialog = new JPanel(new MigLayout("fill, insets 0","[][]"));
+                JDialog dialog = new JDialog();
+                String stockSeleccionado = tabla.getValueAt(tabla.getSelectedRow(), 0).toString() + " - " + tabla.getValueAt(tabla.getSelectedRow(), 1).toString();
+                panelDialog.setBackground(new Color(207,216,220));
+                dialog.setSize(500, 300);
+                JPanel panelDatos = new JPanel (new MigLayout(""));
+                //panelDatos.setBackground(Color.white);
+                JLabel tituloLabel = new JLabel("Editar Stock: "+stockSeleccionado);
+                JLabel cantidadLabel = new JLabel("Cantidad: ");
+                JLabel puntoPedidoLabel = new JLabel("Punto Pedido: ");
+                tituloLabel.setFont(new Font("Roboto",Font.PLAIN,20));
+                tituloLabel.setForeground(Color.BLUE);
+                tituloLabel.setHorizontalAlignment(JLabel.CENTER);
+                panelDatos.add(tituloLabel,"span, growx, gapbottom 15, gaptop 5");
+
+                JTextField cantidad = new JTextField(30);
+                JTextField puntoPedido = new JTextField(30);
+
+                panelDatos.add(cantidadLabel,"align label");
+                panelDatos.add(cantidad, "wrap");
+                panelDatos.add(puntoPedidoLabel,"align label");
+                panelDatos.add(puntoPedido, "wrap");
+
+                Stock plantaAEditar = GestorStock.getGestor().getStock((Integer)tabla.getValueAt(tabla.getSelectedRow(), 0), (Integer)tabla.getValueAt(tabla.getSelectedRow(), 1));
+                cantidad.setText(plantaAEditar.getCantidad().toString());
+                puntoPedido.setText(plantaAEditar.getPuntoPedido().toString());
+
+                panelDialog.add(panelDatos,"center, span");
+
+                JButton aceptar = new JButton("Aceptar");
+
+                aceptar.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        GestorStock.getGestor().editar((Integer)tabla.getValueAt(tabla.getSelectedRow(), 0),(Integer)tabla.getValueAt(tabla.getSelectedRow(), 1), Double.valueOf(cantidad.getText()), Integer.valueOf(puntoPedido.getText()));
+                        actualizarTablaStock();
+                        dialog.dispose();
+                        editar.setEnabled(false);
+                        eliminar.setEnabled(false);
+                    }
+                });
+
+                JButton cancelar = new JButton("Cancelar");
+                cancelar.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        dialog.dispose();
+                        editar.setEnabled(false);
+                        eliminar.setEnabled(false);
+                    }
+                });
+
+                panelDialog.add(cancelar,"left, gapleft 25");//"tag cancelar, sizegroup bttn");
+                panelDialog.add(aceptar,"right, gapright 25");//"tag aceptar, sizegroup bttn");
+
+                dialog.add(panelDialog);
+
+                dialog.setModal(true);
+                dialog.setLocationRelativeTo(null);
+                dialog.setVisible(true);
+            }
+        });
+
+        editar.setEnabled(false);
+        eliminar.setEnabled(false);
 
         JPanel panelBotones = new JPanel(new MigLayout("fill","[][grow]"));
+        panelBotones.setName("panel datos buscar stock");
         panelBotones.add(tituloLabel,"span, center");
         panelBotones.add(menu, "left");
-        panelBotones.add(crear,"tag crear,span,split 2,center,gaptop 10,gapbottom 10, sizegroup bttn");
-        panelBotones.add(buscarButton,"tag buscar, sizegroup bttn");
+        panelBotones.add(crear,"tag crear,span,split 3,center,gaptop 10,gapbottom 10, sizegroup bttn");
+        panelBotones.add(editar,"tag buscar, sizegroup bttn");
+        panelBotones.add(eliminar,"tag buscar, sizegroup bttn");
 
         //panelBotones.setBorder(BorderFactory.createTitledBorder("Panel de Botones"));
         panelBotones.setBackground(new Color(207,216,220));
@@ -113,10 +237,10 @@ public class PantallaStock implements ActionListener{
         JPanel panel = new JPanel(new MigLayout(" fillx","[][grow][]"));
         panel.setBackground(new Color(207,216,220));
         //Object[][] data = GestorStock.getGestor().listarStock();
-        String columns[]={"Id Planta","Id Insumo","Cantidad"};
+        String columns[]={"Id Planta","Id Insumo","Cantidad","Punto de Pedido"};
 
         final Class[] columnClass = new Class[] {
-                Integer.class, Integer.class, Double.class
+                Integer.class, Integer.class, Double.class, Integer.class
         };
         //create table model with data
         DefaultTableModel model = new DefaultTableModel(data, columns) {
@@ -173,7 +297,7 @@ public class PantallaStock implements ActionListener{
                 if (mouseEvent.getClickCount() == 2 && table.getSelectedRow() != -1) {
 
                     for (Component component : panel.getParent().getComponents()) {
-                        if(component.getName() == "panel datos buscar planta" ){
+                        if(component.getName() == "panel datos buscar stock" ){
                             for (Component component1 : ((JPanel) component).getComponents()) {
                                 if(component1 instanceof JButton && ((JButton)component1).getText() == "Eliminar"){
                                     component1.setEnabled(true);

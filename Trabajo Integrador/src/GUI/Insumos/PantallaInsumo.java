@@ -145,10 +145,10 @@ public class PantallaInsumo implements ActionListener{
         JPanel panel = new JPanel(new MigLayout(" fillx","[][grow][]"));
         panel.setBackground(new Color(207,216,220));
         //Object[][] data = GestorInsumos.getGestor().listarInsumos();
-        String columns[]={"Id","Nombre","Stock"};
+        String columns[]={"Id","Nombre","Costo por Unidad","Necesita refrigeracion?","Peso","Stock"};
 
         final Class[] columnClass = new Class[] {
-                Integer.class, String.class, Double.class
+                Integer.class, String.class, Double.class, Boolean.class, Double.class, Double.class
         };
         //create table model with data
         DefaultTableModel model = new DefaultTableModel(data, columns) {
@@ -295,6 +295,37 @@ public class PantallaInsumo implements ActionListener{
             }
         });
 
+        stockMinimoTextField.addFocusListener(new FocusListener() {
+            @Override
+            public void focusGained(FocusEvent e) {
+            	stockMinimoTextField.setText("");
+            	stockMinimoTextField.setForeground(Color.BLACK);
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) {
+                if(stockMinimoTextField.getText().isEmpty()){
+                	stockMinimoTextField.setText("Minimo");
+                	stockMinimoTextField.setForeground(Color.gray);
+                }
+            }
+        });
+        stockMaximoTextField.addFocusListener(new FocusListener() {
+            @Override
+            public void focusGained(FocusEvent e) {
+            	stockMaximoTextField.setText("");
+            	stockMaximoTextField.setForeground(Color.BLACK);
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) {
+                if(stockMaximoTextField.getText().isEmpty()){
+                	stockMaximoTextField.setText("Maximo");
+                	stockMaximoTextField.setForeground(Color.gray);
+                }
+            }
+        });
+        
         titulo.setFont(new Font("Roboto",Font.PLAIN,20));
         titulo.setForeground(Color.BLUE);
         titulo.setHorizontalAlignment(JLabel.CENTER);
@@ -470,7 +501,7 @@ public class PantallaInsumo implements ActionListener{
                     panelBuscar.add(single.crearTablaInsumos(GestorInsumos.getGestor().buscarNombre(nombreTextField.getText())),"span, grow",2);
                     panelBuscar.revalidate();
                 }
-                else if(!costoMinimoTextField.getText().isEmpty() || !costoMaximoTextField.getText().isEmpty()){//costoRadioButton.isSelected()) {
+                else if(!costoMinimoTextField.getText().equals("Minimo") || !costoMaximoTextField.getText().equals("Maximo")){//costoRadioButton.isSelected()) {
                 	Double minimo;
                 	Double maximo;
                 	try {
@@ -487,7 +518,7 @@ public class PantallaInsumo implements ActionListener{
                     panelBuscar.add(single.crearTablaInsumos(GestorInsumos.getGestor().buscarCosto(minimo, maximo)),"span, grow",2);
                     panelBuscar.revalidate();
                 }
-                else if(!stockMinimoTextField.getText().isEmpty() || !stockMaximoTextField.getText().isEmpty()){//stockRadioButton.isSelected()) {
+                else if(!stockMinimoTextField.getText().equals("Minimo") || stockMaximoTextField.getText().equals("Maximo")){//stockRadioButton.isSelected()) {
                 	Double minimo;
                 	Double maximo;
                 	try {

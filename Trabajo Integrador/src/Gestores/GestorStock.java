@@ -37,25 +37,32 @@ public class GestorStock{
         stock = Stock.getInstances();
         int cantStock = stock.size();
         
-        Object[][] listaStock = new Object[cantStock][3];
+        Object[][] listaStock = new Object[cantStock][4];
         
         int fila =0;
         for(Stock i : stock){
             listaStock[fila][0]= i.getPlanta().getId();
             listaStock[fila][1]= i.getInsumo().getId();
             listaStock[fila][2]= i.getCantidad();
+            listaStock[fila][3]= i.getPuntoPedido();
             fila++;
         }
 
         return listaStock;
     }
 
-
-    public void editar() {
-
+    public Stock getStock(Integer idPlanta, Integer idInsumo) {
+    	for(Stock s : Stock.getInstances())	if(s.getPlanta().getId().equals(idPlanta) && s.getInsumo().getId().equals(idInsumo))	return s;
+    	return null;
     }
-    public void eliminiar() {
 
+    public void editar(Integer idPlanta, Integer idInsumo, Double cant, Integer puntoPed) {
+    	Stock s = getStock(idPlanta, idInsumo);
+    	s.setCantidad(cant);
+    	s.setPuntoPedido(puntoPed);
+    }
+    public void eliminiar(Integer idPlanta, Integer idInsumo) {
+    	Stock.getInstances().remove(getStock(idPlanta, idInsumo));
     }
 
 }

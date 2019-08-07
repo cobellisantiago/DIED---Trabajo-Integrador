@@ -42,11 +42,23 @@ public class Camino extends Arista<Planta> {
     	return distancia;
     }
     
+    public void setDistancia(Double distancia) {
+    	this.distancia = distancia;
+    }
+    
     public Integer getDuracion() {
     	return duracion;
     }
     
+    public void setDuracion(Integer duracion) {
+    	this.duracion = duracion;
+    }
+    
     public Double getPesoMaximo() {
     	return pesoMaximo;
+    }
+    
+    public void setPesoMaximo(Double pesoMaximo) {
+    	this.pesoMaximo = pesoMaximo;
     }
 }

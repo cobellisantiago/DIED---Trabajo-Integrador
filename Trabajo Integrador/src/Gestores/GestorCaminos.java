@@ -45,6 +45,25 @@ public class GestorCaminos extends GrafoPlanta{
 
 
     }
+    
+    public Object[][] listarCaminos(){
+        ArrayList<Camino> caminos = Camino.getInstances();
+        int cantPlantas = caminos.size();
+        
+        Object[][] listaPlantas = new Object[cantPlantas][5];
+        
+        int fila =0;
+        for(Camino i : caminos){
+            listaPlantas[fila][0]= i.getInicio().getValor().getId();
+            listaPlantas[fila][1]= i.getFin().getValor().getId();
+            listaPlantas[fila][2]= i.getDistancia();
+            listaPlantas[fila][3]= i.getDuracion();
+            listaPlantas[fila][4]= i.getPesoMaximo();
+            fila++;
+        }
+
+        return listaPlantas;
+    }
 
     // ---- ------------ NO ENTIENDO NADA ------------------------ --------
 
@@ -55,11 +74,20 @@ public class GestorCaminos extends GrafoPlanta{
         return resultado;
     }
 
-    public void editar() {
-    	
+    public void editar(Integer idPlantaO, Integer idPlantaF, Double dist, Integer dur, Double pesoM) {
+    	Planta plantaO = GestorPlantas.getGestor().getPlanta(idPlantaO);
+		Planta plantaF = GestorPlantas.getGestor().getPlanta(idPlantaF);
+		Camino camino = getCamino(plantaO, plantaF);
+		camino.setDistancia(dist);
+		camino.setDuracion(dur);
+		camino.setPesoMaximo(pesoM);
     }
-    public void eliminiar() {
-    	
+
+
+    public void eliminiar(Integer idPlantaO, Integer idPlantaF) {
+		Planta plantaO = GestorPlantas.getGestor().getPlanta(idPlantaO);
+		Planta plantaF = GestorPlantas.getGestor().getPlanta(idPlantaF);
+		Camino.getInstances().remove(getCamino(plantaO, plantaF));
     }
 
 }

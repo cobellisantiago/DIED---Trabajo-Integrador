@@ -87,14 +87,14 @@ public class PantallaPlantas implements ActionListener{
             public void actionPerformed(ActionEvent e) {
                 JPanel panelDialog = new JPanel(new MigLayout("fill, insets 0","[][]"));
                 JDialog dialog = new JDialog();
-                String plantaSeleccionada = tabla.getValueAt(tabla.getSelectedColumn(), 1).toString();
+                String plantaSeleccionada = tabla.getValueAt(tabla.getSelectedRow(), 1).toString();
                 dialog.setSize(400, 200);
                 JLabel preguntaLabel= new JLabel("¿Seguro que desea eliminar la");
                 preguntaLabel.setFont(new Font("Roboto",Font.BOLD,15));
                 panelDialog.add(preguntaLabel,"span,center,wrap");
-                JLabel insumoLabel= new JLabel("planta "+plantaSeleccionada+" ?");
-                insumoLabel.setFont(new Font("Roboto",Font.BOLD,15));
-                panelDialog.add(insumoLabel,"span,center,wrap,gaptop 0");
+                JLabel plantaLabel= new JLabel("planta "+plantaSeleccionada+" ?");
+                plantaLabel.setFont(new Font("Roboto",Font.BOLD,15));
+                panelDialog.add(plantaLabel,"span,center,wrap,gaptop 0");
 
 
 
@@ -103,7 +103,7 @@ public class PantallaPlantas implements ActionListener{
                 aceptar.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        GestorPlantas.getGestor().eliminiar((Integer)tabla.getValueAt(tabla.getSelectedColumn(), 0));
+                        GestorPlantas.getGestor().eliminiar((Integer)tabla.getValueAt(tabla.getSelectedRow(), 0));
                         actualizarTablaPlantas();
                         dialog.dispose();
                         editar.setEnabled(false);
@@ -138,12 +138,12 @@ public class PantallaPlantas implements ActionListener{
             public void actionPerformed(ActionEvent e) {
                 JPanel panelDialog = new JPanel(new MigLayout("fill, insets 0","[][]"));
                 JDialog dialog = new JDialog();
-                String plantaSeleccionada = tabla.getValueAt(tabla.getSelectedColumn(), 1).toString();
+                String plantaSeleccionada = tabla.getValueAt(tabla.getSelectedRow(), 1).toString();
                 panelDialog.setBackground(new Color(207,216,220));
                 dialog.setSize(500, 300);
                 JPanel panelDatos = new JPanel (new MigLayout(""));
                 //panelDatos.setBackground(Color.white);
-                JLabel tituloLabel = new JLabel("Editar Insumo: "+plantaSeleccionada);
+                JLabel tituloLabel = new JLabel("Editar Planta: "+plantaSeleccionada);
                 JLabel descripcionLabel = new JLabel("Nombre: ");
                 tituloLabel.setFont(new Font("Roboto",Font.PLAIN,20));
                 tituloLabel.setForeground(Color.BLUE);
@@ -155,7 +155,7 @@ public class PantallaPlantas implements ActionListener{
                 panelDatos.add(descripcionLabel,"align label");
                 panelDatos.add(descrip, "wrap");
 
-                Planta plantaAEditar = GestorPlantas.getGestor().getPlanta((Integer)tabla.getValueAt(tabla.getSelectedColumn(), 0));
+                Planta plantaAEditar = GestorPlantas.getGestor().getPlanta((Integer)tabla.getValueAt(tabla.getSelectedRow(), 0));
                 descrip.setText(plantaAEditar.getNombre());
 
                 panelDialog.add(panelDatos,"center, span");
@@ -165,7 +165,7 @@ public class PantallaPlantas implements ActionListener{
                 aceptar.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        GestorPlantas.getGestor().editar((Integer)tabla.getValueAt(tabla.getSelectedColumn(), 0),descrip.getText());
+                        GestorPlantas.getGestor().editar((Integer)tabla.getValueAt(tabla.getSelectedRow(), 0),descrip.getText());
                         actualizarTablaPlantas();
                         dialog.dispose();
                         editar.setEnabled(false);
@@ -251,7 +251,7 @@ public class PantallaPlantas implements ActionListener{
         String columns[]={"Id","Nombre"/*,"Stock"*/};
 
         final Class[] columnClass = new Class[] {
-                Integer.class, String.class, Double.class
+                Integer.class, String.class
         };
         //create table model with data
         DefaultTableModel model = new DefaultTableModel(data, columns) {

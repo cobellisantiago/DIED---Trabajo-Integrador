@@ -64,10 +64,10 @@ public class PantallaCrearCamion implements ActionListener {
         JLabel marcaLabel = new JLabel("Marca: ");
         JLabel modeloLabel = new JLabel("Modelo: ");
         JLabel dominioLabel = new JLabel("Dominio: ");
-        JLabel anioLabel = new JLabel("Año: ");
+        JLabel anioLabel = new JLabel("Anio: ");
         JLabel costoLabel = new JLabel("Costo por Kilometro: ");
         JLabel capacidadLabel = new JLabel("Capacidad: ");
-        JLabel liquidoLabel = new JLabel("¿Puede transportar una carga liquida? ");
+        JLabel liquidoLabel = new JLabel("Puede transportar una carga liquida? ");
 
         tituloLabel.setFont(new Font("Roboto",Font.PLAIN,20));
         tituloLabel.setForeground(Color.BLUE);

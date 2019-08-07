@@ -1,6 +1,7 @@
 package GUI.Camiones;
 
 import Gestores.GestorCamiones;
+import Gestores.GestorPlantas;
 import net.miginfocom.swing.MigLayout;
 
 import java.awt.*;
@@ -9,6 +10,8 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
+import Dominio.Camion;
+import Dominio.Planta;
 import GUI.PantallaBase;
 
 public class PantallaCamiones implements ActionListener{
@@ -116,11 +119,161 @@ public class PantallaCamiones implements ActionListener{
                 dialog.setVisible(true);
             }
         });
+        
+        JButton editar = new JButton("Editar");
+        JButton eliminar = new JButton("Eliminar");
+        eliminar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JPanel panelDialog = new JPanel(new MigLayout("fill, insets 0","[][]"));
+                JDialog dialog = new JDialog();
+                String camionSeleccionado = tabla.getValueAt(tabla.getSelectedRow(), 0).toString();
+                dialog.setSize(400, 200);
+                JLabel preguntaLabel= new JLabel("¿Seguro que desea eliminar el");
+                preguntaLabel.setFont(new Font("Roboto",Font.BOLD,15));
+                panelDialog.add(preguntaLabel,"span,center,wrap");
+                JLabel camionLabel= new JLabel("camion "+camionSeleccionado+" ?");
+                camionLabel.setFont(new Font("Roboto",Font.BOLD,15));
+                panelDialog.add(camionLabel,"span,center,wrap,gaptop 0");
+
+
+
+                JButton aceptar = new JButton("Aceptar");
+
+                aceptar.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        GestorCamiones.getGestor().eliminiar((Integer)tabla.getValueAt(tabla.getSelectedRow(), 0));
+                        actualizarTablaCamiones();
+                        dialog.dispose();
+                        editar.setEnabled(false);
+                        eliminar.setEnabled(false);
+                    }
+                });
+
+                JButton cancelar = new JButton("Cancelar");
+                cancelar.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        dialog.dispose();
+                        editar.setEnabled(false);
+                        eliminar.setEnabled(false);
+                    }
+                });
+
+                panelDialog.add(cancelar,"left, gapleft 25");//"tag cancelar, sizegroup bttn");
+                panelDialog.add(aceptar,"right, gapright 25");//"tag aceptar, sizegroup bttn");
+
+                dialog.add(panelDialog);
+
+                dialog.setModal(true);
+                dialog.setLocationRelativeTo(null);
+                dialog.setVisible(true);
+            }
+        });
+
+        editar.addActionListener(new ActionListener() {
+            @SuppressWarnings("Duplicates")
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JPanel panelDialog = new JPanel(new MigLayout("fill, insets 0","[][]"));
+                JDialog dialog = new JDialog();
+                String camionSeleccionado = tabla.getValueAt(tabla.getSelectedRow(), 0).toString();
+                panelDialog.setBackground(new Color(207,216,220));
+                dialog.setSize(550, 350);
+                JPanel panelDatos = new JPanel (new MigLayout(""));
+                //panelDatos.setBackground(Color.white);
+                JLabel tituloLabel = new JLabel("Editar Camion: "+camionSeleccionado);
+                JLabel marcaLabel = new JLabel("Marca: ");
+                JLabel modeloLabel = new JLabel("Modelo: ");
+                JLabel dominioLabel = new JLabel("Dominio: ");
+                JLabel anioLabel = new JLabel("Anio: ");
+                JLabel costoLabel = new JLabel("Costo por Km: ");
+                JLabel capacidadLabel = new JLabel("Capacidad: ");
+                JLabel liquidosLabel = new JLabel("Liquidos: ");
+                tituloLabel.setFont(new Font("Roboto",Font.PLAIN,20));
+                tituloLabel.setForeground(Color.BLUE);
+                tituloLabel.setHorizontalAlignment(JLabel.CENTER);
+                panelDatos.add(tituloLabel,"span, growx, gapbottom 15, gaptop 5");
+
+                JTextField marca = new JTextField(30);
+                JTextField modelo = new JTextField(30);
+                JTextField dominio = new JTextField(30);
+                JTextField anio = new JTextField(30);
+                JTextField costo = new JTextField(30);
+                JTextField capacidad = new JTextField(30);
+                JCheckBox liquidos = new JCheckBox();
+
+                panelDatos.add(marcaLabel,"align label");
+                panelDatos.add(marca, "wrap");
+                panelDatos.add(modeloLabel,"align label");
+                panelDatos.add(modelo, "wrap");
+                panelDatos.add(dominioLabel,"align label");
+                panelDatos.add(dominio, "wrap");
+                panelDatos.add(anioLabel,"align label");
+                panelDatos.add(anio, "wrap");
+                panelDatos.add(costoLabel,"align label");
+                panelDatos.add(costo, "wrap");
+                panelDatos.add(capacidadLabel,"align label");
+                panelDatos.add(capacidad, "wrap");
+                panelDatos.add(liquidosLabel,"align label");
+                panelDatos.add(liquidos, "wrap");
+
+                Camion camionAEditar = GestorCamiones.getGestor().getCamionPorId((Integer)tabla.getValueAt(tabla.getSelectedRow(), 0));
+                marca.setText(camionAEditar.getMarca());
+                modelo.setText(camionAEditar.getModelo());
+                dominio.setText(camionAEditar.getDominio().toString());
+                anio.setText(camionAEditar.getAnio().toString());
+                costo.setText(camionAEditar.getCostoPorKm().toString());
+                capacidad.setText(camionAEditar.getCapacidad().toString());
+                liquidos.setSelected(camionAEditar.getLiquidos());;
+
+                panelDialog.add(panelDatos,"center, span");
+
+                JButton aceptar = new JButton("Aceptar");
+
+                aceptar.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        GestorCamiones.getGestor().editar((Integer)tabla.getValueAt(tabla.getSelectedRow(), 0),marca.getText(),modelo.getText(),Double.valueOf(dominio.getText()),Integer.valueOf(anio.getText()),Double.valueOf(costo.getText()),Integer.valueOf(capacidad.getText()),liquidos.isSelected());
+                        actualizarTablaCamiones();
+                        dialog.dispose();
+                        editar.setEnabled(false);
+                        eliminar.setEnabled(false);
+                    }
+                });
+
+                JButton cancelar = new JButton("Cancelar");
+                cancelar.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        dialog.dispose();
+                        editar.setEnabled(false);
+                        eliminar.setEnabled(false);
+                    }
+                });
+
+                panelDialog.add(cancelar,"left, gapleft 25");//"tag cancelar, sizegroup bttn");
+                panelDialog.add(aceptar,"right, gapright 25");//"tag aceptar, sizegroup bttn");
+
+                dialog.add(panelDialog);
+
+                dialog.setModal(true);
+                dialog.setLocationRelativeTo(null);
+                dialog.setVisible(true);
+            }
+        });
+
+        editar.setEnabled(false);
+        eliminar.setEnabled(false);
 
         JPanel panelBotones = new JPanel(new MigLayout("fill","[][grow]"));
+        panelBotones.setName("panel datos buscar camiones");
         panelBotones.add(tituloLabel,"span, center");
         panelBotones.add(menu, "left");
-        panelBotones.add(crear,"tag crear,span,split 3,center,gaptop 10,gapbottom 10, sizegroup bttn");
+        panelBotones.add(crear,"tag crear,span,split 5,center,gaptop 10,gapbottom 10, sizegroup bttn");
+        panelBotones.add(editar);
+        panelBotones.add(eliminar);
         panelBotones.add(mejorSeleccionButton);
 
         panelBotones.setBackground(new Color(207,216,220));
@@ -167,10 +320,10 @@ public class PantallaCamiones implements ActionListener{
 
         JPanel panel = new JPanel(new MigLayout(" fillx","[][grow][]"));
         panel.setBackground(new Color(207,216,220));
-        String columns[]={"Id","Costo por Km","Capacidad", "Liquido"};
+        String columns[]={"Id","Marca","Modelo","Dominio","Anio","Costo por Km","Capacidad", "Liquidos"};
 
         final Class[] columnClass = new Class[] {
-                Integer.class, Double.class, Double.class, Double.class
+                Integer.class, String.class, String.class, Double.class, Integer.class, Double.class, Double.class, Boolean.class
         };
         
         DefaultTableModel model = new DefaultTableModel(data, columns){
@@ -212,9 +365,8 @@ public class PantallaCamiones implements ActionListener{
                 Point point = mouseEvent.getPoint();
                 int row = table.rowAtPoint(point);
                 if (mouseEvent.getClickCount() == 2 && table.getSelectedRow() != -1) {
-
-                    /*for (Component component : panel.getParent().getComponents()) {
-                        if(component.getName() == "panel datos buscar insumo" ){
+                		for (Component component : panel.getParent().getComponents()) {
+                        if(component.getName() == "panel datos buscar camiones" ){
                             for (Component component1 : ((JPanel) component).getComponents()) {
                                 if(component1 instanceof JButton && ((JButton)component1).getText() == "Eliminar"){
                                     component1.setEnabled(true);
@@ -228,7 +380,7 @@ public class PantallaCamiones implements ActionListener{
                             }
 
                         }
-                    }*/
+                    }
                     camioneseleccionado = (Integer)tablaCamiones.getValueAt(tablaCamiones.getSelectedRow(), 0);
                     System.out.println(tablaCamiones.getValueAt(tablaCamiones.getSelectedRow(), 0).toString());
                 }

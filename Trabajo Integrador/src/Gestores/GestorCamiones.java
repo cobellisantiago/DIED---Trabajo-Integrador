@@ -2,6 +2,7 @@ package Gestores;
 
 import Dominio.Camion;
 import Dominio.Insumo;
+import Dominio.Planta;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -50,14 +51,17 @@ public class GestorCamiones {
         ArrayList<Camion> camiones = new ArrayList<Camion>();
         camiones = Camion.getInstances();
         int cantCamiones = camiones.size();
-        Object[][] listaCamiones = new Object[cantCamiones][4];
-        int col;
+        Object[][] listaCamiones = new Object[cantCamiones][8];
         int fila=0;
         for (Camion i : camiones) {
-            col = 0; listaCamiones[fila][col] = i.getId();
-            col = 1; listaCamiones[fila][col] = i.getCostoPorKm();
-            col = 2; listaCamiones[fila][col] = i.getCapacidad();
-            col = 3; listaCamiones[fila][col] = i.getLiquidos();
+            listaCamiones[fila][0] = i.getId();
+            listaCamiones[fila][1] = i.getMarca();
+            listaCamiones[fila][2] = i.getModelo();
+            listaCamiones[fila][3] = i.getDominio();
+            listaCamiones[fila][4] = i.getAnio();
+            listaCamiones[fila][5] = i.getCostoPorKm();
+            listaCamiones[fila][6] = i.getCapacidad();
+            listaCamiones[fila][7] = i.getLiquidos();
             fila++;
         }
 
@@ -73,5 +77,21 @@ public class GestorCamiones {
         }
         return null;
     }
+    
+    public void editar(Integer id, String marca, String modelo, Double dominio, Integer anio, Double costo, Integer capacidad, Boolean liquidos) {
+    	Camion camion = getCamionPorId(id);
+    	camion.setMarca(marca);
+    	camion.setModelo(modelo);
+    	camion.setDominio(dominio);
+    	camion.setAnio(anio);
+    	camion.setCostoPorKm(costo);
+    	camion.setCapacidad(capacidad);
+    	camion.setLiquidos(liquidos);
+}
+
+
+public void eliminiar(Integer id) {
+		Camion.getInstances().remove(getCamionPorId(id));
+}
 }
 

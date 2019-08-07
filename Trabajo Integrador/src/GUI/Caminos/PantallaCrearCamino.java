@@ -180,6 +180,7 @@ public class PantallaCrearCamino implements ActionListener {
                 GestorCaminos.getGestor().crear(Integer.valueOf(origen.getSelectedItem().toString()), Integer.valueOf(fin.getSelectedItem().toString()),
                         Double.valueOf(distancia.getText()), Integer.valueOf(tiempo.getText()),Double.valueOf(pesoMax.getText()));
                 popUpCorrecto();
+                PantallaCaminos.getSingle().actualizarTablaCaminos();
             } //else descrip.setText(DESCRIP);
         }else if(button == "Cancelar"){
             JPanel p = (JPanel)panelGeneral.getParent();
