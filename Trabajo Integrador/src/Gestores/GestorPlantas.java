@@ -29,13 +29,12 @@ public class GestorPlantas{
         plantas = Planta.getInstances();
         int cantPlantas = plantas.size();
         
-        Object[][] listaPlantas = new Object[cantPlantas][3];
+        Object[][] listaPlantas = new Object[cantPlantas][2];
         
         int fila =0;
         for(Planta i : plantas){
             listaPlantas[fila][0]= i.getId();
             listaPlantas[fila][1]= i.getNombre();
-            listaPlantas[fila][2]= 0.0;
             fila++;
         }
 
@@ -50,13 +49,13 @@ public class GestorPlantas{
     	return null;
     }
 
-    public void editar() {
-
+    public void editar(Integer id, String nombre) {
+    		getPlanta(id).setNombre(nombre);
     }
 
 
-    public void eliminiar() {
-
+    public void eliminiar(Integer id) {
+    		Planta.getInstances().remove(getPlanta(id));
     }
 
 }

@@ -130,8 +130,6 @@ public class PantallaInsumo implements ActionListener{
             CardLayout pane = (CardLayout)(p.getLayout());
             pane.show(p, "Insumos");
             tabla.clearSelection();
-            editar.setEnabled(false);
-            eliminar.setEnabled(false);
             actualizarTablaInsumos();
 
         }/*else if(button == "Buscar1") {
@@ -199,6 +197,7 @@ public class PantallaInsumo implements ActionListener{
                 }
             }
         });*/
+        
 
         tablaInsumos.addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent mouseEvent) {
@@ -321,7 +320,7 @@ public class PantallaInsumo implements ActionListener{
                 JDialog dialog = new JDialog();
 
                 dialog.setSize(400, 200);
-                JLabel preguntaLabel= new JLabel("Â¿Seguro que desea eliminar el");
+                JLabel preguntaLabel= new JLabel("¿Seguro que desea eliminar el");
                 preguntaLabel.setFont(new Font("Roboto",Font.BOLD,15));
                 panelDialog.add(preguntaLabel,"span,center,wrap");
                 JLabel insumoLabel= new JLabel("insumo "+insumoSeleccionado+" ?");
@@ -337,7 +336,9 @@ public class PantallaInsumo implements ActionListener{
                     public void actionPerformed(ActionEvent e) {
                         GestorInsumos.getGestor().eliminiarPorNombre(insumoSeleccionado);
                         actualizarTablaInsumos();
-                        dialog.setVisible(false);
+                        dialog.dispose();
+                        editar.setEnabled(false);
+                        eliminar.setEnabled(false);
                     }
                 });
 
@@ -345,10 +346,9 @@ public class PantallaInsumo implements ActionListener{
                 cancelar.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        JPanel p = (JPanel)panel.getParent();
-                        CardLayout pane = (CardLayout)(p.getLayout());
-                        pane.show(p, "BuscarInsumo");
-                        dialog.setVisible(false);
+                        dialog.dispose();
+                        editar.setEnabled(false);
+                        eliminar.setEnabled(false);
                     }
                 });
 
@@ -415,7 +415,9 @@ public class PantallaInsumo implements ActionListener{
                         GestorInsumos.getGestor().editarPorNombre(insumoSeleccionado,descrip.getText(),
                                 Double.valueOf(costo.getText()),Double.valueOf(peso.getText()),refrige.isSelected());
                         actualizarTablaInsumos();
-                        dialog.setVisible(false);
+                        dialog.dispose();
+                        editar.setEnabled(false);
+                        eliminar.setEnabled(false);
                     }
                 });
 
@@ -423,10 +425,9 @@ public class PantallaInsumo implements ActionListener{
                 cancelar.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        JPanel p = (JPanel)panel.getParent();
-                        CardLayout pane = (CardLayout)(p.getLayout());
-                        pane.show(p, "BuscarInsumo");
-                        dialog.setVisible(false);
+                        dialog.dispose();
+                        editar.setEnabled(false);
+                        eliminar.setEnabled(false);
                     }
                 });
 

@@ -1,6 +1,7 @@
 
 package GUI.Plantas;
 
+import Gestores.GestorInsumos;
 import Gestores.GestorPlantas;
 import net.miginfocom.swing.MigLayout;
 
@@ -10,6 +11,8 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
+import Dominio.Insumo;
+import Dominio.Planta;
 import GUI.PantallaBase;
 
 public class PantallaPlantas implements ActionListener{
@@ -73,21 +76,136 @@ public class PantallaPlantas implements ActionListener{
         crear.setName("Crear");
         crear.addActionListener(this);
 
-        JButton buscarButton = new JButton("Buscar");
-        buscarButton.setName(BUSCAR);
-        buscarButton.addActionListener(this);
-
         JButton mapaButton = new JButton("Mapa");
         mapaButton.setName("MapaPlanta");
         mapaButton.addActionListener(this);
+        
+        JButton editar = new JButton("Editar");
+        JButton eliminar = new JButton("Eliminar");
+        eliminar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JPanel panelDialog = new JPanel(new MigLayout("fill, insets 0","[][]"));
+                JDialog dialog = new JDialog();
+                String plantaSeleccionada = tabla.getValueAt(tabla.getSelectedColumn(), 1).toString();
+                dialog.setSize(400, 200);
+                JLabel preguntaLabel= new JLabel("¿Seguro que desea eliminar la");
+                preguntaLabel.setFont(new Font("Roboto",Font.BOLD,15));
+                panelDialog.add(preguntaLabel,"span,center,wrap");
+                JLabel insumoLabel= new JLabel("planta "+plantaSeleccionada+" ?");
+                insumoLabel.setFont(new Font("Roboto",Font.BOLD,15));
+                panelDialog.add(insumoLabel,"span,center,wrap,gaptop 0");
+
+
+
+                JButton aceptar = new JButton("Aceptar");
+
+                aceptar.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        GestorPlantas.getGestor().eliminiar((Integer)tabla.getValueAt(tabla.getSelectedColumn(), 0));
+                        actualizarTablaPlantas();
+                        dialog.dispose();
+                        editar.setEnabled(false);
+                        eliminar.setEnabled(false);
+                    }
+                });
+
+                JButton cancelar = new JButton("Cancelar");
+                cancelar.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        dialog.dispose();
+                        editar.setEnabled(false);
+                        eliminar.setEnabled(false);
+                    }
+                });
+
+                panelDialog.add(cancelar,"left, gapleft 25");//"tag cancelar, sizegroup bttn");
+                panelDialog.add(aceptar,"right, gapright 25");//"tag aceptar, sizegroup bttn");
+
+                dialog.add(panelDialog);
+
+                dialog.setModal(true);
+                dialog.setLocationRelativeTo(null);
+                dialog.setVisible(true);
+            }
+        });
+
+        editar.addActionListener(new ActionListener() {
+            @SuppressWarnings("Duplicates")
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JPanel panelDialog = new JPanel(new MigLayout("fill, insets 0","[][]"));
+                JDialog dialog = new JDialog();
+                String plantaSeleccionada = tabla.getValueAt(tabla.getSelectedColumn(), 1).toString();
+                panelDialog.setBackground(new Color(207,216,220));
+                dialog.setSize(500, 300);
+                JPanel panelDatos = new JPanel (new MigLayout(""));
+                //panelDatos.setBackground(Color.white);
+                JLabel tituloLabel = new JLabel("Editar Insumo: "+plantaSeleccionada);
+                JLabel descripcionLabel = new JLabel("Nombre: ");
+                tituloLabel.setFont(new Font("Roboto",Font.PLAIN,20));
+                tituloLabel.setForeground(Color.BLUE);
+                tituloLabel.setHorizontalAlignment(JLabel.CENTER);
+                panelDatos.add(tituloLabel,"span, growx, gapbottom 15, gaptop 5");
+
+                JTextField descrip = new JTextField(30);
+
+                panelDatos.add(descripcionLabel,"align label");
+                panelDatos.add(descrip, "wrap");
+
+                Planta plantaAEditar = GestorPlantas.getGestor().getPlanta((Integer)tabla.getValueAt(tabla.getSelectedColumn(), 0));
+                descrip.setText(plantaAEditar.getNombre());
+
+                panelDialog.add(panelDatos,"center, span");
+
+                JButton aceptar = new JButton("Aceptar");
+
+                aceptar.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        GestorPlantas.getGestor().editar((Integer)tabla.getValueAt(tabla.getSelectedColumn(), 0),descrip.getText());
+                        actualizarTablaPlantas();
+                        dialog.dispose();
+                        editar.setEnabled(false);
+                        eliminar.setEnabled(false);
+                    }
+                });
+
+                JButton cancelar = new JButton("Cancelar");
+                cancelar.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        dialog.dispose();
+                        editar.setEnabled(false);
+                        eliminar.setEnabled(false);
+                    }
+                });
+
+                panelDialog.add(cancelar,"left, gapleft 25");//"tag cancelar, sizegroup bttn");
+                panelDialog.add(aceptar,"right, gapright 25");//"tag aceptar, sizegroup bttn");
+
+                dialog.add(panelDialog);
+
+                dialog.setModal(true);
+                dialog.setLocationRelativeTo(null);
+                dialog.setVisible(true);
+            }
+        });
+
+        editar.setEnabled(false);
+        eliminar.setEnabled(false);
 
 
 
         JPanel panelBotones = new JPanel(new MigLayout("fill","[][grow]"));
+        panelBotones.setName("panel datos buscar planta");
         panelBotones.add(tituloLabel,"span, center");
         panelBotones.add(menu, "left");
-        panelBotones.add(crear,"tag crear,span,split 3,center,gaptop 10,gapbottom 10, sizegroup bttn");
-        panelBotones.add(buscarButton,"tag buscar, sizegroup bttn");
+        panelBotones.add(crear,"tag crear,span,split 4,center,gaptop 10,gapbottom 10, sizegroup bttn");
+        panelBotones.add(editar,"tag editar, sizegroup bttn");
+        panelBotones.add(eliminar,"tag eliminar, sizegroup bttn");
         panelBotones.add(mapaButton,"tag mapa, sizegroup bttn");
 
         //panelBotones.setBorder(BorderFactory.createTitledBorder("Panel de Botones"));
@@ -130,7 +248,7 @@ public class PantallaPlantas implements ActionListener{
         JPanel panel = new JPanel(new MigLayout(" fillx","[][grow][]"));
         panel.setBackground(new Color(207,216,220));
         //Object[][] data = GestorPlantas.getGestor().listarPlantas();
-        String columns[]={"Id","Nombre","Stock"};
+        String columns[]={"Id","Nombre"/*,"Stock"*/};
 
         final Class[] columnClass = new Class[] {
                 Integer.class, String.class, Double.class
