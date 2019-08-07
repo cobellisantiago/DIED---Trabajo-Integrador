@@ -76,6 +76,7 @@ public class Planta extends Vertice {
 
     public Boolean necesitaInsumo(Insumo i) {
         boolean necesitaStock;
+        if(listaStocks == null || listaStocks.isEmpty()) return false;
         necesitaStock = listaStocks.stream().anyMatch((s) -> s.getInsumo().equals(i) && s.getCantidad()<=s.getPuntoPedido());
         // retorna TRUE si el insumo i se encuentra con un stock menor
         // al punto de pedido de esa planta.
@@ -89,6 +90,16 @@ public class Planta extends Vertice {
 
     public void setListaStocks(List<Stock> listaStocks) {
         this.listaStocks = listaStocks;
+    }
+
+    public void agregarStock(Stock stock){
+        if(listaStocks == null){
+            listaStocks = new ArrayList<>();
+            listaStocks.add(stock);
+        }else{
+            listaStocks.add(stock);
+        }
+
     }
 
     public Integer getId() {

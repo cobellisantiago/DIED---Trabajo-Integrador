@@ -25,11 +25,20 @@ public class GestorStock{
     	Planta plan = GestorPlantas.getGestor().getPlanta(plant);
     	
         if(!(insu == null || plan == null)) {
-        	new Stock(cant, puntoPed, insu, plan);
+        	Stock nuevo = new Stock(cant, puntoPed, insu, plan);
         	GestorInsumos.getGestor().agregarStock(insu, cant);
+        	GestorPlantas.getGestor().agregarStock(nuevo);
         	return true;
         }
         return false;
+    }
+
+    public List<Insumo> insumosFaltantes(){
+        List<Insumo> insumosFaltantes = new ArrayList<>();
+        for(Stock s: Stock.getInstances()){
+            if(s.getCantidad()<=s.getPuntoPedido()) insumosFaltantes.add(s.getInsumo());
+        }
+        return insumosFaltantes;
     }
     
     public Object[][] listarStock(){

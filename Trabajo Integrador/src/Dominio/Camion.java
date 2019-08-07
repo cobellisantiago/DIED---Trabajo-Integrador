@@ -1,6 +1,7 @@
 package Dominio;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Camion {
 
@@ -9,14 +10,14 @@ public class Camion {
     private Integer id;
     private String marca;
     private String modelo;
-    private Double dominio;
+    private String dominio;
     private Integer anio;
     private Double costoPorKm;
     private Integer capacidad;
     private Boolean liquidos;
 
 
-    public Camion(String marca, String modelo, Double dominio, Integer anio,
+    public Camion(String marca, String modelo, String dominio, Integer anio,
                   Double costoPorKm, Integer capacidad, Boolean liquidos) {
         this.id = instances.size() + 1;
         this.marca = marca;
@@ -30,18 +31,24 @@ public class Camion {
     }
 
 
-    public boolean[] resolver(Double[] peso, Double[] valor) { //Peso de un insumo y valor (costo) de un insumo
+    public Boolean[] resolver(Double[] peso, Double[] valor) { //Peso de un insumo y valor (costo) de un insumo
 
         int N = peso.length; // items
         int W = capacidad+1; // max peso
 
         Double[][] opt = new Double[N][W]; //matriz que guarda el valor de cada esecenario
-        boolean[][] sol = new boolean[N][W]; // matriz que guarda si el element esta en el esceario
+        /*for(Double[] fila : opt) {
+            for(Double d : fila){
+                d = 0.0;
+            }
+        }*/
+
+        Boolean[][] sol = new Boolean[N][W]; // matriz que guarda si el element esta en el esceario
 
         for (int n = 0; n < N; n++) {
             for (int w = 0; w < W; w++) {
                 Double option1 = n < 1 ? 0 : opt[n - 1][w]; //completar
-                Double option2 = -Double.MAX_VALUE;
+                Double option2 = - Double.MAX_VALUE;
                 if (peso[n]<=w) { //Hay espacio en la mochila? if(peso[n] <= w) option2 = valor[n] + opt[n-1][w-weight[n]]
                     option2 = valor[n] + (n != 0 ? opt[n-1][(int)(w-peso[n])]: opt[n][(int)(w-peso[n])]);
                 }
@@ -51,7 +58,7 @@ public class Camion {
             }
         }
         // determinar la combinación óptima
-        boolean[] esSolucion= new boolean[N];
+        Boolean[] esSolucion= new Boolean[N];
         for (int n = N-1, w = W-1; n >= 0; n--) {
             if (sol[n][w]) {
                 esSolucion [n] = true;
@@ -62,7 +69,7 @@ public class Camion {
             }
         }
         System.out.println("Pares peso valor en solucion optima");
-        boolean b=false;
+        Boolean b=false;
         for(int i=0;i<N;i++){
 
             if(esSolucion[i]){
@@ -93,9 +100,9 @@ public class Camion {
 
     public void setModelo(String modelo) { this.modelo = modelo; }
 
-    public Double getDominio() { return dominio; }
+    public String getDominio() { return dominio; }
 
-    public void setDominio(Double dominio) { this.dominio = dominio; }
+    public void setDominio(String dominio) { this.dominio = dominio; }
 
     public Integer getAnio() { return anio; }
 

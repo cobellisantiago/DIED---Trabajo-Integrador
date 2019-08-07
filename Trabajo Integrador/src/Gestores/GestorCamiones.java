@@ -20,30 +20,32 @@ public class GestorCamiones {
         return gestor;
     }
 
-    public void crear(String marca, String modelo, Double dominio, Integer anio,
+    public void crear(String marca, String modelo, String dominio, Integer anio,
                       Double costoPorKm, Integer capacidad, Boolean liquido){
         new Camion(marca, modelo, dominio, anio, costoPorKm, capacidad, liquido);
     }
 
-    public List<String> mejorSeleccion(Integer id){
+    public List<String> mejorSeleccion(Integer id,List<Insumo> insumosNecesarios){
         Camion camion = getCamionPorId(id);
         ArrayList<Double> pesos = new ArrayList<>();
         ArrayList<Double> costos = new ArrayList<>();
-        List<Boolean> resultados = new ArrayList<>();
+        Boolean[] resultados = new Boolean[insumosNecesarios.size()];
+        List<String> insumos = new ArrayList<>();
 
-        for (Insumo i: Insumo.getInstances()) {
 
+        for (Insumo i: insumosNecesarios) {
            pesos.add( i.getPeso());
            costos.add(i.getCosto());
         }
 
-        /*resultados = Arrays.asList(camion.resolver(pesos.toArray(new Double[0]),costos.toArray(new Double[0])));
-        for (:
-             ) {
+        resultados = camion.resolver(pesos.toArray(new Double[0]),costos.toArray(new Double[0]));
 
-        }*/
+        for(int i=0;i<resultados.length;i++){
+            if(resultados[i]) insumos.add(insumosNecesarios.get(i).getDescripcion());
+        }
 
-        return null;
+
+        return insumos;
 
     }
 
@@ -78,7 +80,7 @@ public class GestorCamiones {
         return null;
     }
     
-    public void editar(Integer id, String marca, String modelo, Double dominio, Integer anio, Double costo, Integer capacidad, Boolean liquidos) {
+    public void editar(Integer id, String marca, String modelo, String dominio, Integer anio, Double costo, Integer capacidad, Boolean liquidos) {
     	Camion camion = getCamionPorId(id);
     	camion.setMarca(marca);
     	camion.setModelo(modelo);

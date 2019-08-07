@@ -145,7 +145,7 @@ public class PantallaCrearCamion implements ActionListener {
         if(button == "Crear") {
             if (!marca.getText().isEmpty() && !modelo.getText().isEmpty() && !dominio.getText().isEmpty() &&
                     !anio.getText().isEmpty() && !costoPorKm.getText().isEmpty() && !capacidad.getText().isEmpty()) {
-                GestorCamiones.getGestor().crear(marca.getText(), modelo.getText(), Double.valueOf(dominio.getText()),
+                GestorCamiones.getGestor().crear(marca.getText(), modelo.getText(), dominio.getText(),
                         Integer.valueOf(anio.getText()), Double.valueOf(costoPorKm.getText()), Integer.valueOf(capacidad.getText()), liquido.isSelected());
                 popUpCorrecto();
                 PantallaCamiones.getSingle().actualizarTablaCamiones();

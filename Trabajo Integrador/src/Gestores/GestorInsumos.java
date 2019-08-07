@@ -155,6 +155,7 @@ public class GestorInsumos{
         insumoAEditar.editar(newName,newCosto, newPesoEnKg, newRefrigeracion);
 
     }
+
     public void eliminiarPorNombre(String nombre) {
         Insumo insumoAEliminar = getInsumoPorNombre(nombre);
         for (Insumo i : Insumo.getInstances()) {

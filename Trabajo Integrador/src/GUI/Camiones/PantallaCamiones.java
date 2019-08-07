@@ -83,33 +83,27 @@ public class PantallaCamiones implements ActionListener{
         crear.addActionListener(this);
 
         JButton mejorSeleccionButton = new JButton("Mejor Seleccion");
-        mejorSeleccionButton.setName("mejorSeleccion");
-        mejorSeleccionButton.addActionListener(new ActionListener() {
+        mejorSeleccionButton.setName("mejorEnvio");
+        mejorSeleccionButton.addActionListener(this);
+        /*mejorSeleccionButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 JDialog dialog = new JDialog();
                 JPanel panel = new JPanel(new MigLayout("fill, insets 0"));
                 dialog.setSize(400, 200);
 
-                JLabel preguntaLabel= new JLabel("Camion creado correctamente");
+                JLabel preguntaLabel= new JLabel("Combinacion de insumos mas conveniente: ");
                 preguntaLabel.setFont(new Font("Roboto",Font.BOLD,15));
                 panel.add(preguntaLabel,"center,span, wrap");
 
+                JLabel insumos = new JLabel();
+                insumos.setText(String.format("<html><div WIDTH=%d>%s</div></html>",100, GestorCamiones.getGestor().mejorSeleccion(camioneseleccionado)));
+                panel.add(insumos,"center,span,wrap");
 
-                JButton aceptar = new JButton("Crear otro camion");
+                JButton aceptar = new JButton("Aceptar");
 
                 aceptar.addActionListener(a -> dialog.dispose());
 
-                JButton cancelar = new JButton("Volver a Camiones");
-                cancelar.addActionListener(a -> {
-                    JPanel p = (JPanel)panel.getParent();
-                    CardLayout pane = (CardLayout)(p.getLayout());
-                    pane.show(p, "Camiones");
-                    dialog.setVisible(false);
-                    //dialog.dispose();
-                });
-
-                panel.add(cancelar,"left, gapleft 25");
                 panel.add(aceptar,"right, gapright 25");
 
                 dialog.add(panel);
@@ -118,7 +112,7 @@ public class PantallaCamiones implements ActionListener{
                 dialog.setLocationRelativeTo(null);
                 dialog.setVisible(true);
             }
-        });
+        });*/
         
         JButton editar = new JButton("Editar");
         JButton eliminar = new JButton("Eliminar");
@@ -235,7 +229,7 @@ public class PantallaCamiones implements ActionListener{
                 aceptar.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        GestorCamiones.getGestor().editar((Integer)tabla.getValueAt(tabla.getSelectedRow(), 0),marca.getText(),modelo.getText(),Double.valueOf(dominio.getText()),Integer.valueOf(anio.getText()),Double.valueOf(costo.getText()),Integer.valueOf(capacidad.getText()),liquidos.isSelected());
+                        GestorCamiones.getGestor().editar((Integer)tabla.getValueAt(tabla.getSelectedRow(), 0),marca.getText(),modelo.getText(),dominio.getText(),Integer.valueOf(anio.getText()),Double.valueOf(costo.getText()),Integer.valueOf(capacidad.getText()),liquidos.isSelected());
                         actualizarTablaCamiones();
                         dialog.dispose();
                         editar.setEnabled(false);
@@ -300,11 +294,16 @@ public class PantallaCamiones implements ActionListener{
             pane.show(p, "Menu");
         }
         else if(button == CREAR) {
-            JPanel p = (JPanel)panel.getParent();
-            CardLayout pane = (CardLayout)(p.getLayout());
+            JPanel p = (JPanel) panel.getParent();
+            CardLayout pane = (CardLayout) (p.getLayout());
             pane.show(p, "CrearCamion");
             //Operaciones de crear, buscar, editar y borrar.
-
+        }else if(button == "mejorEnvio") {
+                JPanel p = (JPanel)panel.getParent();
+                CardLayout pane = (CardLayout)(p.getLayout());
+                pane.show(p, "MejorEnvio");
+                PantallaMejorEnvioCamion.getInstance().actualizarTablas();
+                //Operaciones de crear, buscar, editar y borrar.
         }else if(button == "Cancelar"){
             JPanel p = (JPanel)panel.getParent();
             CardLayout pane = (CardLayout)(p.getLayout());
@@ -320,10 +319,10 @@ public class PantallaCamiones implements ActionListener{
 
         JPanel panel = new JPanel(new MigLayout(" fillx","[][grow][]"));
         panel.setBackground(new Color(207,216,220));
-        String columns[]={"Id","Marca","Modelo","Dominio","Anio","Costo por Km","Capacidad", "Liquidos"};
+        String columns[]={"Id","Marca","Modelo","Dominio","Año","Costo por Km","Capacidad", "Liquidos"};
 
         final Class[] columnClass = new Class[] {
-                Integer.class, String.class, String.class, Double.class, Integer.class, Double.class, Double.class, Boolean.class
+                Integer.class, String.class, String.class, String.class, Integer.class, Double.class, Double.class, Boolean.class
         };
         
         DefaultTableModel model = new DefaultTableModel(data, columns){
@@ -351,6 +350,12 @@ public class PantallaCamiones implements ActionListener{
         DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
         centerRenderer.setHorizontalAlignment( JLabel.CENTER );
         tablaCamiones.setDefaultRenderer(Object.class, centerRenderer);
+
+        tablaCamiones.getColumnModel().getColumn(0).setPreferredWidth(5); // Ancho columna id
+
+        tablaCamiones.getColumnModel().getColumn(4).setPreferredWidth(10); //Ancho columna año
+
+        tablaCamiones.getColumnModel().getColumn(7).setPreferredWidth(10); //Ancho columna año
 
         tablaCamiones.setAutoCreateRowSorter(true);
         JScrollPane sp=new JScrollPane(tablaCamiones);

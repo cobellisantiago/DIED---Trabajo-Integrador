@@ -7,6 +7,7 @@ import GUI.Caminos.PantallaCaminos;
 import GUI.Caminos.PantallaCrearCamino;
 import GUI.Camiones.PantallaCamiones;
 import GUI.Camiones.PantallaCrearCamion;
+import GUI.Camiones.PantallaMejorEnvioCamion;
 import GUI.Insumos.PantallaInsumo;
 import GUI.Plantas.PantallaCrearPlanta;
 import GUI.Plantas.PantallaMapaPlanta;
@@ -14,6 +15,7 @@ import GUI.Plantas.PantallaPlantas;
 import GUI.Stock.PantallaCrearStock;
 import GUI.Stock.PantallaStock;
 import Gestores.GestorCaminos;
+import Gestores.GestorCamiones;
 import Gestores.GestorPlantas;
 
 import java.awt.*;
@@ -53,6 +55,7 @@ public class PantallaBase{
         PantallaCrearCamino.crearPantalla(panel);
 
         PantallaCrearCamion.crearPantalla(panel);
+        PantallaMejorEnvioCamion.crearPantalla(panel);
 
         
 
@@ -118,6 +121,10 @@ public class PantallaBase{
         GestorCaminos.getGestor().crear(3,7,200.0,150,7000.0);
         
         GestorCaminos.getGestor().crear(4,3,200.0,150,7000.0);
+
+        GestorCamiones.getGestor().crear("VW","v40","fjt133",2018,100.0,10000,false);
+        GestorCamiones.getGestor().crear("Iveco","Flat","RPE537",2018,120.0,10000,true);
+        GestorCamiones.getGestor().crear("Scania","ST","MLB995",2019,200.0,15000,false);
 
 
         /* Use an appropriate Look and Feel */
