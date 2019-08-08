@@ -37,11 +37,11 @@ public class Camion {
         int W = capacidad+1; // max peso
 
         Double[][] opt = new Double[N][W]; //matriz que guarda el valor de cada esecenario
-        /*for(Double[] fila : opt) {
+        for(Double[] fila : opt) {
             for(Double d : fila){
                 d = 0.0;
             }
-        }*/
+        }
 
         Boolean[][] sol = new Boolean[N][W]; // matriz que guarda si el element esta en el esceario
 

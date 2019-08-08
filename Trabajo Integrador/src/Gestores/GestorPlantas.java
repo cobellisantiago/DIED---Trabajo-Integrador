@@ -1,10 +1,13 @@
 package Gestores;
 
+import Dominio.Camino;
 import Dominio.Insumo;
 import Dominio.Planta;
 import Dominio.Stock;
 import Dominio.Unidades.UnidadDeMedida;
 import Estructuras.ArbolBinarioBusqueda;
+import Estructuras.GrafoPlanta;
+import Estructuras.Vertice;
 import jdk.nashorn.internal.ir.annotations.Ignore;
 
 import java.util.ArrayList;
@@ -25,6 +28,22 @@ public class GestorPlantas{
     public void crear(String nombre) {
         new Planta(nombre);
 
+    }
+
+    public Object[][] pageRank(){
+        GrafoPlanta grafo = Camino.getGrafoPlanta();
+
+        List<Vertice<Planta>> vertices = grafo.getVertices();
+        vertices.sort((v1, v2) -> grafo.gradoEntrada(v2).compareTo(grafo.gradoEntrada(v1)));
+
+        Object[][] listaPlantas = new Object[Planta.getInstances().size()][3];
+        for(int i = 0 ; i < Planta.getInstances().size() ; i++){
+            listaPlantas[i][0]= vertices.get(i).getValor().getId();
+            listaPlantas[i][1]= vertices.get(i).getValor().getNombre();
+            listaPlantas[i][2]= grafo.gradoEntrada(vertices.get(i));
+        }
+
+        return listaPlantas;
     }
     
     public Object[][] listarPlantas(){

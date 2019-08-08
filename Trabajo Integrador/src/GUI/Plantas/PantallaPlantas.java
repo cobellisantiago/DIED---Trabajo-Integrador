@@ -59,6 +59,8 @@ public class PantallaPlantas implements ActionListener{
 
         ImageIcon backIcon = new ImageIcon(new ImageIcon("Trabajo Integrador/src/GUI/Icons/left-arrow.png").getImage()
                 .getScaledInstance(35, 35, Image.SCALE_DEFAULT));
+        ImageIcon reloadIcon = new ImageIcon(new ImageIcon("Trabajo Integrador/src/GUI/Icons/reload.png").getImage()
+                .getScaledInstance(20, 20, Image.SCALE_DEFAULT));
 
         JButton menu = new JButton(backIcon);
         menu.setBorderPainted(false);
@@ -197,16 +199,45 @@ public class PantallaPlantas implements ActionListener{
         editar.setEnabled(false);
         eliminar.setEnabled(false);
 
-
+        JButton pageRank = new JButton("Page Rank");
 
         JPanel panelBotones = new JPanel(new MigLayout("fill","[][grow]"));
         panelBotones.setName("panel datos buscar planta");
         panelBotones.add(tituloLabel,"span, center");
         panelBotones.add(menu, "left");
-        panelBotones.add(crear,"tag crear,span,split 4,center,gaptop 10,gapbottom 10, sizegroup bttn");
+        panelBotones.add(crear,"tag crear,span,split 6,center,gaptop 10,gapbottom 10, sizegroup bttn");
         panelBotones.add(editar,"tag editar, sizegroup bttn");
         panelBotones.add(eliminar,"tag eliminar, sizegroup bttn");
         panelBotones.add(mapaButton,"tag mapa, sizegroup bttn");
+        panelBotones.add(pageRank,"tag pageRank, sizegroup bttn");
+
+        pageRank.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                panel.remove(1);
+                panel.add(crearTablaPlantasPage(GestorPlantas.getGestor().pageRank()));
+                JButton resetButton = new JButton(reloadIcon);
+                resetButton.setBorderPainted(false);
+                resetButton.setBorder(null);
+                resetButton.setFocusable(false);
+                resetButton.setMargin(new Insets(0, 0, 0, 0));
+                resetButton.setContentAreaFilled(false);
+                resetButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
+                resetButton.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        resetButton.setIcon(null);
+                        panelBotones.remove(resetButton);
+                        actualizarTablaPlantas();
+                        panelBotones.revalidate();
+                    }
+                });
+                panelBotones.add(resetButton,"sizegroup bttn");
+                panel.revalidate();
+
+            }
+        });
+
 
         //panelBotones.setBorder(BorderFactory.createTitledBorder("Panel de Botones"));
         panelBotones.setBackground(new Color(207,216,220));
@@ -343,6 +374,94 @@ public class PantallaPlantas implements ActionListener{
         //if(this.panelGrafo == null) this.panelGrafo = new PanelGrafoPlantas();
 
         //panel.add(new PanelGrafoPlantas());
+    }
+
+    public JPanel crearTablaPlantasPage(Object[][] data){
+
+        JPanel panel = new JPanel(new MigLayout(" fillx","[][grow][]"));
+        panel.setBackground(new Color(207,216,220));
+        //Object[][] data = GestorPlantas.getGestor().listarPlantas();
+        String columns[]={"Id","Nombre","Page Rank"};
+
+        final Class[] columnClass = new Class[] {
+                Integer.class, String.class, Integer.class
+        };
+        //create table model with data
+        DefaultTableModel model = new DefaultTableModel(data, columns) {
+            @Override
+            public boolean isCellEditable(int row, int column)
+            {
+                return false;
+            }
+            @Override
+            public Class<?> getColumnClass(int columnIndex)
+            {
+                return columnClass[columnIndex];
+            }
+
+
+        };
+
+
+        JTable tablaPlantas = new JTable(model);
+        tablaPlantas.setRowHeight(35);
+        tablaPlantas.setGridColor(Color.gray);
+        tablaPlantas.setSelectionBackground(new Color(38,198,218));
+
+
+        tablaPlantas.setShowGrid(true);
+        tablaPlantas.setFont(new Font("Roboto",Font.PLAIN,15 ));
+        tablaPlantas.getTableHeader().setFont(new Font("Roboto", Font.BOLD, 20));
+        ((JLabel)tablaPlantas.getTableHeader().getDefaultRenderer()).setHorizontalAlignment(JLabel.CENTER);
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment( JLabel.CENTER );
+        tablaPlantas.setDefaultRenderer(Object.class, centerRenderer);
+
+        tablaPlantas.setAutoCreateRowSorter(true);
+        JScrollPane sp=new JScrollPane(tablaPlantas);
+        sp.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+        panel.add(sp, "span 2 3, grow , wrap");
+        //panel.setBorder(BorderFactory.createTitledBorder("Panel de TABLE"));
+        tabla=tablaPlantas;
+
+        /*tablaPlantas.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+            public void valueChanged(ListSelectionEvent event) {
+                if (tablaPlantas.getSelectedRow() > -1) {
+                    // print first column value from selected row
+                    System.out.println(tablaPlantas.getValueAt(tablaPlantas.getSelectedRow(), 0).toString());
+                }
+            }
+        });*/
+
+        tablaPlantas.addMouseListener(new MouseAdapter() {
+            public void mousePressed(MouseEvent mouseEvent) {
+                JTable table =(JTable) mouseEvent.getSource();
+                Point point = mouseEvent.getPoint();
+                int row = table.rowAtPoint(point);
+                if (mouseEvent.getClickCount() == 2 && table.getSelectedRow() != -1) {
+
+                    for (Component component : panel.getParent().getComponents()) {
+                        if(component.getName() == "panel datos buscar planta" ){
+                            for (Component component1 : ((JPanel) component).getComponents()) {
+                                if(component1 instanceof JButton && ((JButton)component1).getText() == "Eliminar"){
+                                    component1.setEnabled(true);
+
+                                }
+                                if(component1 instanceof JButton && ((JButton)component1).getText( ) == "Editar"){
+                                    System.out.println("Boton editar");
+                                    component1.setEnabled(true);
+
+                                }
+                            }
+
+                        }
+                    }
+                    System.out.println(tablaPlantas.getValueAt(tablaPlantas.getSelectedRow(), 0).toString());
+                }
+            }
+        });
+
+        return panel;
     }
 
     public static PantallaPlantas getSingle() {
