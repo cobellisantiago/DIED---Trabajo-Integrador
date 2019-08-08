@@ -335,7 +335,7 @@ public class PantallaInsumo implements ActionListener{
                 if(costoMaximoTextField.getText().isEmpty()){
                     costoMaximoTextField.setText("Maximo");
                     costoMaximoTextField.setForeground(Color.gray);
-                    if (costoMinimoTextField.equals("Minimo")) {
+                    if (costoMinimoTextField.getText().equals("Minimo")) {
                         stockMinimoTextField.setEnabled(true);
                         stockMaximoTextField.setEnabled(true);
                         nombreTextField.setEnabled(true);
@@ -362,7 +362,9 @@ public class PantallaInsumo implements ActionListener{
                 if(stockMinimoTextField.getText().isEmpty()){
                 	stockMinimoTextField.setText("Minimo");
                 	stockMinimoTextField.setForeground(Color.gray);
-                    if (stockMaximoTextField.equals("Maximo")) {
+                    System.out.println("minimo lee: "+stockMaximoTextField.getText());
+                    if (stockMaximoTextField.getText().equals("Maximo")) {
+                        System.out.println("habilitar");
                         costoMaximoTextField.setEnabled(true);
                         costoMinimoTextField.setEnabled(true);
                         nombreTextField.setEnabled(true);
@@ -388,15 +390,19 @@ public class PantallaInsumo implements ActionListener{
                 if(stockMaximoTextField.getText().isEmpty()){
                 	stockMaximoTextField.setText("Maximo");
                 	stockMaximoTextField.setForeground(Color.gray);
-                	if(stockMinimoTextField.equals("Minimo")) {
+                    System.out.println("maximo lee: "+stockMinimoTextField.getText()+"  "+stockMinimoTextField.equals("Minimo"));
+                	if(stockMinimoTextField.getText().equals("Minimo")) {
+                        System.out.println("habilitar");
                         costoMaximoTextField.setEnabled(true);
                         costoMinimoTextField.setEnabled(true);
                         nombreTextField.setEnabled(true);
                     }
                 }else{
-                    costoMaximoTextField.setEnabled(false);
-                    costoMinimoTextField.setEnabled(false);
-                    nombreTextField.setEnabled(false);
+                    System.out.println("Inhabilitar");
+                        costoMaximoTextField.setEnabled(false);
+                        costoMinimoTextField.setEnabled(false);
+                        nombreTextField.setEnabled(false);
+
                 }
             }
         });
