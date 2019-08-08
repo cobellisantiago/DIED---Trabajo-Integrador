@@ -133,7 +133,11 @@ public class PanelGrafoPlantas extends JPanel{
             Camino camino = GestorCaminos.getGestor().getCamino(GestorPlantas.getGestor().getPlanta(a.getOrigen().getId()), GestorPlantas.getGestor().getPlanta(a.getDestino().getId()));
             Integer textX = a.getOrigen().getCoordenadaX() + (a.getDestino().getCoordenadaX() - a.getOrigen().getCoordenadaX()) / 2;
             Integer textY = a.getOrigen().getCoordenadaY() + (a.getDestino().getCoordenadaY() - a.getOrigen().getCoordenadaY()) / 2;   
-            g2d.drawString("(D "+camino.getDistancia().toString()+")( T "+camino.getDuracion().toString()+")( PM "+camino.getPesoMaximo().toString()+")", textX, textY);
+            g2d.drawString("(D "+camino.getDistancia().toString()+")", textX, textY);
+            g2d.drawString("( T "+camino.getDuracion().toString()+")", textX, textY-10);
+            g2d.drawString("( PM "+camino.getPesoMaximo().toString()+")", textX, textY-20);
+
+            //g2d.drawString("(D "+camino.getDistancia().toString()+")( T "+camino.getDuracion().toString()+")( PM "+camino.getPesoMaximo().toString()+")", textX, textY);
             //dibujo una flecha al final
             // con el color del origen para que se note
             g2d.setPaint(Color.BLACK);

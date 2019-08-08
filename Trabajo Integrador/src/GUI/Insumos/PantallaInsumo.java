@@ -10,6 +10,7 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
+@SuppressWarnings("ALL")
 public class PantallaInsumo implements ActionListener{
     private static PantallaInsumo single;
     JPanel panel;
@@ -181,6 +182,11 @@ public class PantallaInsumo implements ActionListener{
         centerRenderer.setHorizontalAlignment( JLabel.CENTER );
         tablaInsumos.setDefaultRenderer(Object.class, centerRenderer);
 
+        tablaInsumos.getColumnModel().getColumn(0).setPreferredWidth(1); // Ancho columna id
+       // tablaInsumos.getColumnModel().getColumn(3).setPreferredWidth(100); // Ancho columna refrigeracion
+        tablaInsumos.getColumnModel().getColumn(4).setPreferredWidth(5); // Ancho columna peso
+        tablaInsumos.getColumnModel().getColumn(5).setPreferredWidth(5); // Ancho columna stock
+
         tablaInsumos.setAutoCreateRowSorter(true);
         JScrollPane sp=new JScrollPane(tablaInsumos);
         sp.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
@@ -264,11 +270,38 @@ public class PantallaInsumo implements ActionListener{
         JButton buscarButton = new JButton("Buscar");
         buscarButton.setName("Buscar");
 
+        nombreTextField.addFocusListener(new FocusListener() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                costoMaximoTextField.setEnabled(false);
+                costoMinimoTextField.setEnabled(false);
+                stockMinimoTextField.setEnabled(false);
+                stockMaximoTextField.setEnabled(false);
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) {
+                if(!nombreTextField.getText().isEmpty()){
+                    costoMaximoTextField.setEnabled(false);
+                    costoMinimoTextField.setEnabled(false);
+                    stockMinimoTextField.setEnabled(false);
+                    stockMaximoTextField.setEnabled(false);
+                }else{
+                    costoMaximoTextField.setEnabled(true);
+                    costoMinimoTextField.setEnabled(true);
+                    stockMinimoTextField.setEnabled(true);
+                    stockMaximoTextField.setEnabled(true);
+                }
+            }
+        });
+
         costoMinimoTextField.addFocusListener(new FocusListener() {
             @Override
             public void focusGained(FocusEvent e) {
-                costoMinimoTextField.setText("");
+                if(costoMinimoTextField.getText().equals("Minimo")) {
+                    costoMinimoTextField.setText("");
                     costoMinimoTextField.setForeground(Color.BLACK);
+                }
             }
 
             @Override
@@ -276,14 +309,25 @@ public class PantallaInsumo implements ActionListener{
                 if(costoMinimoTextField.getText().isEmpty()){
                     costoMinimoTextField.setText("Minimo");
                     costoMinimoTextField.setForeground(Color.gray);
+                    if(costoMaximoTextField.getText().equals("Maximo")) {
+                        stockMinimoTextField.setEnabled(true);
+                        stockMaximoTextField.setEnabled(true);
+                        nombreTextField.setEnabled(true);
+                    }
+                }else{
+                    stockMinimoTextField.setEnabled(false);
+                    stockMaximoTextField.setEnabled(false);
+                    nombreTextField.setEnabled(false);
                 }
             }
         });
         costoMaximoTextField.addFocusListener(new FocusListener() {
             @Override
             public void focusGained(FocusEvent e) {
-                costoMaximoTextField.setText("");
-                costoMaximoTextField.setForeground(Color.BLACK);
+                if(costoMaximoTextField.getText().equals("Maximo")) {
+                    costoMaximoTextField.setText("");
+                    costoMaximoTextField.setForeground(Color.BLACK);
+                }
             }
 
             @Override
@@ -291,6 +335,15 @@ public class PantallaInsumo implements ActionListener{
                 if(costoMaximoTextField.getText().isEmpty()){
                     costoMaximoTextField.setText("Maximo");
                     costoMaximoTextField.setForeground(Color.gray);
+                    if (costoMinimoTextField.equals("Minimo")) {
+                        stockMinimoTextField.setEnabled(true);
+                        stockMaximoTextField.setEnabled(true);
+                        nombreTextField.setEnabled(true);
+                    }
+                }else{
+                    stockMinimoTextField.setEnabled(false);
+                    stockMaximoTextField.setEnabled(false);
+                    nombreTextField.setEnabled(false);
                 }
             }
         });
@@ -298,8 +351,10 @@ public class PantallaInsumo implements ActionListener{
         stockMinimoTextField.addFocusListener(new FocusListener() {
             @Override
             public void focusGained(FocusEvent e) {
-            	stockMinimoTextField.setText("");
-            	stockMinimoTextField.setForeground(Color.BLACK);
+                if(stockMinimoTextField.getText().equals("Minimo")) {
+                    stockMinimoTextField.setText("");
+                    stockMinimoTextField.setForeground(Color.BLACK);
+                }
             }
 
             @Override
@@ -307,14 +362,25 @@ public class PantallaInsumo implements ActionListener{
                 if(stockMinimoTextField.getText().isEmpty()){
                 	stockMinimoTextField.setText("Minimo");
                 	stockMinimoTextField.setForeground(Color.gray);
+                    if (stockMaximoTextField.equals("Maximo")) {
+                        costoMaximoTextField.setEnabled(true);
+                        costoMinimoTextField.setEnabled(true);
+                        nombreTextField.setEnabled(true);
+                    }
+                }else{
+                    costoMaximoTextField.setEnabled(false);
+                    costoMinimoTextField.setEnabled(false);
+                    nombreTextField.setEnabled(false);
                 }
             }
         });
         stockMaximoTextField.addFocusListener(new FocusListener() {
             @Override
             public void focusGained(FocusEvent e) {
-            	stockMaximoTextField.setText("");
-            	stockMaximoTextField.setForeground(Color.BLACK);
+                if (stockMaximoTextField.getText().equals("Maximo")) {
+                    stockMaximoTextField.setText("");
+                    stockMaximoTextField.setForeground(Color.BLACK);
+                }
             }
 
             @Override
@@ -322,6 +388,15 @@ public class PantallaInsumo implements ActionListener{
                 if(stockMaximoTextField.getText().isEmpty()){
                 	stockMaximoTextField.setText("Maximo");
                 	stockMaximoTextField.setForeground(Color.gray);
+                	if(stockMinimoTextField.equals("Minimo")) {
+                        costoMaximoTextField.setEnabled(true);
+                        costoMinimoTextField.setEnabled(true);
+                        nombreTextField.setEnabled(true);
+                    }
+                }else{
+                    costoMaximoTextField.setEnabled(false);
+                    costoMinimoTextField.setEnabled(false);
+                    nombreTextField.setEnabled(false);
                 }
             }
         });

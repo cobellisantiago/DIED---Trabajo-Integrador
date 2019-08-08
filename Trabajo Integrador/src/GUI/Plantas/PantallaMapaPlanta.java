@@ -46,7 +46,7 @@ public class PantallaMapaPlanta implements ActionListener {
     }
     
     private void agregarPantalla(JPanel p) {
-        panelGeneral.setLayout(new MigLayout("debug, fill, insets 0",""));
+        panelGeneral.setLayout(new MigLayout(" fill, insets 0",""));
         JPanel panelGrafo = PanelGrafoPlantas.getSingle();
         //panelGrafo.setLayout(new MigLayout("debug, fill","[][grow]"));
         ImageIcon backIcon = new ImageIcon(new ImageIcon("Trabajo Integrador/src/GUI/Icons/left-arrow.png").getImage()
@@ -259,22 +259,26 @@ public class PantallaMapaPlanta implements ActionListener {
 
         cbCaminos.setSelectedItem(null);
         
-        JPanel panelBotones = new JPanel(new MigLayout("wrap 4","[][grow]"));
+        JPanel panelBotones = new JPanel(new MigLayout("fill, insets 0",""));
         //panelBotones.add(tituloLabel,"span, center");
-        panelBotones.add(menu, "left");
-        panelBotones.add(cbLabelInsumo, "split 2");
+        panelBotones.add(menu, "left, gapright 20");
+        panelBotones.add(cbLabelInsumo, " split 8");
         panelBotones.add(cbInsumo, "");
-        panelBotones.add(buttonCaminoLong, "");
-        panelBotones.add(buttonCaminoTiempo, "");
-        panelBotones.add(new JLabel(""), "");
-        panelBotones.add(cbLabelPlantaO, "split 2");
+
+        //panelBotones.add(new JLabel(""), "");
+        panelBotones.add(cbLabelPlantaO, "gapleft 15");
         panelBotones.add(cbPlantaO, "");
-        panelBotones.add(cbLabelPlantaF, "split 2");
+
+        panelBotones.add(cbLabelPlantaF, "gapleft 15");
         panelBotones.add(cbPlantaF, "");
+
+        //panelBotones.add(new JLabel(""), "");
+        panelBotones.add(new JLabel("Caminos"), "gapleft 15");
+        panelBotones.add(cbCaminos, "wrap");
+
+        panelBotones.add(buttonCaminoLong, "skip 1, split 3");
+        panelBotones.add(buttonCaminoTiempo, "");
         panelBotones.add(buttonCaminos, "");
-        panelBotones.add(new JLabel(""), "");
-        panelBotones.add(new JLabel("Caminos"), "split 2");
-        panelBotones.add(cbCaminos, "");
 
         panelGeneral.add(panelBotones,"span, wrap, grow");
         panelBotones.setBorder(BorderFactory.createTitledBorder("Panel de Botones"));

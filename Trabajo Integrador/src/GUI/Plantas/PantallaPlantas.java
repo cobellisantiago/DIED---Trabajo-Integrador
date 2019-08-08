@@ -226,10 +226,11 @@ public class PantallaPlantas implements ActionListener{
                 resetButton.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        resetButton.setIcon(null);
                         panelBotones.remove(resetButton);
                         actualizarTablaPlantas();
                         panelBotones.revalidate();
+                        panelBotones.repaint();
+
                     }
                 });
                 panelBotones.add(resetButton,"sizegroup bttn");
@@ -307,6 +308,7 @@ public class PantallaPlantas implements ActionListener{
         tablaPlantas.setSelectionBackground(new Color(38,198,218));
 
 
+
         tablaPlantas.setShowGrid(true);
         tablaPlantas.setFont(new Font("Roboto",Font.PLAIN,15 ));
         tablaPlantas.getTableHeader().setFont(new Font("Roboto", Font.BOLD, 20));
@@ -314,6 +316,8 @@ public class PantallaPlantas implements ActionListener{
         DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
         centerRenderer.setHorizontalAlignment( JLabel.CENTER );
         tablaPlantas.setDefaultRenderer(Object.class, centerRenderer);
+
+        tablaPlantas.getColumnModel().getColumn(0).setPreferredWidth(10); // Ancho columna id
 
         tablaPlantas.setAutoCreateRowSorter(true);
         JScrollPane sp=new JScrollPane(tablaPlantas);
