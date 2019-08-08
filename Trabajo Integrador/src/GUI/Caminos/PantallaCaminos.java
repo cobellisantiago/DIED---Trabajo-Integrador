@@ -108,7 +108,7 @@ public class PantallaCaminos implements ActionListener{
                 JDialog dialog = new JDialog();
                 String caminoSeleccionado = tabla.getValueAt(tabla.getSelectedRow(), 0).toString() + " - " + tabla.getValueAt(tabla.getSelectedRow(), 1).toString();
                 dialog.setSize(400, 200);
-                JLabel preguntaLabel= new JLabel("¿Seguro que desea eliminar el");
+                JLabel preguntaLabel= new JLabel("ï¿½Seguro que desea eliminar el");
                 preguntaLabel.setFont(new Font("Roboto",Font.BOLD,15));
                 panelDialog.add(preguntaLabel,"span,center,wrap");
                 JLabel caminoLabel= new JLabel("camino "+caminoSeleccionado+" ?");
@@ -263,6 +263,7 @@ public class PantallaCaminos implements ActionListener{
             JPanel p = (JPanel)panel.getParent();
             CardLayout pane = (CardLayout)(p.getLayout());
             pane.show(p, button);
+            PantallaCrearCamino.getSingle().actualizarDatos();
             //Operaciones de crear, buscar, editar y borrar.
 
         }else if(button == "Mapa"){

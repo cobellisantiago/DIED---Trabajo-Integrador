@@ -82,7 +82,8 @@ public class PantallaCrearCamino implements ActionListener {
             @Override
             public void itemStateChanged(ItemEvent e) {
                 JComboBox cb = (JComboBox)e.getSource();
-                if(fin.getItemCount() != Planta.getInstances().size())	fin.insertItemAt(plantaOrigen, plantaOrigen);
+               // if(fin.getItemCount() != Planta.getInstances().size())	fin.insertItemAt(plantaOrigen, plantaOrigen);
+                
                 plantaOrigen = (Integer)cb.getSelectedItem();
                 origen.getModel().setSelectedItem(plantaOrigen);
                 fin.removeItem(plantaOrigen);
@@ -186,6 +187,30 @@ public class PantallaCrearCamino implements ActionListener {
             JPanel p = (JPanel)panelGeneral.getParent();
             CardLayout pane = (CardLayout)(p.getLayout());
             pane.show(p, "Caminos");
+
+        }
+    }
+
+    public static PantallaCrearCamino getSingle(){
+        return single;
+    }
+
+    public void actualizarDatos(){
+        origen.removeAllItems();
+        for (Planta a: Planta.getInstances()) {
+           // if(!a.getId().equals(Planta.getFinal().getId())) {
+            origen.addItem(a.getId());
+            origen.setSelectedItem(null);
+
+            //}
+        }
+
+        fin.removeAllItems();
+        for (Planta a: Planta.getInstances()) {
+            //if (!a.getId().equals(Planta.getPuerto().getId())) {
+            fin.addItem(a.getId());
+            fin.setSelectedItem(null);
+            //}
 
         }
     }

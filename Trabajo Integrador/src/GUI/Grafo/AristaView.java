@@ -24,7 +24,7 @@ public class AristaView {
      * @return
      */
     public Paint getColor() {
-        if(this.color==null) this.color = new GradientPaint(origen.getCoordenadaX() + 10, origen.getCoordenadaY() + 10, Color.BLACK,destino.getCoordenadaX() + 10, destino.getCoordenadaY() + 10, Color.WHITE);
+        if(this.color==null) this.color = Color.BLACK; //this.color = new GradientPaint(origen.getCoordenadaX() + 10, origen.getCoordenadaY() + 10, Color.BLACK,destino.getCoordenadaX() + 10, destino.getCoordenadaY() + 10, Color.WHITE);
         return color;
     }
 
