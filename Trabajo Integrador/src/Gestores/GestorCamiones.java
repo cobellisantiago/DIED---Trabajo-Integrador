@@ -3,10 +3,12 @@ package Gestores;
 import Dominio.Camion;
 import Dominio.Insumo;
 import Dominio.Planta;
+import Dominio.Stock;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 public class GestorCamiones {
 
@@ -25,7 +27,7 @@ public class GestorCamiones {
         new Camion(marca, modelo, dominio, anio, costoPorKm, capacidad, liquido);
     }
 
-    public List<String> mejorSeleccion(Integer id,List<Insumo> insumosNecesarios){
+    public List<String> mejorSeleccion(Integer id, List<Stock> insumosNecesarios){
         Camion camion = getCamionPorId(id);
         ArrayList<Double> pesos = new ArrayList<>();
         ArrayList<Double> costos = new ArrayList<>();
@@ -33,15 +35,20 @@ public class GestorCamiones {
         List<String> insumos = new ArrayList<>();
 
 
-        for (Insumo i: insumosNecesarios) {
+        for(Stock s: insumosNecesarios){
+            pesos.add(s.getInsumo().getPeso()*(s.getPuntoPedido()-s.getCantidad()));
+            costos.add(s.getInsumo().getCosto());
+        }
+
+        /*for (Insumo i: insumosNecesarios) {
            pesos.add( i.getPeso());
            costos.add(i.getCosto());
-        }
+        }*/
 
         resultados = camion.resolver(pesos.toArray(new Double[0]),costos.toArray(new Double[0]));
 
         for(int i=0;i<resultados.length;i++){
-            if(resultados[i]) insumos.add(insumosNecesarios.get(i).getDescripcion());
+            if(resultados[i]) insumos.add(insumosNecesarios.get(i).getInsumo().getDescripcion());
         }
 
 

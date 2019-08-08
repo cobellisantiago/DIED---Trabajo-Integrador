@@ -226,6 +226,7 @@ public class PantallaStock implements ActionListener{
             JPanel p = (JPanel)panel.getParent();
             CardLayout pane = (CardLayout)(p.getLayout());
             pane.show(p, "CrearStock");
+            PantallaCrearStock.getSingle().actualizarDatos();
             //Operaciones de crear, buscar, editar y borrar.
         }else{
 

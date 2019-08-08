@@ -82,6 +82,10 @@ public class PantallaCrearStock implements ActionListener{
 
     }
 
+    public static PantallaCrearStock getSingle(){
+        return single;
+    }
+
     public void popUpCorrecto(){
         JPanel panel = new JPanel(new MigLayout("fill, insets 0"));
         JDialog dialog = new JDialog();
@@ -179,5 +183,12 @@ public class PantallaCrearStock implements ActionListener{
             CardLayout pane = (CardLayout)(p.getLayout());
             pane.show(p, "Stock");
         }
+    }
+
+    public void actualizarDatos (){
+        insumo.removeAllItems();
+        for (Insumo i: Insumo.getInstances())	insumo.addItem(i.getId());
+        planta.removeAllItems();
+        for (Planta i: Planta.getInstances())	planta.addItem(i.getId());
     }
 }

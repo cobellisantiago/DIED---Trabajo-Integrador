@@ -8,7 +8,9 @@ import Estructuras.ArbolBinarioBusqueda;
 import jdk.nashorn.internal.ir.annotations.Ignore;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class GestorStock{
     private static GestorStock gestor;
@@ -33,10 +35,11 @@ public class GestorStock{
         return false;
     }
 
-    public List<Insumo> insumosFaltantes(){
-        List<Insumo> insumosFaltantes = new ArrayList<>();
+    public List<Stock> insumosFaltantes(){
+        //List<Insumo> insumosFaltantes = new ArrayList<>();
+        List<Stock> insumosFaltantes = new ArrayList<>();
         for(Stock s: Stock.getInstances()){
-            if(s.getCantidad()<=s.getPuntoPedido()) insumosFaltantes.add(s.getInsumo());
+            if(s.getCantidad()<=s.getPuntoPedido()) insumosFaltantes.add(s);
         }
         return insumosFaltantes;
     }

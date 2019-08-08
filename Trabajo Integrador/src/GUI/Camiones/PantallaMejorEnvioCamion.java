@@ -1,6 +1,7 @@
 package GUI.Camiones;
 
 import Dominio.Insumo;
+import Dominio.Stock;
 import Gestores.GestorCamiones;
 import Gestores.GestorPlantas;
 import Gestores.GestorStock;
@@ -16,6 +17,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.List;
+import java.util.Map;
 
 public class PantallaMejorEnvioCamion implements ActionListener{
 
@@ -23,7 +25,7 @@ public class PantallaMejorEnvioCamion implements ActionListener{
     private JPanel panel;
     //private JTable tabla;
     private Integer camioneseleccionado;
-    private List<Insumo> insumosNecesarios;
+    private List<Stock> insumosNecesarios;
 
     private PantallaMejorEnvioCamion(){}
 
@@ -102,6 +104,7 @@ public class PantallaMejorEnvioCamion implements ActionListener{
         panelBotones.add(menu, "left");
         panelBotones.add(mejorSeleccionButton,"tag crear,span,center,gaptop 10,gapbottom 10, sizegroup bttn");
 
+        mejorSeleccionButton.setEnabled(false);
 
         panelBotones.setBackground(new Color(207,216,220));
         panel.add(panelBotones,BorderLayout.NORTH);
@@ -188,16 +191,18 @@ public class PantallaMejorEnvioCamion implements ActionListener{
                 if (mouseEvent.getClickCount() == 2 && table.getSelectedRow() != -1) {
                     for (Component component : panel.getParent().getComponents()) {
                         if(component.getName() == "panel datos buscar camiones" ){
+                           // System.out.println("Entre en el panel");
                             for (Component component1 : ((JPanel) component).getComponents()) {
-                                if(component1 instanceof JButton && ((JButton)component1).getText() == "Eliminar"){
+
+                                if(component1 instanceof JButton && ((JButton)component1).getName() == "mejorSeleccion"){
                                     component1.setEnabled(true);
 
                                 }
-                                if(component1 instanceof JButton && ((JButton)component1).getText( ) == "Editar"){
+                                /*if(component1 instanceof JButton && ((JButton)component1).getText( ) == "Editar"){
                                     System.out.println("Boton editar");
-                                    component1.setEnabled(true);
+                                    component1.setEnabled(true);*/
 
-                                }
+                                //}
                             }
 
                         }
